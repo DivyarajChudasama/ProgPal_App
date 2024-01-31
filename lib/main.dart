@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progpal/screens/introduction_screens.dart';
+import 'package:progpal/screens/intro_screens.dart';
 
 void main() {
   runApp(const MyApp());
