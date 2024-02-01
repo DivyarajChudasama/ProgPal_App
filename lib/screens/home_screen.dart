@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'ProgPal',
+            'ProgPal_App',
             textAlign: TextAlign.center,
           ),
         ),
