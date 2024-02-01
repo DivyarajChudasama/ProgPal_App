@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   //     if (user != null) {
   //       Navigator.pushReplacement(
   //         context,
-  //         MaterialPageRoute(builder: (context) => HomePage()),
+  //         MaterialPageRoute(builder: (context) => HomeScreen()),
   //       );
   //     }
   //   } catch (e) {
@@ -276,7 +276,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()),
+                                  builder: (context) => HomeScreen()),
                             );
                           },
                           style: ElevatedButton.styleFrom(

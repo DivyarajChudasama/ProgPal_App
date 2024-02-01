@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //     // Navigate to NavScreen after successful login
   //     Navigator.pushReplacement(
   //       context,
-  //       MaterialPageRoute(builder: (context) => HomePage()),
+  //       MaterialPageRoute(builder: (context) => HomeScreen()),
   //     );
   //   } catch (e) {
   //     print('Error signing in: $e');
@@ -192,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                                    builder: (context) => HomeScreen()),
                               );
                             },
                             style: ElevatedButton.styleFrom(
