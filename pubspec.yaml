@@ -38,6 +38,7 @@ dependencies:
   lottie: ^3.0.0
   firebase_core: ^2.25.0
   firebase_auth: ^4.17.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,10 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/AppIcon.png"
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -63,6 +68,7 @@ flutter:
   assets:
   - animations/
   - assets/images/
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

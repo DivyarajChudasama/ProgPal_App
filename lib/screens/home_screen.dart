@@ -1,88 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:progpal/screens/sign-in-up/lessons_screen.dart';
+import 'package:progpal/screens/java/java_condition_page.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  Color color = Colors.cyan.withOpacity(0.2);
-  Color color1 = Colors.blue.withOpacity(0.2);
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Text(
-              'ProgPal',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(width: 170),
-            Icon(Icons.search),
-            IconButton(
-              onPressed: () async {
-                // Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(builder: (context) => SplashScreen()),
-                // );
-                // final SharedPreferences prefs =
-                //     await SharedPreferences.getInstance();
-                // await prefs.setBool('new_user', true);
-              },
-              icon: Icon(Icons.logout),
-            )
-          ],
-        ),
+        title: Text('ProgPal', style: TextStyle(fontWeight: FontWeight.bold)),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.logout),
+          )
+        ],
         backgroundColor: Colors.blue,
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height / 5,
+              height: 120,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: 5, // Adjust the count as needed
                 itemBuilder: (context, index) {
-                  Color containerColor = index == 1 ? color1 : color;
-
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: containerColor,
+                        color: index % 2 == 0
+                            ? Colors.cyan.withOpacity(0.2)
+                            : Colors.blue.withOpacity(0.2),
                       ),
-                      height: 300,
+                      height: 100,
                       width: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              width: 70,
-                              child: Row(
-                                children: [
-                                  Icon(Icons.electric_bolt_sharp),
-                                  Text(
-                                    "Beginner",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                      child: Center(
+                        child: Text(
+                          'Category $index',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -93,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListView.separated(
               padding: EdgeInsets.all(20.0),
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: 8,
               separatorBuilder: (BuildContext context, int index) {
                 return Divider(
                   color: Colors.grey[300],
@@ -122,15 +82,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     language = 'GoLang';
                     itemColor = Colors.red;
                     break;
+                  case 4:
+                    language = 'Python';
+                    itemColor = Colors.cyan;
+                    break;
+                  case 5:
+                    language = 'JavaScript';
+                    itemColor = Colors.green;
+                    break;
+                  case 6:
+                    language = 'Ruby';
+                    itemColor = Colors.purple;
+                    break;
+                  case 7:
+                    language = 'Swift';
+                    itemColor = Colors.deepOrangeAccent;
+                    break;
                 }
 
                 return InkWell(
                   onTap: () {
+                    // Navigate to JavaPage
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              LessonsPage(language: language)),
+                          builder: (context) => JavaConditionPage()),
                     );
                   },
                   child: Container(

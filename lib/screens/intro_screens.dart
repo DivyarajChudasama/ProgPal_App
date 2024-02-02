@@ -9,7 +9,7 @@ class IntroductionScreen extends StatefulWidget {
   State<IntroductionScreen> createState() => _IntroductionScreenState();
 }
 
-List<String> title = ['ProgPal', 'Progpal', 'ProgPal'];
+List<String> title = ['Learn to code', 'Build projects', 'Become expert'];
 List<String> desc = [
   'Thinking about how to kickstart your coding journey?',
   'Not sure which language to choose for your next project?',
