@@ -22,9 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
               'ProgPal',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(width: 183),
+            SizedBox(width: 170),
             Icon(Icons.search),
-            SizedBox(width: 10),
             IconButton(
               onPressed: () async {
                 // Navigator.of(context).pushReplacement(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/home_screen.dart';
+import 'package:progpal/screens/intro_questions/intro_one.dart';
 import 'package:progpal/screens/intro_screens.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: IntroductionScreen(),
     );
   }
 }
