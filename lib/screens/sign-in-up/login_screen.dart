@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: EdgeInsets.only(left: 15, top: 15),
                 child: Image.asset(
-                  "assets/images/bulb.jpg",
+                  "assets/images/splashscreen.png",
                   width: 413,
                   height: 200,
                 ),
