@@ -21,8 +21,8 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _fadeAnimation = Tween<double>(
-      begin: 0.8,
-      end: 1.0,
+      begin: 1.0,
+      end: 0.0,
     ).animate(_fadeController);
 
     // Start the fade-in animation
@@ -46,11 +46,11 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade900,
+      backgroundColor: Colors.indigo,
       body: Center(
         child: AnimatedOpacity(
           opacity: _fadeAnimation.value,
-          duration: Duration(seconds: 3),
+          duration: Duration(seconds: 7),
           child: Image.asset(
             'assets/images/splashscreen.png',
             height: 200,
