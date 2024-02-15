@@ -94,6 +94,25 @@ class _BasicPageState extends State<BasicPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('BufferReader'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BufferReader()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -527,6 +546,133 @@ class LineNumbers3 extends StatelessWidget {
             textAlign: TextAlign.right,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BufferReader extends StatelessWidget {
+  final String bufferReaderCode = '''
+import java.io.*;
+
+class BufferedReaderExample
+{
+    public static void main(String[] args) throws Exception
+    {
+        String str;
+        int i;
+        float f;
+        double d;
+        long l;
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter String");
+        str = br.readLine();
+        System.out.println("Enter Integer");
+        i = Integer.parseInt(br.readLine());
+        System.out.println("Enter float");
+        f = Float.parseFloat(br.readLine());
+        System.out.println("Enter double");
+        d = Double.parseDouble(br.readLine());
+        System.out.println("String : " + str);
+        System.out.println("Integer : " + i);
+        System.out.println("Float : " + f);
+        System.out.println("Double : " + d);
+    }
+}  
+''';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BufferReader'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LineNumbers4(),
+                  const SizedBox(width: 16.0),
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(color: Colors.grey.shade300),
+                          ),
+                          child: Text(
+                            bufferReaderCode,
+                            style: TextStyle(
+                              fontFamily: 'Courier New',
+                              fontSize: 14.0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 8.0,
+                          right: 8.0,
+                          child: IconButton(
+                            icon: Icon(Icons.copy),
+                            onPressed: () {
+                              Clipboard.setData(
+                                  ClipboardData(text: bufferReaderCode));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text('Code copied to clipboard')),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+          ),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
       ),
     );
   }
