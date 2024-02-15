@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
             ListView.separated(
               padding: EdgeInsets.all(20.0),
               shrinkWrap: true,
-              itemCount: 8,
+              itemCount: 7,
               separatorBuilder: (BuildContext context, int index) {
                 return Divider(
                   color: Colors.grey[300],
