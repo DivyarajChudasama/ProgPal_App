@@ -1,10 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:progpal/firebase_options.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/intro_questions/intro_one.dart';
 import 'package:progpal/screens/intro_screens.dart';
 import 'package:progpal/screens/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998648013723",
+    "project_id": "progpal-b3401",
+    "storage_bucket": "progpal-b3401.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998648013723:android:8ad8a6a0269b486bf0f73e",
+        "android_client_info": {
+          "package_name": "com.example.progpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxZGEOdxHy3E34Qg0hlJBY6SnCHoUoEyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
