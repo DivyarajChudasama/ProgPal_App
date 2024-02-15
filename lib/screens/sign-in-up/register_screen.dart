@@ -1,4 +1,4 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/intro_questions/intro_one.dart';
@@ -13,28 +13,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _repassController = TextEditingController();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isObscured = true;
 
-  // Future<void> _registerWithEmailAndPassword() async {
-  //   try {
-  //     UserCredential userCredential =
-  //         await _auth.createUserWithEmailAndPassword(
-  //       email: _emailController.text,
-  //       password: _passController.text,
-  //     );
-  //     User? user = userCredential.user;
+  Future<void> _registerWithEmailAndPassword() async {
+    try {
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passController.text,
+      );
+      User? user = userCredential.user;
 
-  //     if (user != null) {
-  //       Navigator.pushReplacement(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => HomeScreen()),
-  //       );
-  //     }
-  //   } catch (e) {
-  //     print('Error registering: $e');
-  //   }
-  // }
+      if (user != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      }
+    } catch (e) {
+      print('Error registering: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Padding(
                 padding: EdgeInsets.only(top: 0),
                 child: Image.asset(
-                  "assets/images/bulb.jpg",
+                  "assets/images/splashscreen.png",
                   width: 428,
                   height: 200,
                 ),
@@ -80,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: _emailController,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF393939),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontSize: 13,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
@@ -247,8 +247,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: 329,
                         height: 56,
                         child: ElevatedButton(
-                          // onPressed: _registerWithEmailAndPassword,
-                          onPressed: () {},
+                          onPressed: _registerWithEmailAndPassword,
+                          // onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF9F7BFF),
                           ),
