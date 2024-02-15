@@ -202,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Container(
                               child: Center(
                                 child: Text(
-                                  'LOGIN WITH MOBILE',
+                                  'SIGN IN WITH MOBILE',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 15,
