@@ -56,6 +56,25 @@ class _BasicPageState extends State<BasicPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('Switch-Case'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SwitchCase()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -144,7 +163,7 @@ class LineNumbers extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -185,7 +204,7 @@ public static void main(String[] args) {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LineNumbers(),
+            LineNumbers1(),
             const SizedBox(width: 16.0),
             Expanded(
               child: Stack(
@@ -253,6 +272,156 @@ class LineNumbers1 extends StatelessWidget {
             textAlign: TextAlign.right,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SwitchCase extends StatelessWidget {
+  final String switchcaseCode = '''
+//Java Program to demonstrate the example of Switch statement  
+//where we are printing month name for the given number  
+public class SwitchMonthExample {    
+public static void main(String[] args) {    
+    //Specifying month number  
+    int month=7;    
+    String monthString="";  
+    //Switch statement  
+    switch(month){    
+    //case statements within the switch block  
+    case 1: monthString="1 - January";  
+    break;    
+    case 2: monthString="2 - February";  
+    break;    
+    case 3: monthString="3 - March";  
+    break;    
+    case 4: monthString="4 - April";  
+    break;    
+    case 5: monthString="5 - May";  
+    break;    
+    case 6: monthString="6 - June";  
+    break;    
+    case 7: monthString="7 - July";  
+    break;    
+    case 8: monthString="8 - August";  
+    break;    
+    case 9: monthString="9 - September";  
+    break;    
+    case 10: monthString="10 - October";  
+    break;    
+    case 11: monthString="11 - November";  
+    break;    
+    case 12: monthString="12 - December";  
+    break;    
+    default:System.out.println("Invalid Month!");    
+    }    
+    //Printing month of the given number  
+    System.out.println(monthString);  
+}    
+}   
+''';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Switch-Case'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LineNumbers2(switchcaseCode: switchcaseCode),
+                  const SizedBox(width: 16.0),
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(color: Colors.grey.shade300),
+                          ),
+                          child: Text(
+                            switchcaseCode,
+                            style: TextStyle(
+                              fontFamily: 'Courier New',
+                              fontSize: 12.0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 8.0,
+                          right: 8.0,
+                          child: IconButton(
+                            icon: Icon(Icons.copy),
+                            onPressed: () {
+                              Clipboard.setData(
+                                  ClipboardData(text: switchcaseCode));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text('Code copied to clipboard')),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers2 extends StatelessWidget {
+  final String switchcaseCode;
+
+  LineNumbers2({required this.switchcaseCode});
+
+  @override
+  Widget build(BuildContext context) {
+    // Split the code string into lines
+    List<String> lines = switchcaseCode.split('\n');
+
+    // Generate line numbers dynamically
+    String lineNumbers =
+        List.generate(lines.length, (index) => (index + 1).toString() + '\n')
+            .join();
+
+    print(lineNumbers);
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        height: 1100,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+          ),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Text(
+          lineNumbers,
+          style: TextStyle(
+            fontFamily: 'Courier New',
+            fontSize: 14.0,
+          ),
+          textAlign: TextAlign.right,
+        ),
       ),
     );
   }
