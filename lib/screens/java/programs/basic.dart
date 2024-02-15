@@ -75,6 +75,25 @@ class _BasicPageState extends State<BasicPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('For Loops'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ForLoop()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -412,6 +431,102 @@ class LineNumbers2 extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ForLoop extends StatelessWidget {
+  final String ForLoopCode = '''
+public class ForExample {  
+public static void main(String[] args) {  
+    //Code of Java for loop  
+    for(int i=1;i<=10;i++){  
+        System.out.println(i);  
+    }  
+}  
+}  
+''';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('For Loop'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LineNumbers3(),
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: Text(
+                      ForLoopCode,
+                      style: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8.0,
+                    right: 8.0,
+                    child: IconButton(
+                      icon: Icon(Icons.copy),
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(text: ForLoopCode));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Code copied to clipboard')),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.0),
+          bottomLeft: Radius.circular(8.0),
+        ),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            style: TextStyle(
+              fontFamily: 'Courier New',
+              fontSize: 14.0,
+            ),
+            textAlign: TextAlign.right,
+          ),
+        ],
       ),
     );
   }

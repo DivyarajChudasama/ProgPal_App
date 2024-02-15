@@ -4,6 +4,7 @@ import 'package:progpal/firebase_options.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/intro_questions/intro_one.dart';
 import 'package:progpal/screens/intro_screens.dart';
+import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/otp/phoneno_screen.dart';
 import 'package:progpal/screens/otp/otp_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BasicPage(),
+      home: BeginnerPage(),
     );
   }
 }
