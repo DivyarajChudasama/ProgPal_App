@@ -91,12 +91,8 @@ class HomeScreen extends StatelessWidget {
                     itemColor = Colors.green;
                     break;
                   case 6:
-                    language = 'Ruby';
+                    language = 'Node';
                     itemColor = Colors.purple;
-                    break;
-                  case 7:
-                    language = 'Swift';
-                    itemColor = Colors.deepOrangeAccent;
                     break;
                 }
 
