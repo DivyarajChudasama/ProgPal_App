@@ -18,20 +18,40 @@ class _BasicPageState extends State<BasicPage> {
       ),
       body: ListView(
         children: [
-          ListTile(
-            title: Text('Hello World'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HelloWorld()),
-              );
-            },
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('Hello World'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelloWorld()),
+                );
+              },
+            ),
           ),
-          ListTile(
-            title: Text('If-Else'),
-            onTap: () {
-              // Add functionality to navigate to the If-Else program page
-            },
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('If-Else'),
+              onTap: () {
+                // Add functionality to navigate to the If-Else program page
+              },
+            ),
           ),
         ],
       ),
