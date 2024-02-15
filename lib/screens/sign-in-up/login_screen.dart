@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:progpal/screens/home_screen.dart';
+import 'package:progpal/screens/otp/phoneno_screen.dart';
 import 'package:progpal/screens/sign-in-up/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -192,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeScreen()),
+                                    builder: (context) => PhoneNumberScreen()),
                               );
                             },
                             style: ElevatedButton.styleFrom(
