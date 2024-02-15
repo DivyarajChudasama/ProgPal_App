@@ -75,6 +75,25 @@ class _BasicPageState extends State<BasicPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('For Loops'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ForLoop()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -264,7 +283,7 @@ class LineNumbers1 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -336,7 +355,7 @@ public static void main(String[] args) {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  LineNumbers2(switchcaseCode: switchcaseCode),
+                  LineNumbers2(),
                   const SizedBox(width: 16.0),
                   Expanded(
                     child: Stack(
@@ -352,7 +371,7 @@ public static void main(String[] args) {
                             switchcaseCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
-                              fontSize: 12.0,
+                              fontSize: 14.0,
                             ),
                           ),
                         ),
@@ -385,26 +404,11 @@ public static void main(String[] args) {
 }
 
 class LineNumbers2 extends StatelessWidget {
-  final String switchcaseCode;
-
-  LineNumbers2({required this.switchcaseCode});
-
   @override
   Widget build(BuildContext context) {
-    // Split the code string into lines
-    List<String> lines = switchcaseCode.split('\n');
-
-    // Generate line numbers dynamically
-    String lineNumbers =
-        List.generate(lines.length, (index) => (index + 1).toString() + '\n')
-            .join();
-
-    print(lineNumbers);
-
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
-        height: 1100,
         decoration: BoxDecoration(
           color: Colors.grey.shade200,
           borderRadius: BorderRadius.only(
@@ -413,15 +417,116 @@ class LineNumbers2 extends StatelessWidget {
           ),
           border: Border.all(color: Colors.grey.shade300),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Text(
-          lineNumbers,
-          style: TextStyle(
-            fontFamily: 'Courier New',
-            fontSize: 14.0,
-          ),
-          textAlign: TextAlign.right,
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class ForLoop extends StatelessWidget {
+  final String ForLoopCode = '''
+public class ForExample {  
+public static void main(String[] args) {  
+    //Code of Java for loop  
+    for(int i=1;i<=10;i++){  
+        System.out.println(i);  
+    }  
+}  
+}  
+''';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('For Loop'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            LineNumbers3(),
+            const SizedBox(width: 16.0),
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    child: Text(
+                      ForLoopCode,
+                      style: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 8.0,
+                    right: 8.0,
+                    child: IconButton(
+                      icon: Icon(Icons.copy),
+                      onPressed: () {
+                        Clipboard.setData(ClipboardData(text: ForLoopCode));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Code copied to clipboard')),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8.0),
+          bottomLeft: Radius.circular(8.0),
+        ),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            style: TextStyle(
+              fontFamily: 'Courier New',
+              fontSize: 14.0,
+            ),
+            textAlign: TextAlign.right,
+          ),
+        ],
       ),
     );
   }

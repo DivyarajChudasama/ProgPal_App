@@ -101,61 +101,155 @@ class IndexPage extends StatelessWidget {
 class ProgramsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      padding: EdgeInsets.all(16.0),
-      crossAxisSpacing: 16.0,
-      mainAxisSpacing: 16.0,
-      children: [
-        Card(
-          elevation: 4.0,
-          child: ListTile(
-            title: Text('Basic'),
+    return Scaffold(
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: EdgeInsets.all(16.0),
+        crossAxisSpacing: 16.0,
+        mainAxisSpacing: 16.0,
+        children: [
+          GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => BasicPage()),
               );
             },
+            child: Card(
+              elevation: 4.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/helloworld.png',
+                        width: 180, // Adjust the width as needed
+                        height: 140, // Adjust the height as needed
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Basic',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        Card(
-          elevation: 4.0,
-          child: ListTile(
-            title: Text('Array'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ArrayPage()),
-              );
-            },
-          ),
-        ),
-        Card(
-          elevation: 4.0,
-          child: ListTile(
-            title: Text('Collection'),
+          GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CollectionPage()),
               );
             },
+            child: Card(
+              elevation: 4.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/array.png',
+                        width: 180, // Adjust the width as needed
+                        height: 140, // Adjust the height as needed
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Array',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-        Card(
-          elevation: 4.0,
-          child: ListTile(
-            title: Text('File Handling'),
+          GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => FileHandling()),
               );
             },
+            child: Card(
+              elevation: 4.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/collection.png',
+                        width: 180, // Adjust the width as needed
+                        height: 140, // Adjust the height as needed
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Array',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ],
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ArrayPage()),
+              );
+            },
+            child: Card(
+              elevation: 4.0,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/filehandling.png',
+                        width: 180, // Adjust the width as needed
+                        height: 140, // Adjust the height as needed
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Array',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
