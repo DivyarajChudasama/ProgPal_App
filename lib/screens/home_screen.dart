@@ -87,55 +87,64 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //           onTap: () {
+            //             switch (index) {
+            //               case 0:
+            //                 // Redirect to screen associated with image1
+            //                 break;
+            //               case 1:
+            //                 // Redirect to screen associated with image2
+            //                 break;
+            //               // Add cases for other images as needed
+            //             }
+            //           },
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(10),
+            //               color: index % 2 == 0
+            //                   ? Colors.indigo.withOpacity(0.9)
+            //                   : Colors.indigo.withOpacity(0.9),
+            //             ),
+            //             height: 100,
+            //             width: 100,
+            //             child: Center(
+            //               child: Column(
+            //                 mainAxisAlignment: MainAxisAlignment.center,
+            //                 children: [
+            //                   Image.asset(
+            //                     imagePaths[
+            //                         index], // Use the image path from the list
+            //                     width: 70,
+            //                     height: 70,
+            //                   ),
+            //                   SizedBox(height: 8),
+            //                   Text(
+            //                     customTexts[index],
+            //                     style: TextStyle(
+            //                       fontSize: 14,
+            //                       color: Colors.white,
+            //                       fontWeight: FontWeight.bold,
+            //                     ),
+            //                   ),
+            //                 ],
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
             SizedBox(
-              height: 120,
-              child: //ListView.builder(
-                  //   scrollDirection: Axis.horizontal,
-                  //   itemCount: 5, // Adjust the count as needed
-                  //   itemBuilder: (context, index) {
-                  //     return Padding(
-                  //       padding: const EdgeInsets.all(8.0),
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(10),
-                  //           color: index % 2 == 0
-                  //               ? Colors.cyan.withOpacity(0.2)
-                  //               : Colors.indigo.withOpacity(0.2),
-                  //         ),
-                  //         height: 100,
-                  //         width: 100,
-                  //         child: Center(
-                  //           child: Text(
-                  //             'Category $index',
-                  //             style: TextStyle(
-                  //               fontSize: 18,
-                  //               fontWeight: FontWeight.bold,
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
-
-                  ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount:
-                    imagePaths.length, // Use the length of the imagePaths list
+              height: 130,
+              child: PageView.builder(
+                itemCount: imagePaths.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
-                        switch (index) {
-                          case 0:
-                            // Redirect to screen associated with image1
-                            break;
-                          case 1:
-                            // Redirect to screen associated with image2
-                            break;
-                          // Add cases for other images as needed
-                        }
+                        // Handle onTap event if needed
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -144,15 +153,14 @@ class HomeScreen extends StatelessWidget {
                               ? Colors.indigo.withOpacity(0.9)
                               : Colors.indigo.withOpacity(0.9),
                         ),
-                        height: 100,
+                        height: 200,
                         width: 100,
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                imagePaths[
-                                    index], // Use the image path from the list
+                                imagePaths[index],
                                 width: 70,
                                 height: 70,
                               ),
