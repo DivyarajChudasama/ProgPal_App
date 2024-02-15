@@ -48,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Padding(
                 padding: EdgeInsets.only(top: 0),
                 child: Image.asset(
-                  "assets/images/bulb.jpg",
+                  "assets/images/splashscreen.png",
                   width: 428,
                   height: 200,
                 ),
@@ -80,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         controller: _emailController,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0xFF393939),
+                          color: Color.fromARGB(255, 255, 255, 255),
                           fontSize: 13,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
