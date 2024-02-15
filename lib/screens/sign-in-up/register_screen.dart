@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/intro_questions/intro_one.dart';
+import 'package:progpal/screens/otp/phoneno_screen.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -321,7 +322,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => IntroOne()),
+                                  builder: (context) => PhoneNumberScreen()),
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -331,7 +332,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: Container(
                             child: Center(
                               child: Text(
-                                'LOGIN WITH MOBILE',
+                                'SIGN IN WITH MOBILE',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,

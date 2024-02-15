@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.17.0
   flutter_launcher_icons: ^0.13.1
   fluttertoast: ^8.2.4
+  country_code_picker: ^3.0.0
 
 dev_dependencies:
   flutter_test:
