@@ -18,16 +18,60 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Column(
-        children: [
-          Container(
-              color: Colors.amber,
-              width: 100,
-              height: 750,
-              child: Text("Keval")),
-        ],
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.indigo,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Welcome!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'Name',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              title: Text('Profile'),
+              onTap: () {
+                // Navigate to profile screen
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                // Navigate to settings screen
+              },
+            ),
+            ListTile(
+              title: Text('Sign Out'),
+              onTap: () {
+                // Perform sign out action
+              },
+            ),
+          ],
+        ),
       ),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
         title: Text('ProgPal',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
         actions: [
