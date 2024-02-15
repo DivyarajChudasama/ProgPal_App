@@ -13,6 +13,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _repassController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isObscured = true;
 
@@ -23,6 +24,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         email: _emailController.text,
         password: _passController.text,
       );
+
+      // Update user's display name
+      await userCredential.user?.updateDisplayName(_nameController.text);
+
       User? user = userCredential.user;
 
       if (user != null) {
@@ -73,6 +78,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     SizedBox(
                       height: 40,
+                    ),
+                    SizedBox(
+                      height: 56,
+                      child: TextField(
+                        controller: _nameController,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 13,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                        ),
+                        decoration: InputDecoration(
+                          labelText: 'Name',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(
+                              width: 1,
+                              color: Color(0xFF837E93),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(
+                              width: 1,
+                              color: Color(0xFF9F7BFF),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 17,
                     ),
                     SizedBox(
                       height: 56,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/sign-in-up/register_screen.dart';
 
@@ -12,26 +12,26 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   bool _isObscured = true;
 
-  // Future<void> _signInWithEmailAndPassword() async {
-  //   try {
-  //     UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-  //       email: _emailController.text,
-  //       password: _passController.text,
-  //     );
-  //     User? user = userCredential.user;
+  Future<void> _signInWithEmailAndPassword() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passController.text,
+      );
+      User? user = userCredential.user;
 
-  //     // Navigate to NavScreen after successful login
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => HomeScreen()),
-  //     );
-  //   } catch (e) {
-  //     print('Error signing in: $e');
-  //   }
-  // }
+      // Navigate to NavScreen after successful login
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    } catch (e) {
+      print('Error signing in: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -164,8 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 329,
                           height: 56,
                           child: ElevatedButton(
-                            // onPressed: _signInWithEmailAndPassword,
-                            onPressed: () {},
+                            onPressed: _signInWithEmailAndPassword,
+                            // onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF9F7BFF),
                             ),
