@@ -65,11 +65,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Switch-Case'),
+              title: Text('Operations'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SwitchCase()),
+                  MaterialPageRoute(builder: (context) => Operations()),
                 );
               },
             ),
@@ -84,11 +84,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('For Loops'),
+              title: Text('Sum And Average'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ForLoop()),
+                  MaterialPageRoute(builder: (context) => SumAndAverage()),
                 );
               },
             ),
@@ -103,11 +103,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('BufferReader'),
+              title: Text('2 Dimensional Array'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BufferReader()),
+                  MaterialPageRoute(builder: (context) => DimensionalArray()),
                 );
               },
             ),
@@ -122,11 +122,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Add Two Numbers'),
+              title: Text('Add Two Matrix'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AddTwoNumber()),
+                  MaterialPageRoute(builder: (context) => AddTwoMatrix()),
                 );
               },
             ),
@@ -394,55 +394,45 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class SwitchCase extends StatelessWidget {
-  final String switchcaseCode = '''
-//Java Program to demonstrate the example of Switch statement  
-//where we are printing month name for the given number  
-public class SwitchMonthExample {    
-public static void main(String[] args) {    
-    //Specifying month number  
-    int month=7;    
-    String monthString="";  
-    //Switch statement  
-    switch(month){    
-    //case statements within the switch block  
-    case 1: monthString="1 - January";  
-    break;    
-    case 2: monthString="2 - February";  
-    break;    
-    case 3: monthString="3 - March";  
-    break;    
-    case 4: monthString="4 - April";  
-    break;    
-    case 5: monthString="5 - May";  
-    break;    
-    case 6: monthString="6 - June";  
-    break;    
-    case 7: monthString="7 - July";  
-    break;    
-    case 8: monthString="8 - August";  
-    break;    
-    case 9: monthString="9 - September";  
-    break;    
-    case 10: monthString="10 - October";  
-    break;    
-    case 11: monthString="11 - November";  
-    break;    
-    case 12: monthString="12 - December";  
-    break;    
-    default:System.out.println("Invalid Month!");    
-    }    
-    //Printing month of the given number  
-    System.out.println(monthString);  
-}    
-}   
+class Operations extends StatelessWidget {
+  final String OperationsCode = '''
+class ArrayOperations
+{
+    public static void main(String[] args)
+    {
+        double[] myList = {1.9, 2.9, 3.4, 3.5};
+
+        // Print all the array elements
+        for (int i = 0; i < myList.length; i++)
+        {
+            System.out.println(myList[i] + " ");
+        }
+        // Summing all elements
+        double total = 0;
+        for (int i = 0; i < myList.length; i++)
+        {
+            total += myList[i];
+        }
+
+        System.out.println("Total is " + total);
+
+        // Finding the largest element
+        double max = myList[0];
+        for (int i = 1; i < myList.length; i++)
+        {
+            if (myList[i] > max)
+                max = myList[i];
+        }
+        System.out.println("Max is " + max);
+    }
+}
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Switch-Case'),
+        title: Text('Operations'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -466,7 +456,7 @@ public static void main(String[] args) {
                             border: Border.all(color: Colors.grey.shade300),
                           ),
                           child: Text(
-                            switchcaseCode,
+                            OperationsCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
                               fontSize: 14.0,
@@ -480,7 +470,7 @@ public static void main(String[] args) {
                             icon: Icon(Icons.copy),
                             onPressed: () {
                               Clipboard.setData(
-                                  ClipboardData(text: switchcaseCode));
+                                  ClipboardData(text: OperationsCode));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text('Code copied to clipboard')),
@@ -520,7 +510,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -534,15 +524,25 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class ForLoop extends StatelessWidget {
-  final String ForLoopCode = '''
-public class ForExample {  
-public static void main(String[] args) {  
-    //Code of Java for loop  
-    for(int i=1;i<=10;i++){  
-        System.out.println(i);  
-    }  
-}  
+class SumAndAverage extends StatelessWidget {
+  final String SumAndAverageCode = '''
+import java.io.*;
+
+class ArrayAverage
+{
+    public static void main(String[] args)
+    {
+        //define an array
+        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++)
+        {
+            sum = sum + numbers[i];
+        }
+        double average = sum / numbers.length;
+        System.out.println("Sum of array elements is : " + sum);
+        System.out.println("Average value of array elements is : " + average);
+    }
 }  
 ''';
 
@@ -550,7 +550,7 @@ public static void main(String[] args) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('For Loop'),
+        title: Text('Sum And Average'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -570,7 +570,7 @@ public static void main(String[] args) {
                       border: Border.all(color: Colors.grey.shade300),
                     ),
                     child: Text(
-                      ForLoopCode,
+                      SumAndAverageCode,
                       style: TextStyle(
                         fontFamily: 'Courier New',
                         fontSize: 14.0,
@@ -583,7 +583,8 @@ public static void main(String[] args) {
                     child: IconButton(
                       icon: Icon(Icons.copy),
                       onPressed: () {
-                        Clipboard.setData(ClipboardData(text: ForLoopCode));
+                        Clipboard.setData(
+                            ClipboardData(text: SumAndAverageCode));
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Code copied to clipboard')),
                         );
@@ -617,7 +618,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -630,42 +631,42 @@ class LineNumbers3 extends StatelessWidget {
   }
 }
 
-class BufferReader extends StatelessWidget {
-  final String bufferReaderCode = '''
-import java.io.*;
+class DimensionalArray extends StatelessWidget {
+  final String DimensionalArrayCode = '''
+import java.util.*;
 
-class BufferedReaderExample
+class TwoDArray
 {
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
-        String str;
-        int i;
-        float f;
-        double d;
-        long l;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter # of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter # of cols: ");
+        int cols = scanner.nextInt();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter String");
-        str = br.readLine();
-        System.out.println("Enter Integer");
-        i = Integer.parseInt(br.readLine());
-        System.out.println("Enter float");
-        f = Float.parseFloat(br.readLine());
-        System.out.println("Enter double");
-        d = Double.parseDouble(br.readLine());
-        System.out.println("String : " + str);
-        System.out.println("Integer : " + i);
-        System.out.println("Float : " + f);
-        System.out.println("Double : " + d);
+        int[][] a = new int[rows][cols];
+
+        System.out.print("Enter " + rows + "x" + cols + "=" + (rows * cols) + " integers: ");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                a[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("Here are those " + (rows * cols) + " integers in a " + rows + "x" + cols + " 2d-array:");
+        System.out.println(Arrays.deepToString(a));
     }
-}  
+}
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BufferReader'),
+        title: Text('2 Dimensional Array'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -689,7 +690,7 @@ class BufferedReaderExample
                             border: Border.all(color: Colors.grey.shade300),
                           ),
                           child: Text(
-                            bufferReaderCode,
+                            DimensionalArrayCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
                               fontSize: 14.0,
@@ -703,7 +704,7 @@ class BufferedReaderExample
                             icon: Icon(Icons.copy),
                             onPressed: () {
                               Clipboard.setData(
-                                  ClipboardData(text: bufferReaderCode));
+                                  ClipboardData(text: DimensionalArrayCode));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text('Code copied to clipboard')),
@@ -743,7 +744,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -757,30 +758,100 @@ class LineNumbers4 extends StatelessWidget {
   }
 }
 
-class AddTwoNumber extends StatelessWidget {
-  final String AddTwoNumberCode = '''
-import java.util.Scanner;
+class AddTwoMatrix extends StatelessWidget {
+  final String AddTwoMatrixCode = '''
+//In call by reference, the original value is changed if we made changes in the called method.
 
-class AddNumbers
+import java.util.*;
+class AddTwoMatrix
 {
-    public static void main(String args[])
+    int m, n;
+    int first[][] = new int[m][n];
+    int second[][] = new int[m][n];
+    AddTwoMatrix(int[][] first, int[][] second, int m, int n)
     {
-        int x, y, z;
-        System.out.print("Enter two integers to calculate their sum : ");
-        Scanner in = new Scanner(System.in);
-        x = in.nextInt();
-        y = in.nextInt();
-        z = x + y;
-        System.out.println("Sum of entered integers = " + z);
+        this.first = first;
+        this.second = second;
+        this.m = m;
+        this.n = n;
     }
-} 
+    public static void main(String[] args)
+    {
+        int m, n, c, d;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of rows and columns of matrix");
+        m = in.nextInt();
+        n = in.nextInt();
+        int first[][] = new int[m][n];
+        int second[][] = new int[m][n];
+        System.out.println("Enter the elements of first matrix");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                first[c][d] = in.nextInt();
+            }
+        }
+        System.out.println("Enter the elements of second matrix");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                second[c][d] = in.nextInt();
+            }
+        }
+        System.out.println("\nElements of First matrix is : ");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                System.out.print(first[c][d] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println("\nElements of Second matrix is : ");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                System.out.print(second[c][d] + "\t");
+            }
+            System.out.println();
+        }
+        AddTwoMatrix a = new AddTwoMatrix(first, second, m, n);
+        //call by reference
+        a.addmatrix(a); //Passing Object
+    }
+    //Function for Adding two matrix and storing in third matrix 
+    public void addmatrix(AddTwoMatrix a)
+    {
+        int c, d;
+        int sum[][] = new int[a.m][a.n];
+        for (c = 0; c < a.m; c++)
+        {
+            for (d = 0; d < a.n; d++)
+            {
+                sum[c][d] = a.first[c][d] + a.second[c][d];
+            }
+        }
+        System.out.println("\nSum of the two matrices is : ");
+        for (c = 0; c < a.m; c++)
+        {
+            for (d = 0; d < a.n; d++)
+            {
+                System.out.print(sum[c][d] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AddTwoNumber'),
+        title: Text('Add Two Matrix'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -804,7 +875,7 @@ class AddNumbers
                             border: Border.all(color: Colors.grey.shade300),
                           ),
                           child: Text(
-                            AddTwoNumberCode,
+                            AddTwoMatrixCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
                               fontSize: 14.0,
@@ -818,7 +889,7 @@ class AddNumbers
                             icon: Icon(Icons.copy),
                             onPressed: () {
                               Clipboard.setData(
-                                  ClipboardData(text: AddTwoNumberCode));
+                                  ClipboardData(text: AddTwoMatrixCode));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text('Code copied to clipboard')),

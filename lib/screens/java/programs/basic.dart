@@ -720,7 +720,7 @@ class AddNumbers
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AddTwoNumber'),
+        title: Text('Add Two Number'),
       ),
       body: SingleChildScrollView(
         child: Padding(
