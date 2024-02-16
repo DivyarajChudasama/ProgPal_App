@@ -99,7 +99,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             ElevatedButton(
               onPressed: _verifyPhoneNumber,
               child: Text(
-                'Send OTP',
+                'GET OTP',
                 style: TextStyle(
                   color: const Color.fromARGB(255, 25, 25, 112),
                 ),
