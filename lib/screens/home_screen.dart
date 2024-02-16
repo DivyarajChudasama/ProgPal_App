@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
             //   ),
             // ),
             SizedBox(
-              height: 130,
+              height: 200,
               child: PageView.builder(
                 itemCount: imagePaths.length,
                 itemBuilder: (context, index) {

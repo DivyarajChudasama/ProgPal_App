@@ -34,12 +34,7 @@ class BeginnerPage extends StatelessWidget {
                 children: [
                   IndexPage(),
                   ProgramsPage(),
-                  Center(
-                    child: Text(
-                      'Description Content',
-                      style: TextStyle(fontSize: 20.0),
-                    ),
-                  ),
+                  DescriptionPage(), // Replace the Center widget with DescriptionPage()
                 ],
               ),
             ),
@@ -94,6 +89,74 @@ class IndexPage extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+// Description
+class DescriptionPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'What will I learn?',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text('• Core concepts in java(whilst having fun,too)'),
+            Text(
+                '• How to easily write programs for all computing platforms at once'),
+            Text(
+                '• Knowledge of java code(+advance tips and tricks used by pros)'),
+            Text(
+                '• The core skills needed to program for big clients, as a travelling freelaner or from home'),
+            SizedBox(height: 16.0),
+            Text(
+              'Who is the target audience?',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+                '• This course is perfect for absolute beginners with no previous coding experience, to intermediate looking to sharpen their skills to the expert level.'),
+            Text(
+                '• Those looking to build creative and advanced java app for either personal use or for high-paying clients as a self employed contrator'),
+            Text(
+                '• Those who love letting their own creative genius shine whilst getting paid to do so'),
+            SizedBox(height: 16.0),
+            Text(
+              'Benefits',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text(
+                '• Java is quite popular as a Programming Language in the industry so you can get good opportunities, if that is what you are looking for'),
+            SizedBox(height: 16.0),
+            Text(
+              'Salary',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16.0),
+            Text('• The median salary is 102,000 USD per year'),
+          ],
+        ),
+      ),
     );
   }
 }
