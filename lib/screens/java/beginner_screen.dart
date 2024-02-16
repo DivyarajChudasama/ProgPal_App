@@ -210,7 +210,7 @@ class ProgramsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CollectionPage()),
+                MaterialPageRoute(builder: (context) => ArrayPage()),
               );
             },
             child: Card(
@@ -245,7 +245,7 @@ class ProgramsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FileHandling()),
+                MaterialPageRoute(builder: (context) => CollectionPage()),
               );
             },
             child: Card(
@@ -265,7 +265,7 @@ class ProgramsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      'Array',
+                      'Collection',
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
@@ -280,7 +280,7 @@ class ProgramsPage extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ArrayPage()),
+                MaterialPageRoute(builder: (context) => FileHandling()),
               );
             },
             child: Card(
@@ -300,7 +300,7 @@ class ProgramsPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      'Array',
+                      'File Handling',
                       style: TextStyle(
                         fontSize: 16.0,
                         fontWeight: FontWeight.bold,
