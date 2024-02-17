@@ -29,7 +29,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             children: [
               Lottie.asset(
                 'animations/${index + 1}.json',
-                height: 300,
+                height: 340,
                 reverse: true,
                 repeat: true,
                 fit: BoxFit.cover,
