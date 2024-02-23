@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:progpal/screens/java/java_condition_page.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -87,59 +88,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            //           onTap: () {
-            //             switch (index) {
-            //               case 0:
-            //                 // Redirect to screen associated with image1
-            //                 break;
-            //               case 1:
-            //                 // Redirect to screen associated with image2
-            //                 break;
-            //               // Add cases for other images as needed
-            //             }
-            //           },
-            //           child: Container(
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               color: index % 2 == 0
-            //                   ? Colors.indigo.withOpacity(0.9)
-            //                   : Colors.indigo.withOpacity(0.9),
-            //             ),
-            //             height: 100,
-            //             width: 100,
-            //             child: Center(
-            //               child: Column(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Image.asset(
-            //                     imagePaths[
-            //                         index], // Use the image path from the list
-            //                     width: 70,
-            //                     height: 70,
-            //                   ),
-            //                   SizedBox(height: 8),
-            //                   Text(
-            //                     customTexts[index],
-            //                     style: TextStyle(
-            //                       fontSize: 14,
-            //                       color: Colors.white,
-            //                       fontWeight: FontWeight.bold,
-            //                     ),
-            //                   ),
-            //                 ],
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
             SizedBox(
               height: 200,
-              child: PageView.builder(
+              child: CarouselSlider.builder(
                 itemCount: imagePaths.length,
-                itemBuilder: (context, index) {
+                itemBuilder: (context, index, realIndex) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
@@ -154,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                               : Colors.indigo.withOpacity(0.9),
                         ),
                         height: 200,
-                        width: 100,
+                        width: 300,
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -180,6 +133,16 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
+                options: CarouselOptions(
+                  height: 200,
+                  enableInfiniteScroll: true,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                ),
               ),
             ),
             ListView.separated(
