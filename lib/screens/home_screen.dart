@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:progpal/screens/java/java_condition_page.dart';
+import 'package:progpal/screens/settings/settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   List<String> imagePaths = [
@@ -58,7 +59,10 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               title: Text('Settings'),
               onTap: () {
-                // Navigate to settings screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen()),
+                );
               },
             ),
             ListTile(
