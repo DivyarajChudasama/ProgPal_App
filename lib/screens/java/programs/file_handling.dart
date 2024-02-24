@@ -85,11 +85,11 @@ class _FileHandlingState extends State<FileHandling> {
               ),
             ),
             child: ListTile(
-              title: Text('Write a file'),
+              title: Text('Write a File'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SumAndAverage()),
+                  MaterialPageRoute(builder: (context) => WriteaFile()),
                 );
               },
             ),
@@ -108,7 +108,7 @@ class _FileHandlingState extends State<FileHandling> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DimensionalArray()),
+                  MaterialPageRoute(builder: (context) => Serialization()),
                 );
               },
             ),
@@ -127,7 +127,8 @@ class _FileHandlingState extends State<FileHandling> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AddTwoMatrix()),
+                  MaterialPageRoute(
+                      builder: (context) => CopyfileusingCharacterStream()),
                 );
               },
             ),
@@ -531,77 +532,117 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class SumAndAverage extends StatelessWidget {
-  final String SumAndAverageCode = '''
+class WriteaFile extends StatelessWidget {
+  final String WriteaFileCode = '''
 import java.io.*;
 
-class ArrayAverage
+class WriteFile
 {
     public static void main(String[] args)
     {
-        //define an array
-        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
-        int sum = 0;
-        for (int i = 0; i < numbers.length; i++)
+        // The name of the file to open.
+        String fileName = "file.txt";
+
+        BufferedWriter bufferedWriter = null;
+
+        try
         {
-            sum = sum + numbers[i];
+            // Assume default encoding.
+            FileWriter fileWriter = new FileWriter(fileName);
+
+            // Always wrap FileWriter in BufferedWriter.
+            bufferedWriter = new BufferedWriter(fileWriter);
+
+            // Note that write() does not automatically
+            // append a newline character.
+            bufferedWriter.write("Hello there,");
+            bufferedWriter.write(" here is some text.");
+            bufferedWriter.newLine();
+            bufferedWriter.write("We are writing");
+            bufferedWriter.write(" the text to the file.");
         }
-        double average = sum / numbers.length;
-        System.out.println("Sum of array elements is : " + sum);
-        System.out.println("Average value of array elements is : " + average);
+        catch (IOException ex)
+        {
+            System.out.println("Error writing to file '" + fileName + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+        }
+        finally
+        {
+            // Always close files.
+            try
+            {
+                if (bufferedWriter != null)
+                {
+                    bufferedWriter.close();
+                }
+            }
+            catch (IOException e)
+            {
+                
+            }
+        }
     }
-}  
+} 
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum And Average'),
+        title: Text('Write a  File'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LineNumbers3(),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Stack(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Text(
-                      SumAndAverageCode,
-                      style: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 8.0,
-                    right: 8.0,
-                    child: IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Clipboard.setData(
-                            ClipboardData(text: SumAndAverageCode));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Code copied to clipboard')),
-                        );
-                      },
+                  LineNumbers3(),
+                  const SizedBox(width: 16.0),
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(color: Colors.grey.shade300),
+                          ),
+                          child: Text(
+                            WriteaFileCode,
+                            style: TextStyle(
+                              fontFamily: 'Courier New',
+                              fontSize: 14.0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 8.0,
+                          right: 8.0,
+                          child: IconButton(
+                            icon: Icon(Icons.copy),
+                            onPressed: () {
+                              Clipboard.setData(
+                                  ClipboardData(text: WriteaFileCode));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text('Code copied to clipboard')),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -611,60 +652,71 @@ class ArrayAverage
 class LineNumbers3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8.0),
-          bottomLeft: Radius.circular(8.0),
-        ),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30',
-            style: TextStyle(
-              fontFamily: 'Courier New',
-              fontSize: 14.0,
-            ),
-            textAlign: TextAlign.right,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
           ),
-        ],
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n55\n56\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class DimensionalArray extends StatelessWidget {
-  final String DimensionalArrayCode = '''
-import java.util.*;
+class Serialization extends StatelessWidget {
+  final String SerializationCode = '''
+import java.io.*;
 
-class TwoDArray
+class Employee implements java.io.Serializable
+{
+    public String name;
+    public String address;
+    // transient variable are not serialized
+    public transient int id;
+    public int number;
+}
+
+class SerializeDemo
 {
     public static void main(String[] args)
     {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter # of rows: ");
-        int rows = scanner.nextInt();
-        System.out.print("Enter # of cols: ");
-        int cols = scanner.nextInt();
-
-        int[][] a = new int[rows][cols];
-
-        System.out.print("Enter " + rows + "x" + cols + "=" + (rows * cols) + " integers: ");
-        for (int i = 0; i < rows; i++)
+        Employee e = new Employee();
+        e.name = "Andy Rubin";
+        e.address = "Chappaqua, New York, United States";
+        e.id = 007;
+        e.number = 5893254;
+        try
         {
-            for (int j = 0; j < cols; j++)
-            {
-                a[i][j] = scanner.nextInt();
-            }
+            FileOutputStream fileOut = new FileOutputStream("employee.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(e);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /employee.ser");
         }
-
-        System.out.println("Here are those " + (rows * cols) + " integers in a " + rows + "x" + cols + " 2d-array:");
-        System.out.println(Arrays.deepToString(a));
+        catch (IOException i)
+        {
+            i.printStackTrace();
+        }
     }
 }
 ''';
@@ -673,7 +725,7 @@ class TwoDArray
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('2 Dimensional Array'),
+        title: Text('Serialization'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -697,7 +749,7 @@ class TwoDArray
                             border: Border.all(color: Colors.grey.shade300),
                           ),
                           child: Text(
-                            DimensionalArrayCode,
+                            SerializationCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
                               fontSize: 14.0,
@@ -711,7 +763,7 @@ class TwoDArray
                             icon: Icon(Icons.copy),
                             onPressed: () {
                               Clipboard.setData(
-                                  ClipboardData(text: DimensionalArrayCode));
+                                  ClipboardData(text: SerializationCode));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text('Code copied to clipboard')),
@@ -751,7 +803,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n49\n50',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -765,90 +817,38 @@ class LineNumbers4 extends StatelessWidget {
   }
 }
 
-class AddTwoMatrix extends StatelessWidget {
-  final String AddTwoMatrixCode = '''
-//In call by reference, the original value is changed if we made changes in the called method.
+class CopyfileusingCharacterStream extends StatelessWidget {
+  final String CopyfileusingCharacterStreamCode = '''
+import java.io.*;
 
-import java.util.*;
-class AddTwoMatrix
+class CopyFile
 {
-    int m, n;
-    int first[][] = new int[m][n];
-    int second[][] = new int[m][n];
-    AddTwoMatrix(int[][] first, int[][] second, int m, int n)
+    public static void main(String args[]) throws IOException
     {
-        this.first = first;
-        this.second = second;
-        this.m = m;
-        this.n = n;
-    }
-    public static void main(String[] args)
-    {
-        int m, n, c, d;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of rows and columns of matrix");
-        m = in.nextInt();
-        n = in.nextInt();
-        int first[][] = new int[m][n];
-        int second[][] = new int[m][n];
-        System.out.println("Enter the elements of first matrix");
-        for (c = 0; c < m; c++)
+        FileReader in = null;
+        FileWriter out = null;
+
+        try
         {
-            for (d = 0; d < n; d++)
+            in = new FileReader("input.txt");
+            out = new FileWriter("output.txt");
+
+            int c;
+            while ((c = in.read()) != -1)
             {
-                first[c][d] = in.nextInt();
+                out.write(c);
             }
         }
-        System.out.println("Enter the elements of second matrix");
-        for (c = 0; c < m; c++)
+        finally
         {
-            for (d = 0; d < n; d++)
+            if (in != null)
             {
-                second[c][d] = in.nextInt();
+                in.close();
             }
-        }
-        System.out.println("\nElements of First matrix is : ");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
+            if (out != null)
             {
-                System.out.print(first[c][d] + "\t");
+                out.close();
             }
-            System.out.println();
-        }
-        System.out.println("\nElements of Second matrix is : ");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
-            {
-                System.out.print(second[c][d] + "\t");
-            }
-            System.out.println();
-        }
-        AddTwoMatrix a = new AddTwoMatrix(first, second, m, n);
-        //call by reference
-        a.addmatrix(a); //Passing Object
-    }
-    //Function for Adding two matrix and storing in third matrix 
-    public void addmatrix(AddTwoMatrix a)
-    {
-        int c, d;
-        int sum[][] = new int[a.m][a.n];
-        for (c = 0; c < a.m; c++)
-        {
-            for (d = 0; d < a.n; d++)
-            {
-                sum[c][d] = a.first[c][d] + a.second[c][d];
-            }
-        }
-        System.out.println("\nSum of the two matrices is : ");
-        for (c = 0; c < a.m; c++)
-        {
-            for (d = 0; d < a.n; d++)
-            {
-                System.out.print(sum[c][d] + "\t");
-            }
-            System.out.println();
         }
     }
 }
@@ -858,7 +858,7 @@ class AddTwoMatrix
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Two Matrix'),
+        title: Text('Copy file using Character Stream'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -882,7 +882,7 @@ class AddTwoMatrix
                             border: Border.all(color: Colors.grey.shade300),
                           ),
                           child: Text(
-                            AddTwoMatrixCode,
+                            CopyfileusingCharacterStreamCode,
                             style: TextStyle(
                               fontFamily: 'Courier New',
                               fontSize: 14.0,
@@ -895,8 +895,8 @@ class AddTwoMatrix
                           child: IconButton(
                             icon: Icon(Icons.copy),
                             onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: AddTwoMatrixCode));
+                              Clipboard.setData(ClipboardData(
+                                  text: CopyfileusingCharacterStreamCode));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                     content: Text('Code copied to clipboard')),
@@ -936,7 +936,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
