@@ -14,6 +14,7 @@ class _ArrayPageState extends State<ArrayPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Array'),
+        backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
         children: [

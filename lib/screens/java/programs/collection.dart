@@ -14,6 +14,7 @@ class _CollectionPageState extends State<CollectionPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Collection'),
+        backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
         children: [
