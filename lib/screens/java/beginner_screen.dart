@@ -10,7 +10,10 @@ class BeginnerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Java Beginner'),
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text('Java Beginner',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        backgroundColor: Colors.indigo,
       ),
       body: DefaultTabController(
         length: 3,
@@ -19,7 +22,7 @@ class BeginnerPage extends StatelessWidget {
             Container(
               constraints: BoxConstraints(maxHeight: 150.0),
               child: Material(
-                color: Colors.blue,
+                color: Colors.white,
                 child: TabBar(
                   tabs: [
                     Tab(text: 'Index'),
