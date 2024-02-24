@@ -122,8 +122,7 @@ class _JavaFirstState extends State<JavaFirst> {
               height: 10,
             ),
             if (currentIndex ==
-                contents.length -
-                    1) // Show Finish button if it's the last content
+                contents.length - 1) // Finish button after last content
               ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -182,8 +181,131 @@ class _JavaFirstState extends State<JavaFirst> {
             ElevatedButton(
               onPressed: () {
                 reset();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QuizScreen()),
+                );
               },
-              child: Text('Test Yourself'),
+              child: Text('Test Your Knowledge'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class QuizScreen extends StatefulWidget {
+  @override
+  _QuizScreenState createState() => _QuizScreenState();
+}
+
+class _QuizScreenState extends State<QuizScreen> {
+  int _currentQuestionIndex = 0;
+  List<Map<String, dynamic>> _quizData = [
+    {
+      'question': 'What is Java?',
+      'options': ['A programming language', 'A fruit', 'A country'],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What does JVM stand for?',
+      'options': [
+        'Java Virtual Machine',
+        'Just Very Mad',
+        'Jumbo Vision Module'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'Which one of these is not a data type in Java?',
+      'options': ['String', 'Boolean', 'Number'],
+      'correctAnswerIndex': 2,
+      'selectedAnswerIndex': -1,
+    },
+  ];
+  bool _showIncorrectMessage = false;
+
+  void _answerQuestion(int selectedIndex) {
+    setState(() {
+      _quizData[_currentQuestionIndex]['selectedAnswerIndex'] = selectedIndex;
+      _showIncorrectMessage = false;
+    });
+  }
+
+  void _nextQuestion() {
+    setState(() {
+      if (_quizData[_currentQuestionIndex]['selectedAnswerIndex'] == -1 ||
+          _quizData[_currentQuestionIndex]['selectedAnswerIndex'] !=
+              _quizData[_currentQuestionIndex]['correctAnswerIndex']) {
+        _showIncorrectMessage = true;
+      } else {
+        if (_currentQuestionIndex < _quizData.length - 1) {
+          _currentQuestionIndex++;
+        } else {
+          Navigator.pop(context);
+        }
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quiz'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              _quizData[_currentQuestionIndex]['question'],
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 20),
+            Column(
+              children: List.generate(
+                  _quizData[_currentQuestionIndex]['options'].length, (index) {
+                return GestureDetector(
+                  onTap: () {
+                    _answerQuestion(index);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: _quizData[_currentQuestionIndex]
+                                  ['selectedAnswerIndex'] ==
+                              index
+                          ? Colors.blue.withOpacity(0.5)
+                          : Colors.transparent,
+                      border: Border.all(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      _quizData[_currentQuestionIndex]['options'][index],
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                );
+              }),
+            ),
+            SizedBox(height: 20),
+            if (_showIncorrectMessage)
+              Text(
+                'Incorrect answer selected!',
+                style: TextStyle(color: Colors.red),
+              ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _nextQuestion,
+              child: Text(_currentQuestionIndex == _quizData.length - 1
+                  ? 'Finish'
+                  : 'Next'),
             ),
           ],
         ),
