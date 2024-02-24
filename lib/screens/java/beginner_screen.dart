@@ -10,7 +10,10 @@ class BeginnerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Java'),
+        title: Text(
+          'Java',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.indigo,
       ),

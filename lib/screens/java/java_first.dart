@@ -38,7 +38,12 @@ class _JavaFirstState extends State<JavaFirst> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Java First'),
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Java First',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        backgroundColor: Colors.indigo,
       ),
       body: showSummary ? _buildSummary() : _buildContent(),
     );
@@ -135,28 +140,53 @@ class _JavaFirstState extends State<JavaFirst> {
 
   Widget _buildSummary() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Summary',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: contents.map((content) {
-              return Text(content);
-            }).toList(),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              reset();
-            },
-            child: Text('Test Yourself'),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Summary',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: contents.map((content) {
+                return Container(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.circle,
+                        size: 10,
+                        color: Colors.blue, // Adjust color as needed
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          content,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                reset();
+              },
+              child: Text('Test Yourself'),
+            ),
+          ],
+        ),
       ),
     );
   }
