@@ -10,9 +10,8 @@ class BeginnerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Java'),
         iconTheme: IconThemeData(color: Colors.white),
-        title: Text('Java Beginner',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
         backgroundColor: Colors.indigo,
       ),
       body: DefaultTabController(
