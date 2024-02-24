@@ -10,7 +10,7 @@ class BeginnerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Java Beginner'),
+        title: Text('Java'),
       ),
       body: DefaultTabController(
         length: 3,
