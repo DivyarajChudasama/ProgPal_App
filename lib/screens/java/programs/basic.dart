@@ -15,6 +15,7 @@ class _BasicPageState extends State<BasicPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Basic Programs'),
+        backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
         children: [
