@@ -50,35 +50,59 @@ class BeginnerPage extends StatelessWidget {
   }
 }
 
-class IndexPage extends StatelessWidget {
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+  bool _contentCompleted = false;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         ExpansionTile(
-          title: Text('Introduction to Java'),
+          title: Row(
+            children: [
+              Text('Introduction to Java'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => JavaFirst()),
-                    );
-                  },
-                  child: Text('Start'),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.cyan),
-                  ),
-                ),
-              ],
+              children: [],
             ),
-            DropdownMenuItem(child: Text('What is Java?')),
-            DropdownMenuItem(child: Text('Where is Java used?')),
-            DropdownMenuItem(child: Text('How does Java work?')),
+            _buildDropdownMenuItem('What is Java?'),
+            _buildDropdownMenuItem('Where is Java used?'),
+            _buildDropdownMenuItem('How does Java work?'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaFirst()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
           ],
         ),
         ExpansionTile(
@@ -94,6 +118,25 @@ class IndexPage extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildDropdownMenuItem(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+          color: Colors.grey[200],
+        ),
+        child: DropdownMenuItem(
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
     );
   }
 }
