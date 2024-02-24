@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: AnimatedOpacity(
           opacity: _fadeAnimation.value,
-          duration: Duration(seconds: 7),
+          duration: Duration(seconds: 6),
           child: Image.asset(
             'assets/images/splashscreen.png',
             height: 200,
