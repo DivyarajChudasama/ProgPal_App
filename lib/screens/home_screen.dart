@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
-import 'package:progpal/screens/java/java_condition_page.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
