@@ -42,6 +42,7 @@ dependencies:
   fluttertoast: ^8.2.4
   country_code_picker: ^3.0.0
   carousel_slider: ^4.2.1
+  mind_map: ^1.0.1
 
 dev_dependencies:
   flutter_test:

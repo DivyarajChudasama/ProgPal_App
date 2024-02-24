@@ -288,6 +288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  mind_map:
+    dependency: "direct main"
+    description:
+      name: mind_map
+      sha256: "84a18f9bd11a6b07e24e2cc5ca145ac11e2cb968ac1c1b7e4d6fd4565c86a861"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path:
     dependency: transitive
     description:
