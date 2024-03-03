@@ -8,6 +8,8 @@ import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/otp/phoneno_screen.dart';
 import 'package:progpal/screens/otp/otp_screen.dart';
+import 'package:progpal/screens/settings/theme.dart';
+import 'package:progpal/screens/settings/theme_manager.dart';
 import 'package:progpal/screens/splash_screen.dart';
 
 void main() async {
@@ -18,18 +20,42 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+ThemeManager _themeManager = ThemeManager();
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void dispose() {
+    _themeManager.removeListener(themeListner);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _themeManager.addListener(themeListner);
+    super.initState();
+  }
+
+  themeListner() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ProgPal',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: _themeManager.themeMode,
       home: HomeScreen(),
     );
   }

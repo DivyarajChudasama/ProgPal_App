@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progpal/screens/settings/theme_manager.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -6,8 +7,15 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool premiumStatus = false;
+  late ThemeManager _themeManager;
   bool isDarkTheme = false;
+  bool premiumStatus = false;
+
+  @override
+  void initState() {
+    _themeManager = ThemeManager(); // Get the singleton instance
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +51,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ListTile(
             title: Text('Theme'),
             trailing: Switch(
-              value: isDarkTheme,
+              value: _themeManager.themeMode == ThemeMode.dark,
               onChanged: (value) {
                 setState(() {
                   isDarkTheme = value;
-                  // Set theme here based on isDarkTheme
-                  // Example: if (isDarkTheme) { setDarkTheme(); } else { setLightTheme(); }
+                  _themeManager.toggleTheme(isDarkTheme);
                 });
               },
             ),
