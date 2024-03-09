@@ -4,6 +4,7 @@ import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/java/programs/collection.dart';
 import 'package:progpal/screens/java/programs/file_handling.dart';
+import 'package:mind_map/mind_map.dart';
 
 class BeginnerPage extends StatelessWidget {
   @override
@@ -29,6 +30,7 @@ class BeginnerPage extends StatelessWidget {
                   tabs: [
                     Tab(text: 'Index'),
                     Tab(text: 'Programs'),
+                    Tab(text: 'RoadMap'),
                     Tab(text: 'Description'),
                   ],
                 ),
@@ -39,6 +41,7 @@ class BeginnerPage extends StatelessWidget {
                 children: [
                   IndexPage(),
                   ProgramsPage(),
+                  RoadMapPage(),
                   DescriptionPage(), // Replace the Center widget with DescriptionPage()
                 ],
               ),
@@ -141,6 +144,157 @@ class _IndexPageState extends State<IndexPage> {
   }
 }
 
+// Roadmap
+class RoadMapPage extends StatelessWidget {
+  const RoadMapPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SingleChildScrollView(
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10)
+                          .copyWith(right: 0),
+                  margin: const EdgeInsets.only(left: 10),
+                  child: const Text('Java'),
+                ),
+                MindMap(
+                  padding: const EdgeInsets.only(left: 50),
+                  dotRadius: 4,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          margin: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10)
+                              .copyWith(right: 0),
+                          child: const Text('Basic '),
+                        ),
+                        MindMap(
+                          dotRadius: 4,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              child: const Text('Conditional'),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              child: const Text('Variables'),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 10),
+                                  margin: const EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 10)
+                                      .copyWith(right: 0),
+                                  child: const Text('Functions'),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        debugPrint('12313');
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        child: const Text('Exception Handling'),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
+                      child: const Text('Data Structure'),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
+                      child: const Text('OPP'),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10)
+                              .copyWith(right: 0),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          child: const Text('File Handling'),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 // Description
 class DescriptionPage extends StatelessWidget {
   @override
@@ -193,10 +347,10 @@ class DescriptionPage extends StatelessWidget {
               SizedBox(height: 16.0),
               Text(
                   '• Java is quite popular as a Programming Language in the industry so you can get good opportunities, if that is what you are looking for'),
-                   SizedBox(height: 16.0),
+              SizedBox(height: 16.0),
               Text(
                   '• Java is secure platform, thanks to its virtual Machine.This is one of the primary reasons Companies worldwide are using this language.'),
-                   SizedBox(height: 16.0),
+              SizedBox(height: 16.0),
               Text(
                   '• Android app development is gaining momentum and if you are familar with java then learning Andriod will be easier for you'),
               SizedBox(height: 16.0),
@@ -224,8 +378,7 @@ class DescriptionPage extends StatelessWidget {
               Text(
                   '• Nothing else, its just you, your phone and your hunger to get started today'),
               SizedBox(height: 16.0),
-              Text(
-                  '• Consistency is key to success'),
+              Text('• Consistency is key to success'),
             ],
           ),
         ),
