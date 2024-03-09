@@ -30,7 +30,7 @@ class BeginnerPage extends StatelessWidget {
               child: Material(
                 color: Colors.white,
                 child: TabBar(
-                  isScrollable: true, // Make the tabs scrollable
+                  isScrollable: true,
                   tabs: [
                     Tab(text: 'Index'),
                     Tab(text: 'Programs'),
@@ -46,7 +46,7 @@ class BeginnerPage extends StatelessWidget {
                   IndexPage(),
                   ProgramsPage(),
                   RoadMapPage(),
-                  DescriptionPage(), // Replace the Center widget with DescriptionPage()
+                  DescriptionPage(),
                 ],
               ),
             ),
