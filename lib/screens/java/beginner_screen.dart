@@ -193,6 +193,12 @@ class DescriptionPage extends StatelessWidget {
               SizedBox(height: 16.0),
               Text(
                   '• Java is quite popular as a Programming Language in the industry so you can get good opportunities, if that is what you are looking for'),
+                   SizedBox(height: 16.0),
+              Text(
+                  '• Java is secure platform, thanks to its virtual Machine.This is one of the primary reasons Companies worldwide are using this language.'),
+                   SizedBox(height: 16.0),
+              Text(
+                  '• Android app development is gaining momentum and if you are familar with java then learning Andriod will be easier for you'),
               SizedBox(height: 16.0),
               Text(
                 'Salary',
@@ -203,6 +209,23 @@ class DescriptionPage extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Text('• The median salary is 102,000 USD per year'),
+              SizedBox(height: 16.0),
+              Text(
+                'Requirements',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 16.0),
+              Text(
+                  '• A strong work ethic, willingness to learn and plenty of excitement about the awesome new programs  your about to build'),
+              SizedBox(height: 16.0),
+              Text(
+                  '• Nothing else, its just you, your phone and your hunger to get started today'),
+              SizedBox(height: 16.0),
+              Text(
+                  '• Consistency is key to success'),
             ],
           ),
         ),
