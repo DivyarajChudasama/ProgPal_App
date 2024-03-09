@@ -19,14 +19,18 @@ class BeginnerPage extends StatelessWidget {
         backgroundColor: Colors.indigo,
       ),
       body: DefaultTabController(
-        length: 3,
+        length: 4, // Add one more tab for the RoadMap
         child: Column(
+          crossAxisAlignment:
+              CrossAxisAlignment.start, // Align tabs to the start
+          mainAxisAlignment: MainAxisAlignment.start, // Align tabs to the start
           children: [
             Container(
               constraints: BoxConstraints(maxHeight: 150.0),
               child: Material(
                 color: Colors.white,
                 child: TabBar(
+                  isScrollable: true, // Make the tabs scrollable
                   tabs: [
                     Tab(text: 'Index'),
                     Tab(text: 'Programs'),
