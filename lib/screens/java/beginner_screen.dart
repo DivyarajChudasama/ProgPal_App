@@ -118,6 +118,19 @@ class _IndexPageState extends State<IndexPage> {
             _buildDropdownMenuItem('Variables'),
             _buildDropdownMenuItem('Data Types'),
             _buildDropdownMenuItem('Arithmetic Operations'),
+            ElevatedButton(
+              onPressed: () {
+                // Handle navigation to storage and calculation page
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
           ],
         ),
         ExpansionTile(
@@ -126,6 +139,19 @@ class _IndexPageState extends State<IndexPage> {
             _buildDropdownMenuItem('If-else Statements'),
             _buildDropdownMenuItem('Switch Statements'),
             _buildDropdownMenuItem('Ternary Operator'),
+            ElevatedButton(
+              onPressed: () {
+                // Handle navigation to decision making page
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
           ],
         ),
       ],
