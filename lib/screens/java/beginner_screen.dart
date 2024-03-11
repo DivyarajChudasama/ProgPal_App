@@ -115,13 +115,17 @@ class _IndexPageState extends State<IndexPage> {
         ExpansionTile(
           title: Text('Storage and Calculation'),
           children: [
-            // Add dropdown items for storage and calculation
+            _buildDropdownMenuItem('Variables'),
+            _buildDropdownMenuItem('Data Types'),
+            _buildDropdownMenuItem('Arithmetic Operations'),
           ],
         ),
         ExpansionTile(
           title: Text('Decision Making in Java'),
           children: [
-            // Add dropdown items for decision making in Java
+            _buildDropdownMenuItem('If-else Statements'),
+            _buildDropdownMenuItem('Switch Statements'),
+            _buildDropdownMenuItem('Ternary Operator'),
           ],
         ),
       ],
@@ -146,6 +150,25 @@ class _IndexPageState extends State<IndexPage> {
       ),
     );
   }
+}
+
+Widget _buildDropdownMenuItem(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+        color: Colors.grey[200],
+      ),
+      child: DropdownMenuItem(
+        child: Text(
+          title,
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ),
+  );
 }
 
 // Roadmap
