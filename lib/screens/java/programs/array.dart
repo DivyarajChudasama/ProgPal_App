@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_highlight/flutter_highlight.dart';
+import 'package:flutter_highlight/themes/github.dart';
+import 'package:flutter_highlight/themes/googlecode.dart';
+import 'package:flutter_highlight/themes/obsidian.dart';
+import 'package:flutter_highlight/themes/rainbow.dart';
+import 'package:flutter_highlight/themes/sunburst.dart';
+import 'package:flutter_highlight/themes/tomorrow-night-blue.dart';
+import 'package:flutter_highlight/themes/tomorrow-night-bright.dart';
+import 'package:flutter_highlight/themes/tomorrow-night.dart';
+import 'package:flutter_highlight/themes/vs.dart';
+import 'package:flutter_highlight/themes/vs2015.dart';
 
 class ArrayPage extends StatefulWidget {
   const ArrayPage({super.key});
@@ -139,7 +150,7 @@ class _ArrayPageState extends State<ArrayPage> {
 }
 
 class BasicArray extends StatelessWidget {
-  final String BasicArrayCode = '''
+  final String basicArrayCode = '''
 import java.util.*;
 
 class ArrayBasic
@@ -153,12 +164,12 @@ class ArrayBasic
         System.out.println("Enter size of array");
         size = sc.nextInt();
         arr = new int[size];
-        System.out.println("\nEnter array elements");
+        System.out.println("\\nEnter array elements");
         for (i = 0; i < size; i++)
         {
             arr[i] = sc.nextInt();
         }
-        System.out.println("\nElements in the Array are : ");
+        System.out.println("\\nElements in the Array are : ");
         for (i = 0; i < size; i++)
         {
             System.out.print(arr[i] + " ");
@@ -176,51 +187,40 @@ class ArrayBasic
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            BasicArrayCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: BasicArrayCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      basicArrayCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: basicArrayCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -249,7 +249,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -299,7 +299,6 @@ class ArraySortingDemo
 }
 ''';
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -308,51 +307,39 @@ class ArraySortingDemo
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers1(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            SortingCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: SortingCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers1(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      SortingCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: SortingCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -381,7 +368,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -429,7 +416,6 @@ class ArrayOperations
 }
 ''';
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -438,51 +424,39 @@ class ArrayOperations
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers2(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            OperationsCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: OperationsCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers2(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      OperationsCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: OperationsCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -547,61 +521,55 @@ class ArrayAverage
 }  
 ''';
 
-  @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum And Average'),
+        title: Text('Sum and Average'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LineNumbers3(),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Text(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers3(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
                       SumAndAverageCode,
-                      style: TextStyle(
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
                         fontFamily: 'Courier New',
                         fontSize: 14.0,
                       ),
+                      theme: vsTheme,
                     ),
-                  ),
-                  Positioned(
-                    top: 8.0,
-                    right: 8.0,
-                    child: IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Clipboard.setData(
-                            ClipboardData(text: SumAndAverageCode));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Code copied to clipboard')),
-                        );
-                      },
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: SumAndAverageCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
 class LineNumbers3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -663,60 +631,48 @@ class TwoDArray
 }
 ''';
 
-  @override
-  Widget build(BuildContext context) {
+ 
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('2 Dimensional Array'),
+        title: Text('Dimensional Array'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers4(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            DimensionalArrayCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: DimensionalArrayCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers4(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      DimensionalArrayCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: DimensionalArrayCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -848,8 +804,7 @@ class AddTwoMatrix
 }
 ''';
 
-  @override
-  Widget build(BuildContext context) {
+      Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Two Matrix'),
@@ -857,51 +812,39 @@ class AddTwoMatrix
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers5(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            AddTwoMatrixCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: AddTwoMatrixCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers5(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      AddTwoMatrixCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Courier New',
+                        fontSize: 14.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: AddTwoMatrixCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -910,6 +853,7 @@ class AddTwoMatrix
     );
   }
 }
+
 
 class LineNumbers5 extends StatelessWidget {
   @override

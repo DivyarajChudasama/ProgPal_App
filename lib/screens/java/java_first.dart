@@ -10,9 +10,10 @@ class JavaFirst extends StatefulWidget {
 class _JavaFirstState extends State<JavaFirst> {
   List<String> contents = [
     'What is Java?',
-    'Java is a programming language...',
-    'Java basics include variables, data types...',
-    'Java is an object-oriented programming language...',
+    'Java is a programming language and a platform',
+    'Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995',
+    'James Gosling is known as the father of Java',
+    'Java is a high level, robust, object-oriented and secure programming language',
   ];
   int currentIndex = 0;
   bool showSummary = false;
