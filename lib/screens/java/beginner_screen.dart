@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/java_first.dart';
+import 'package:progpal/screens/java/java_second.dart';
+import 'package:progpal/screens/java/java_third.dart';
 import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/java/programs/collection.dart';
@@ -113,14 +115,32 @@ class _IndexPageState extends State<IndexPage> {
           ],
         ),
         ExpansionTile(
-          title: Text('Storage and Calculation'),
+          title: Row(
+            children: [
+              Text('Storage and Calculation'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
           children: [
             _buildDropdownMenuItem('Variables'),
             _buildDropdownMenuItem('Data Types'),
             _buildDropdownMenuItem('Arithmetic Operations'),
             ElevatedButton(
               onPressed: () {
-                // Handle navigation to storage and calculation page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaSecond()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
               },
               child: Text(
                 'Start',
@@ -134,14 +154,32 @@ class _IndexPageState extends State<IndexPage> {
           ],
         ),
         ExpansionTile(
-          title: Text('Decision Making in Java'),
+          title: Row(
+            children: [
+              Text('Decision Making in Java'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
           children: [
             _buildDropdownMenuItem('If-else Statements'),
             _buildDropdownMenuItem('Switch Statements'),
             _buildDropdownMenuItem('Ternary Operator'),
             ElevatedButton(
               onPressed: () {
-                // Handle navigation to decision making page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaThird()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
               },
               child: Text(
                 'Start',
