@@ -8,6 +8,9 @@ import 'package:progpal/screens/java/programs/collection.dart';
 import 'package:progpal/screens/java/programs/file_handling.dart';
 import 'package:mind_map/mind_map.dart';
 
+Color bgColor = Colors.indigo;
+Color txtColor = Colors.white;
+
 class BeginnerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -27,20 +30,16 @@ class BeginnerPage extends StatelessWidget {
               CrossAxisAlignment.start, // Align tabs to the start
           mainAxisAlignment: MainAxisAlignment.start, // Align tabs to the start
           children: [
-            Container(
-              constraints: BoxConstraints(maxHeight: 150.0),
-              child: Material(
-                color: Colors.white,
-                child: TabBar(
-                  isScrollable: true,
-                  tabs: [
-                    Tab(text: 'Index'),
-                    Tab(text: 'Programs'),
-                    Tab(text: 'RoadMap'),
-                    Tab(text: 'Description'),
-                  ],
-                ),
-              ),
+            TabBar(
+              tabAlignment: TabAlignment.center,
+              isScrollable: true,
+              indicatorSize: TabBarIndicatorSize.tab,
+              tabs: [
+                Tab(text: 'Index'),
+                Tab(text: 'Programs'),
+                Tab(text: 'RoadMap'),
+                Tab(text: 'Description'),
+              ],
             ),
             Expanded(
               child: TabBarView(
@@ -203,7 +202,7 @@ class _IndexPageState extends State<IndexPage> {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(50)),
-          color: Colors.grey[200],
+          color: bgColor,
         ),
         child: DropdownMenuItem(
           child: Text(
@@ -223,7 +222,7 @@ Widget _buildDropdownMenuItem(String title) {
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(50)),
-        color: Colors.grey[200],
+        color: bgColor,
       ),
       child: DropdownMenuItem(
         child: Text(
@@ -250,7 +249,7 @@ class RoadMapPage extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: bgColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding:
@@ -267,7 +266,7 @@ class RoadMapPage extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           padding: const EdgeInsets.symmetric(
@@ -282,7 +281,7 @@ class RoadMapPage extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: bgColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               padding: const EdgeInsets.symmetric(
@@ -293,7 +292,7 @@ class RoadMapPage extends StatelessWidget {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: bgColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               padding: const EdgeInsets.symmetric(
@@ -306,7 +305,7 @@ class RoadMapPage extends StatelessWidget {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.grey,
+                                    color: bgColor,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   padding: const EdgeInsets.symmetric(
@@ -314,7 +313,10 @@ class RoadMapPage extends StatelessWidget {
                                   margin: const EdgeInsets.symmetric(
                                           vertical: 10, horizontal: 10)
                                       .copyWith(right: 0),
-                                  child: const Text('Functions'),
+                                  child: const Text(
+                                    'Functions',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ],
                             )
@@ -328,7 +330,7 @@ class RoadMapPage extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(10)),
                         padding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 10),
@@ -339,7 +341,7 @@ class RoadMapPage extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: bgColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       margin: const EdgeInsets.symmetric(
@@ -350,7 +352,7 @@ class RoadMapPage extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color: bgColor,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       margin: const EdgeInsets.symmetric(
@@ -363,7 +365,7 @@ class RoadMapPage extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: bgColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           margin: const EdgeInsets.symmetric(
