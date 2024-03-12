@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/java_first.dart';
+import 'package:progpal/screens/java/java_second.dart';
+import 'package:progpal/screens/java/java_third.dart';
 import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/java/programs/collection.dart';
@@ -113,15 +115,81 @@ class _IndexPageState extends State<IndexPage> {
           ],
         ),
         ExpansionTile(
-          title: Text('Storage and Calculation'),
+          title: Row(
+            children: [
+              Text('Storage and Calculation'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
           children: [
-            // Add dropdown items for storage and calculation
+            _buildDropdownMenuItem('Variables'),
+            _buildDropdownMenuItem('Data Types'),
+            _buildDropdownMenuItem('Arithmetic Operations'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaSecond()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
           ],
         ),
         ExpansionTile(
-          title: Text('Decision Making in Java'),
+          title: Row(
+            children: [
+              Text('Decision Making in Java'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
           children: [
-            // Add dropdown items for decision making in Java
+            _buildDropdownMenuItem('If-else Statements'),
+            _buildDropdownMenuItem('Switch Statements'),
+            _buildDropdownMenuItem('Ternary Operator'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaThird()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
           ],
         ),
       ],
@@ -146,6 +214,25 @@ class _IndexPageState extends State<IndexPage> {
       ),
     );
   }
+}
+
+Widget _buildDropdownMenuItem(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+        color: Colors.grey[200],
+      ),
+      child: DropdownMenuItem(
+        child: Text(
+          title,
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+    ),
+  );
 }
 
 // Roadmap
