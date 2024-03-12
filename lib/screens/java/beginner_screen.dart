@@ -657,7 +657,7 @@ class ProgramsPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(bottom: 8.0),
                       child: Text(
-                        'Collection',
+                        'Exception Handling',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,

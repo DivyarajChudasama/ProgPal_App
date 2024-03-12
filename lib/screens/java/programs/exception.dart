@@ -18,7 +18,7 @@ class _ExceptionPageState extends State<ExceptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Array'),
+        title: Text('Exception Handling'),
         backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
@@ -71,11 +71,11 @@ class _ExceptionPageState extends State<ExceptionPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Operations'),
+              title: Text('Using Try block'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Operations()),
+                  MaterialPageRoute(builder: (context) => Try()),
                 );
               },
             ),
@@ -90,11 +90,11 @@ class _ExceptionPageState extends State<ExceptionPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Sum And Average'),
+              title: Text('Using Finally'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SumAndAverage()),
+                  MaterialPageRoute(builder: (context) => Finally()),
                 );
               },
             ),
@@ -275,36 +275,49 @@ class LineNumbers extends StatelessWidget {
 
 class Throws extends StatelessWidget {
   final String ThrowsCode = '''
-import java.util.*;
+import java.io.IOException;
 
-class ArraySortingDemo
+class UsingThrows
 {
-    public static void main(String[] args)
-    {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter no. of elements to sort : ");
-        int size = in.nextInt();
-        // initializing unsorted int array
-        int iArr[] = new int[size];
-        System.out.println("Enter " + size + " integer(s) :");
-        for (int i = 0; i < size; i++)
-        {
-            iArr[i] = in.nextInt();
-        }
-        // let us print all the elements available in list
-        for (int number : iArr)
-        {
-            System.out.println("Number = " + number);
-        }
-        // sorting array
-        Arrays.sort(iArr);
 
-        // let us print all the elements available in list
-        System.out.println("The sorted int array is:");
-        for (int number : iArr)
+    void m() throws IOException
+    {
+
+        throw new IOException("device error");// checked exception
+
+    }
+
+    void n() throws IOException
+    {
+
+        m();
+
+    }
+
+    void p()
+    {
+
+        try
         {
-            System.out.println("Number = " + number);
+
+            n();
+
         }
+        catch (Exception e)
+        {
+
+            System.out.println("exception handled");
+
+        }
+    }
+
+    public static void main(String args[])
+    {
+
+        UsingThrows obj = new UsingThrows();
+        obj.p();
+        System.out.println("normal flow...");
+
     }
 }
 ''';
@@ -378,7 +391,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -392,36 +405,33 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class Operations extends StatelessWidget {
-  final String OperationsCode = '''
-class ArrayOperations
+class Try extends StatelessWidget {
+  final String TryCode = '''
+class UsingFinally
 {
+
     public static void main(String[] args)
     {
-        double[] myList = {1.9, 2.9, 3.4, 3.5};
 
-        // Print all the array elements
-        for (int i = 0; i < myList.length; i++)
+        try
         {
-            System.out.println(myList[i] + " ");
-        }
-        // Summing all elements
-        double total = 0;
-        for (int i = 0; i < myList.length; i++)
-        {
-            total += myList[i];
-        }
 
-        System.out.println("Total is " + total);
+            int a = 3 / 0;
+            System.out.println(a);
 
-        // Finding the largest element
-        double max = myList[0];
-        for (int i = 1; i < myList.length; i++)
-        {
-            if (myList[i] > max)
-                max = myList[i];
         }
-        System.out.println("Max is " + max);
+        catch (Exception e)
+        {
+
+            System.out.println(e);
+
+        }
+        finally
+        {
+
+            System.out.println("finally block will execute always.");
+
+        }
     }
 }
 ''';
@@ -429,7 +439,7 @@ class ArrayOperations
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Operations'),
+        title: Text('Using Try Block'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -443,7 +453,7 @@ class ArrayOperations
                 child: Stack(
                   children: [
                     HighlightView(
-                      OperationsCode,
+                      TryCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -458,8 +468,7 @@ class ArrayOperations
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: OperationsCode));
+                          Clipboard.setData(ClipboardData(text: TryCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -496,7 +505,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -510,32 +519,41 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class SumAndAverage extends StatelessWidget {
-  final String SumAndAverageCode = '''
-import java.io.*;
-
-class ArrayAverage
+class Finally extends StatelessWidget {
+  final String FinallyCode = '''
+class UsingFinally
 {
+
     public static void main(String[] args)
     {
-        //define an array
-        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
-        int sum = 0;
-        for (int i = 0; i < numbers.length; i++)
+
+        try
         {
-            sum = sum + numbers[i];
+
+            int a = 3 / 0;
+            System.out.println(a);
+
         }
-        double average = sum / numbers.length;
-        System.out.println("Sum of array elements is : " + sum);
-        System.out.println("Average value of array elements is : " + average);
+        catch (Exception e)
+        {
+
+            System.out.println(e);
+
+        }
+        finally
+        {
+
+            System.out.println("finally block will execute always.");
+
+        }
     }
-}  
+} 
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum and Average'),
+        title: Text('Using Finally'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -549,7 +567,7 @@ class ArrayAverage
                 child: Stack(
                   children: [
                     HighlightView(
-                      SumAndAverageCode,
+                      FinallyCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -564,8 +582,7 @@ class ArrayAverage
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: SumAndAverageCode));
+                          Clipboard.setData(ClipboardData(text: FinallyCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -600,7 +617,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
