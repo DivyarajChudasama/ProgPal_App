@@ -6,14 +6,14 @@ import 'package:flutter_highlight/themes/googlecode.dart';
 import 'package:flutter_highlight/themes/vs.dart';
 import 'package:flutter_highlight/themes/vs2015.dart';
 
-class ArrayPage extends StatefulWidget {
-  const ArrayPage({super.key});
+class ExceptionPage extends StatefulWidget {
+  const ExceptionPage({super.key});
 
   @override
-  State<ArrayPage> createState() => _ArrayPageState();
+  State<ExceptionPage> createState() => _ExceptionPageState();
 }
 
-class _ArrayPageState extends State<ArrayPage> {
+class _ExceptionPageState extends State<ExceptionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +33,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Basic Array'),
+              title: Text('Throwing Exception'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BasicArray()),
+                  MaterialPageRoute(builder: (context) => ThrowingException()),
                 );
               },
             ),
@@ -52,11 +52,11 @@ class _ArrayPageState extends State<ArrayPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Sorting'),
+              title: Text('Using Throws'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Sorting()),
+                  MaterialPageRoute(builder: (context) => Throws()),
                 );
               },
             ),
@@ -143,31 +143,47 @@ class _ArrayPageState extends State<ArrayPage> {
   }
 }
 
-class BasicArray extends StatelessWidget {
-  final String basicArrayCode = '''
-import java.util.*;
-
-class ArrayBasic
+class ThrowingException extends StatelessWidget {
+  final String ThrowingExceptionCode = '''
+class MyExplicitThrow
 {
-    public static void main(String[] args)
-    {
-        int[] arr;
-        int size, i;
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter size of array");
-        size = sc.nextInt();
-        arr = new int[size];
-        System.out.println("\\nEnter array elements");
-        for (i = 0; i < size; i++)
+    public static void main(String a[])
+    {
+
+        try
         {
-            arr[i] = sc.nextInt();
+
+            MyExplicitThrow met = new MyExplicitThrow();
+            System.out
+                    .println("length of JUNK is " + met.getStringSize("JUNK"));
+
+            System.out.println("length of WRONG is "
+                                       + met.getStringSize("WRONG"));
+
+            System.out.println("length of null string is "
+                                       + met.getStringSize(null));
+
         }
-        System.out.println("\\nElements in the Array are : ");
-        for (i = 0; i < size; i++)
+        catch (Exception ex)
         {
-            System.out.print(arr[i] + " ");
+
+            System.out.println("Exception message: " + ex.getMessage());
+
         }
+    }
+
+    public int getStringSize(String str) throws Exception
+    {
+
+        if (str == null)
+        {
+
+            throw new Exception("String input is null");
+
+        }
+
+        return str.length();
     }
 }
 ''';
@@ -176,7 +192,7 @@ class ArrayBasic
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Basic Array'),
+        title: Text('Throwing Exception'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -190,7 +206,7 @@ class ArrayBasic
                 child: Stack(
                   children: [
                     HighlightView(
-                      basicArrayCode,
+                      ThrowingExceptionCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -206,7 +222,7 @@ class ArrayBasic
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: basicArrayCode));
+                              ClipboardData(text: ThrowingExceptionCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -243,7 +259,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -257,8 +273,8 @@ class LineNumbers extends StatelessWidget {
   }
 }
 
-class Sorting extends StatelessWidget {
-  final String SortingCode = '''
+class Throws extends StatelessWidget {
+  final String ThrowsCode = '''
 import java.util.*;
 
 class ArraySortingDemo
@@ -296,7 +312,7 @@ class ArraySortingDemo
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sorting'),
+        title: Text('Using Throws'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -310,7 +326,7 @@ class ArraySortingDemo
                 child: Stack(
                   children: [
                     HighlightView(
-                      SortingCode,
+                      ThrowsCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -325,7 +341,7 @@ class ArraySortingDemo
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: SortingCode));
+                          Clipboard.setData(ClipboardData(text: ThrowsCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -442,7 +458,8 @@ class ArrayOperations
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: OperationsCode));
+                          Clipboard.setData(
+                              ClipboardData(text: OperationsCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -515,7 +532,7 @@ class ArrayAverage
 }  
 ''';
 
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sum and Average'),
@@ -547,7 +564,8 @@ class ArrayAverage
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: SumAndAverageCode));
+                          Clipboard.setData(
+                              ClipboardData(text: SumAndAverageCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -564,6 +582,7 @@ class ArrayAverage
     );
   }
 }
+
 class LineNumbers3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -625,8 +644,7 @@ class TwoDArray
 }
 ''';
 
- 
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dimensional Array'),
@@ -658,7 +676,8 @@ class TwoDArray
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: DimensionalArrayCode));
+                          Clipboard.setData(
+                              ClipboardData(text: DimensionalArrayCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -798,7 +817,7 @@ class AddTwoMatrix
 }
 ''';
 
-      Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Two Matrix'),
@@ -830,7 +849,8 @@ class AddTwoMatrix
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: AddTwoMatrixCode));
+                          Clipboard.setData(
+                              ClipboardData(text: AddTwoMatrixCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -847,7 +867,6 @@ class AddTwoMatrix
     );
   }
 }
-
 
 class LineNumbers5 extends StatelessWidget {
   @override

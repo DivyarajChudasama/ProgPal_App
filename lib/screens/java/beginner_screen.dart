@@ -5,10 +5,11 @@ import 'package:progpal/screens/java/java_third.dart';
 import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/java/programs/collection.dart';
+import 'package:progpal/screens/java/programs/exception.dart';
 import 'package:progpal/screens/java/programs/file_handling.dart';
 import 'package:mind_map/mind_map.dart';
 
-Color bgColor = Colors.indigo;
+Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
 
 class BeginnerPage extends StatelessWidget {
@@ -202,12 +203,12 @@ class _IndexPageState extends State<IndexPage> {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(50)),
-          color: bgColor,
+          color: Colors.indigo,
         ),
         child: DropdownMenuItem(
           child: Text(
             title,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: txtColor),
           ),
         ),
       ),
@@ -227,7 +228,7 @@ Widget _buildDropdownMenuItem(String title) {
       child: DropdownMenuItem(
         child: Text(
           title,
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
     ),
@@ -315,7 +316,7 @@ class RoadMapPage extends StatelessWidget {
                                       .copyWith(right: 0),
                                   child: const Text(
                                     'Functions',
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ],
@@ -484,153 +485,191 @@ class ProgramsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: EdgeInsets.all(16.0),
-        crossAxisSpacing: 16.0,
-        mainAxisSpacing: 16.0,
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BasicPage()),
-              );
-            },
-            child: Card(
-              elevation: 4.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/helloworld.png',
-                        width: 180, // Adjust the width as needed
-                        height: 140, // Adjust the height as needed
+      body: SingleChildScrollView(
+        child: GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 2,
+          padding: EdgeInsets.all(16.0),
+          crossAxisSpacing: 16.0,
+          mainAxisSpacing: 16.0,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BasicPage()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/helloworld.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      'Basic',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'Basic',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ArrayPage()),
-              );
-            },
-            child: Card(
-              elevation: 4.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/array.png',
-                        width: 180, // Adjust the width as needed
-                        height: 140, // Adjust the height as needed
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ArrayPage()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/array.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      'Array',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'Array',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CollectionPage()),
-              );
-            },
-            child: Card(
-              elevation: 4.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/collection.png',
-                        width: 180, // Adjust the width as needed
-                        height: 140, // Adjust the height as needed
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CollectionPage()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/collection.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      'Collection',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'Collection',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FileHandling()),
-              );
-            },
-            child: Card(
-              elevation: 4.0,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/filehandling.png',
-                        width: 180, // Adjust the width as needed
-                        height: 140, // Adjust the height as needed
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FileHandling()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/filehandling.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      'File Handling',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'File Handling',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ExceptionPage()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/exception.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'Collection',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
