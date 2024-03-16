@@ -211,7 +211,7 @@ class MyExplicitThrow
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'San-serif',
+                        fontFamily: 'Consolas',
                         fontSize: 14.0,
                       ),
                       theme: vsTheme,
