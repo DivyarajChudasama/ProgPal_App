@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_highlight/flutter_highlight.dart';
+import 'package:flutter_highlight/themes/github.dart';
+import 'package:flutter_highlight/themes/googlecode.dart';
+import 'package:flutter_highlight/themes/vs.dart';
+import 'package:flutter_highlight/themes/vs2015.dart';
 
 class FileHandling extends StatefulWidget {
   const FileHandling({super.key});
@@ -143,7 +148,7 @@ class Createfile extends StatelessWidget {
   final String CreatefileCode = '''
 import java.io.*;
 
-class CreateFileTest
+class CreateFile
 {
     public static void main(String args[])
     {
@@ -167,56 +172,45 @@ class CreateFileTest
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create a File'),
+        title: Text('Create File'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            CreatefileCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: CreatefileCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      CreatefileCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: CreatefileCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -245,7 +239,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -263,7 +257,7 @@ class Deletefile extends StatelessWidget {
   final String DeletefileCode = '''
 import java.io.File;
 
-class FileDeleteTest
+class FileDelete
 {
     public static boolean deleteFile(String filename)
     {
@@ -292,51 +286,40 @@ class FileDeleteTest
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers1(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            DeletefileCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: DeletefileCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers1(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      DeletefileCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: DeletefileCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -365,7 +348,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -445,51 +428,39 @@ class ReadFile
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers2(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            ReadFileCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: ReadFileCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers2(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      ReadFileCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: ReadFileCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -518,7 +489,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n55\n56\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -590,56 +561,45 @@ class WriteFile
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Write a  File'),
+        title: Text('Write a File'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers3(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            WriteaFileCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: WriteaFileCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers3(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      WriteaFileCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: WriteaFileCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -668,7 +628,7 @@ class LineNumbers3 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n55\n56\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -730,51 +690,40 @@ class SerializeDemo
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers4(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            SerializationCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: SerializationCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers4(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      SerializationCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: SerializationCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -803,7 +752,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n49\n50',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -858,56 +807,45 @@ class CopyFile
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Copy file using Character Stream'),
+        title: Text('CopyfileusingCharacterStream'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers5(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            CopyfileusingCharacterStreamCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(ClipboardData(
-                                  text: CopyfileusingCharacterStreamCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers5(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      CopyfileusingCharacterStreamCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(
+                              text: CopyfileusingCharacterStreamCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -936,7 +874,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,

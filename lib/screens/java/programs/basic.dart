@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_highlight/flutter_highlight.dart';
+import 'package:flutter_highlight/themes/github.dart';
+import 'package:flutter_highlight/themes/googlecode.dart';
+import 'package:flutter_highlight/themes/vs.dart';
+import 'package:flutter_highlight/themes/vs2015.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 class BasicPage extends StatefulWidget {
@@ -156,48 +161,46 @@ class HelloWorld
       appBar: AppBar(
         title: Text('Hello World'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LineNumbers(),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Text(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
                       helloWorldCode,
-                      style: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
+                    ),
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: helloWorldCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 8.0,
-                    right: 8.0,
-                    child: IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Clipboard.setData(ClipboardData(text: helloWorldCode));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Code copied to clipboard')),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -221,7 +224,7 @@ class LineNumbers extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+            '1\n2\n3\n4\n5\n6',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -255,50 +258,47 @@ public static void main(String[] args) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('If-Else'),
+        title: Text('If Else'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LineNumbers1(),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Text(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers1(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
                       if_elsecode,
-                      style: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
+                    ),
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: if_elsecode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 8.0,
-                    right: 8.0,
-                    child: IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Clipboard.setData(ClipboardData(text: if_elsecode));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Code copied to clipboard')),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -308,28 +308,31 @@ public static void main(String[] args) {
 class LineNumbers1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8.0),
-          bottomLeft: Radius.circular(8.0),
-        ),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20',
-            style: TextStyle(
-              fontFamily: 'Courier New',
-              fontSize: 14.0,
-            ),
-            textAlign: TextAlign.right,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
           ),
-        ],
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -383,56 +386,45 @@ public static void main(String[] args) {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Switch-Case'),
+        title: Text('Switch Case'),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers2(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            switchcaseCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: switchcaseCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers2(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      switchcaseCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: switchcaseCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -461,7 +453,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -493,48 +485,45 @@ public static void main(String[] args) {
       appBar: AppBar(
         title: Text('For Loop'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LineNumbers3(),
-            const SizedBox(width: 16.0),
-            Expanded(
-              child: Stack(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      border: Border.all(color: Colors.grey.shade300),
-                    ),
-                    child: Text(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers3(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
                       ForLoopCode,
-                      style: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
+                    ),
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: ForLoopCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 8.0,
-                    right: 8.0,
-                    child: IconButton(
-                      icon: Icon(Icons.copy),
-                      onPressed: () {
-                        Clipboard.setData(ClipboardData(text: ForLoopCode));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Code copied to clipboard')),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -544,28 +533,31 @@ public static void main(String[] args) {
 class LineNumbers3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(8.0),
-          bottomLeft: Radius.circular(8.0),
-        ),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10',
-            style: TextStyle(
-              fontFamily: 'Courier New',
-              fontSize: 14.0,
-            ),
-            textAlign: TextAlign.right,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
           ),
-        ],
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -606,56 +598,45 @@ class BufferedReaderExample
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BufferReader'),
+        title: Text('Buffer Reader '),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers4(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            bufferReaderCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: bufferReaderCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers4(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      bufferReaderCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: bufferReaderCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -684,10 +665,10 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24',
               style: TextStyle(
-                fontFamily: 'Courier New',
-                fontSize: 14.0,
+                fontFamily: 'Consolas',
+                fontSize: 13.0,
               ),
               textAlign: TextAlign.right,
             ),
@@ -721,56 +702,45 @@ class AddNumbers
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Two Number'),
+        title: Text('Add Two Number '),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  LineNumbers5(),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8.0),
-                            border: Border.all(color: Colors.grey.shade300),
-                          ),
-                          child: Text(
-                            AddTwoNumberCode,
-                            style: TextStyle(
-                              fontFamily: 'Courier New',
-                              fontSize: 14.0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 8.0,
-                          right: 8.0,
-                          child: IconButton(
-                            icon: Icon(Icons.copy),
-                            onPressed: () {
-                              Clipboard.setData(
-                                  ClipboardData(text: AddTwoNumberCode));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text('Code copied to clipboard')),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+              LineNumbers5(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      AddTwoNumberCode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: AddTwoNumberCode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -799,10 +769,10 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14',
               style: TextStyle(
-                fontFamily: 'Courier New',
-                fontSize: 14.0,
+                fontFamily: 'Consolas',
+                fontSize: 13.0,
               ),
               textAlign: TextAlign.right,
             ),
