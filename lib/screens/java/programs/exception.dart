@@ -212,7 +212,7 @@ class MyExplicitThrow
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
-                        fontSize: 14.0,
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
