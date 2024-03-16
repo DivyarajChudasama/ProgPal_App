@@ -194,8 +194,8 @@ class ArrayBasic
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -243,7 +243,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -314,8 +314,8 @@ class ArraySortingDemo
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -362,7 +362,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -431,8 +431,8 @@ class ArrayOperations
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -442,7 +442,8 @@ class ArrayOperations
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: OperationsCode));
+                          Clipboard.setData(
+                              ClipboardData(text: OperationsCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -479,7 +480,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -515,7 +516,7 @@ class ArrayAverage
 }  
 ''';
 
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sum and Average'),
@@ -536,8 +537,8 @@ class ArrayAverage
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -547,7 +548,8 @@ class ArrayAverage
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: SumAndAverageCode));
+                          Clipboard.setData(
+                              ClipboardData(text: SumAndAverageCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -564,6 +566,7 @@ class ArrayAverage
     );
   }
 }
+
 class LineNumbers3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -581,7 +584,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -625,8 +628,7 @@ class TwoDArray
 }
 ''';
 
- 
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dimensional Array'),
@@ -647,8 +649,8 @@ class TwoDArray
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -658,7 +660,8 @@ class TwoDArray
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: DimensionalArrayCode));
+                          Clipboard.setData(
+                              ClipboardData(text: DimensionalArrayCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -695,10 +698,10 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
               style: TextStyle(
-                fontFamily: 'Courier New',
-                fontSize: 14.0,
+                fontFamily: 'Consolas',
+                fontSize: 13.0,
               ),
               textAlign: TextAlign.right,
             ),
@@ -798,7 +801,7 @@ class AddTwoMatrix
 }
 ''';
 
-      Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Two Matrix'),
@@ -819,8 +822,8 @@ class AddTwoMatrix
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -830,7 +833,8 @@ class AddTwoMatrix
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: AddTwoMatrixCode));
+                          Clipboard.setData(
+                              ClipboardData(text: AddTwoMatrixCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -847,7 +851,6 @@ class AddTwoMatrix
     );
   }
 }
-
 
 class LineNumbers5 extends StatelessWidget {
   @override
@@ -868,10 +871,10 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51,\n52,\n53,\n54,\n55,\n56,\n57',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75',
               style: TextStyle(
-                fontFamily: 'Courier New',
-                fontSize: 14.0,
+                fontFamily: 'Consolas',
+                fontSize: 13.0,
               ),
               textAlign: TextAlign.right,
             ),

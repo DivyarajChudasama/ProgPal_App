@@ -212,7 +212,7 @@ class MyExplicitThrow
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
-                        fontSize: 14.0,
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -260,7 +260,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -344,8 +344,8 @@ class UsingThrows
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -392,7 +392,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -458,8 +458,8 @@ class UsingFinally
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -506,7 +506,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -572,8 +572,8 @@ class UsingFinally
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -618,7 +618,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -683,8 +683,8 @@ class ArrayIndexOutOfBounds
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -732,7 +732,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -807,8 +807,8 @@ class DivisionByZero
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
-                        fontFamily: 'Courier New',
-                        fontSize: 14.0,
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
                       ),
                       theme: vsTheme,
                     ),
@@ -856,7 +856,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n30\n31\n32\n33\n34',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
