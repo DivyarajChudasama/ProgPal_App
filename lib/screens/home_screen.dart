@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class HomeScreen extends StatelessWidget {
   List<String> imagePaths = [
@@ -17,6 +20,7 @@ class HomeScreen extends StatelessWidget {
     'Practice',
     'Practice',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +44,25 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(
-                    'Name',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  FutureBuilder<User?>(
+                    future: _getCurrentUser(),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<User?> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      }
+                      if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      }
+                      final user = snapshot.data;
+                      return Text(
+                        user?.email ?? 'Unknown',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -238,5 +255,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<User?> _getCurrentUser() async {
+    return _auth.currentUser;
   }
 }

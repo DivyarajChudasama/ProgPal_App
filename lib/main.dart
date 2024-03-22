@@ -10,6 +10,7 @@ import 'package:progpal/screens/otp/phoneno_screen.dart';
 import 'package:progpal/screens/otp/otp_screen.dart';
 import 'package:progpal/screens/settings/theme.dart';
 import 'package:progpal/screens/settings/theme_manager.dart';
+import 'package:progpal/screens/sign-in-up/login_screen.dart';
 import 'package:progpal/screens/splash_screen.dart';
 
 void main() async {
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
