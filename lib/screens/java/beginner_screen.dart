@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/java_first.dart';
+import 'package:progpal/screens/java/java_fourth.dart';
 import 'package:progpal/screens/java/java_second.dart';
 import 'package:progpal/screens/java/java_third.dart';
 import 'package:progpal/screens/java/programs/array.dart';
@@ -174,6 +175,45 @@ class _IndexPageState extends State<IndexPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => JavaThird()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
+          ],
+        ),
+        ExpansionTile(
+          title: Row(
+            children: [
+              Text('List of Java Keywords'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
+          children: [
+            _buildDropdownMenuItem('If-else Statements'),
+            _buildDropdownMenuItem('Switch Statements'),
+            _buildDropdownMenuItem('Ternary Operator'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaFourth()),
                 ).then((value) {
                   // Update the state when the user completes the content
                   setState(() {
