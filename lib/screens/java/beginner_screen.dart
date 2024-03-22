@@ -117,7 +117,7 @@ class _IndexPageState extends State<IndexPage> {
         ExpansionTile(
           title: Row(
             children: [
-              Text('Storage and Calculation'),
+              Text('Features of Java'),
               Spacer(),
               if (_contentCompleted)
                 Icon(
@@ -156,7 +156,7 @@ class _IndexPageState extends State<IndexPage> {
         ExpansionTile(
           title: Row(
             children: [
-              Text('Decision Making in Java'),
+              Text('JDK, JRE, and JVM'),
               Spacer(),
               if (_contentCompleted)
                 Icon(
@@ -360,7 +360,7 @@ class RoadMapPage extends StatelessWidget {
                           vertical: 10, horizontal: 10),
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 10),
-                      child: const Text('OPP'),
+                      child: const Text('OOP'),
                     ),
                     Row(
                       children: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progpal/screens/java/beginner_screen.dart';
 
 class JavaThird extends StatefulWidget {
   const JavaThird({Key? key}) : super(key: key);
@@ -9,9 +10,13 @@ class JavaThird extends StatefulWidget {
 
 class _JavaThirdState extends State<JavaThird> {
   List<String> contents = [
-    'If-else Statements',
-    'Switch Statements',
-    'Ternary Operator',
+    'JDK, JRE, and JVM',
+    'JVM \n\nJVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it does not physically exist. It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also run those programs which are written in other languages and compiled to Java bytecode.',
+    'JVMs are available for many hardware and software platforms. JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However, Java is platform independent. There are three notions of the JVM: specification, implementation, and instance.',
+    'The JVM performs the following main tasks: \nLoads code \nVerifies code \nExecutes code \nProvides runtime environment',
+    'JRE\n\nJRE is an acronym for Java Runtime Environment. Also called Java RTE. The Java Runtime Environment is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It is the implementation of JVM. It physically exists. It contains a set of libraries + other files that JVM uses at runtime.',
+    'JDK\n\nJDK is an acronym for Java Development Kit. The Java Development Kit (JDK) is a software development environment which is used to develop Java applications and applets. It physically exists. It contains JRE + development tools. JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation',
+    'Standard Edition Java Platform\nEnterprise Edition Java Platform\nMicro Edition Java Platform\n\nThe JDK contains a private JVM and a few other resources such as an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) to complete the development of a Java Application.',
   ];
   int currentIndex = 0;
   bool showSummary = false;
@@ -39,7 +44,7 @@ class _JavaThirdState extends State<JavaThird> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Decision Making in Java',
+          'Java Third',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,
@@ -58,46 +63,32 @@ class _JavaThirdState extends State<JavaThird> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/images/java/whatisjava.png',
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
+              margin: EdgeInsets.only(top: 20),
+              height: 250, // Smaller robot
+              child: Image.asset(
+                'assets/images/java/whatisjava.png',
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(height: 30),
-            Container(
-              height: 200, // Adjust the height as needed
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Align(
-                alignment: Alignment.center,
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                width: 500,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -106,8 +97,7 @@ class _JavaThirdState extends State<JavaThird> {
                         style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center,
                       ),
-                      if (currentIndex ==
-                          0) // Show hint to tap the screen to continue for the first content
+                      if (currentIndex == 0)
                         Text(
                           'Tap the screen to continue',
                           style: TextStyle(fontSize: 16, color: Colors.grey),
@@ -117,11 +107,8 @@ class _JavaThirdState extends State<JavaThird> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            if (currentIndex ==
-                contents.length - 1) // Finish button after last content
+            SizedBox(height: 20),
+            if (currentIndex == contents.length - 1)
               ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -140,54 +127,56 @@ class _JavaThirdState extends State<JavaThird> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Summary',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: contents.map((content) {
-                return Container(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 10,
-                        color: Colors.blue, // Adjust color as needed
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          content,
-                          style: TextStyle(fontSize: 18),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Summary',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: contents.map((content) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        // Icon(
+                        //   Icons.circle,
+                        //   size: 10,
+                        //   color: Colors.blue, // Adjust color as needed
+                        // ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            content,
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                reset();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuizScreen()),
-                );
-              },
-              child: Text('Test Your Knowledge'),
-            ),
-          ],
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  reset();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuizScreen()),
+                  );
+                },
+                child: Text('Test Your Knowledge'),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -244,7 +233,10 @@ class _QuizScreenState extends State<QuizScreen> {
         if (_currentQuestionIndex < _quizData.length - 1) {
           _currentQuestionIndex++;
         } else {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BeginnerPage()),
+          );
         }
       }
     });

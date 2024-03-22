@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progpal/screens/java/beginner_screen.dart';
 
 class JavaSecond extends StatefulWidget {
   const JavaSecond({Key? key}) : super(key: key);
@@ -9,10 +10,15 @@ class JavaSecond extends StatefulWidget {
 
 class _JavaSecondState extends State<JavaSecond> {
   List<String> contents = [
-    'Variables',
-    'Data Types',
-    'Arithmetic Operations',
-    // Add more content items as needed
+    'Features of Java',
+    'Simple\n\n Java is very easy to learn, and its syntax is simple, clean and easy to understand. According to Sun Microsystem,Java syntax is based on C++. Java has removed many complicated and rarely-used features, for example, explicit pointers, operator overloading, etc. There is no need to remove unreferenced objects because there is an Automatic Garbage Collection in Java.',
+    'Object-oriented\n\n Java is an object-oriented programming language. Everything in Java is an object. Object-oriented means we organize our software as a combination of different types of objects that incorporate both data and behavior.Play Object-oriented programming is a methodology that simplifies software development and maintenance by providing some rules.',
+    'Basic concepts of OOPs are:\n\n Object\n Class\n Inheritance\n Polymorphism\n Abstraction\n Encapsulation',
+    'Platform Independent\n\n Java is platform independent Java is platform independent because it is different from other languages like C, C++, etc. which are compiled into platform specific machines while Java is a write once, run anywhere language. A platform is the hardware or software environment in which a program runs. Java provides a software-based platform.',
+    'Secured\n\n Java is best known for its security. With Java, we can develop virus-free systems. Java is secured because: \nNo explicit pointer \nJava Programs run inside a virtual machine sandboxhow Java is secured.',
+    '\nClassloader: Classloader in Java is a part of the Java Runtime Environment (JRE) which is used to load Java classes into the Java Virtual Machine dynamically. It adds security by separating the package for the classes of the local file system from those that are imported from network sources. \nSecurity Manager: It determines what resources a class can access such as reading and writing to the local disk.',
+    'Robust \n\n Java is robust because: \n It uses strong memory management. \n There is a lack of pointers that avoids security problems.\nJava provides automatic garbage collection which runs on the Java Virtual Machine to get rid of objects which are not being used by a Java application anymore.\nThere are exception handling and the type checking mechanism in Java.',
+    'Architecture-neutral\n\nJava is architecture neutral because there are no implementation dependent features, for example, the size of primitive types is fixed.\n\nPortable\nJava is portable because it facilitates you to carry the Java bytecode to any platform. It does not require any implementation.',
   ];
   int currentIndex = 0;
   bool showSummary = false;
@@ -40,7 +46,7 @@ class _JavaSecondState extends State<JavaSecond> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Storage and Calculation',
+          'Java Second',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,
@@ -59,46 +65,32 @@ class _JavaSecondState extends State<JavaSecond> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/images/java/whatisjava.png',
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
+              margin: EdgeInsets.only(top: 20),
+              height: 250, // Smaller robot
+              child: Image.asset(
+                'assets/images/java/whatisjava.png',
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(height: 30),
-            Container(
-              height: 200, // Adjust the height as needed
-              width: 300,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Align(
-                alignment: Alignment.center,
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                width: 500,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -117,9 +109,7 @@ class _JavaSecondState extends State<JavaSecond> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 20),
             if (currentIndex == contents.length - 1)
               ElevatedButton(
                 onPressed: () {
@@ -139,54 +129,56 @@ class _JavaSecondState extends State<JavaSecond> {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Summary',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: contents.map((content) {
-                return Container(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.circle,
-                        size: 10,
-                        color: Colors.blue, // Adjust color as needed
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          content,
-                          style: TextStyle(fontSize: 18),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Summary',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: contents.map((content) {
+                  return Container(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        // Icon(
+                        //   Icons.circle,
+                        //   size: 10,
+                        //   color: Colors.blue, // Adjust color as needed
+                        // ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            content,
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                reset();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuizScreen()),
-                );
-              },
-              child: Text('Test Your Knowledge'),
-            ),
-          ],
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  reset();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuizScreen()),
+                  );
+                },
+                child: Text('Test Your Knowledge'),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -243,7 +235,10 @@ class _QuizScreenState extends State<QuizScreen> {
         if (_currentQuestionIndex < _quizData.length - 1) {
           _currentQuestionIndex++;
         } else {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BeginnerPage()),
+          );
         }
       }
     });
