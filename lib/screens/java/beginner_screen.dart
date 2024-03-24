@@ -14,6 +14,7 @@ import 'package:progpal/screens/java/programs/file_handling.dart';
 import 'package:mind_map/mind_map.dart';
 import 'package:progpal/screens/java/programs/oops.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
+import 'package:progpal/screens/java/recursion.dart';
 
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
@@ -641,6 +642,12 @@ class ProgramsPage extends StatelessWidget {
           'Applet',
           'assets/images/java/applet.png',
           Applet(),
+        ),
+        buildProgramCard(
+          context,
+          'Recursion',
+          'assets/images/java/recursion.png',
+          Recursion(),
         ),
       ],
     );
