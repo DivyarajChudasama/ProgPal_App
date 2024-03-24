@@ -13,6 +13,8 @@ import 'package:progpal/screens/java/programs/exception.dart';
 import 'package:progpal/screens/java/programs/file_handling.dart';
 import 'package:mind_map/mind_map.dart';
 import 'package:progpal/screens/java/programs/oops.dart';
+import 'package:progpal/screens/java/programs/pattern.dart';
+import 'package:progpal/screens/java/programs/sorting.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/recursion.dart';
 
@@ -648,6 +650,18 @@ class ProgramsPage extends StatelessWidget {
           'Recursion',
           'assets/images/java/recursion.png',
           Recursion(),
+        ),
+        buildProgramCard(
+          context,
+          'Sorting',
+          'assets/images/java/sort.png',
+          Sorts(),
+        ),
+        buildProgramCard(
+          context,
+          'Pattern',
+          'assets/images/java/pattern.png',
+          PatternPage(),
         ),
       ],
     );

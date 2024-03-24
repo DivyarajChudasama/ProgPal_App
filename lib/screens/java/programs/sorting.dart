@@ -6,18 +6,19 @@ import 'package:flutter_highlight/themes/googlecode.dart';
 import 'package:flutter_highlight/themes/vs.dart';
 import 'package:flutter_highlight/themes/vs2015.dart';
 
-class Recursion extends StatefulWidget {
-  const Recursion({super.key});
+class Sorts extends StatefulWidget {
+  const Sorts({super.key});
+
   @override
-  State<Recursion> createState() => _RecursionState();
+  State<Sorts> createState() => _SortingState();
 }
 
-class _RecursionState extends State<Recursion> {
+class _SortingState extends State<Sorts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recursion'),
+        title: Text('Sorts'),
         backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
@@ -32,11 +33,11 @@ class _RecursionState extends State<Recursion> {
               ),
             ),
             child: ListTile(
-              title: Text('Simple Recursion'),
+              title: Text('Insertion Sort'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Recursions()),
+                  MaterialPageRoute(builder: (context) => InsertionSort()),
                 );
               },
             ),
@@ -51,11 +52,11 @@ class _RecursionState extends State<Recursion> {
               ),
             ),
             child: ListTile(
-              title: Text('Sum a series of numbers'),
+              title: Text('Merge Sort'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Sums()),
+                  MaterialPageRoute(builder: (context) => Merge()),
                 );
               },
             ),
@@ -70,11 +71,11 @@ class _RecursionState extends State<Recursion> {
               ),
             ),
             child: ListTile(
-              title: Text('Fibonacci series'),
+              title: Text('Quick Sort'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Fibonacci()),
+                  MaterialPageRoute(builder: (context) => Quick()),
                 );
               },
             ),
@@ -123,31 +124,57 @@ class _RecursionState extends State<Recursion> {
   }
 }
 
-class Recursions extends StatelessWidget {
-  final String RecursionsCode = '''
-package com.mcnz.recursion;
-public class VerySimpleRecursionExample {
+class InsertionSort extends StatelessWidget {
+  final String InsertionSortCode = '''
+// Java program for implementation of Insertion Sort
+public class InsertionSort {
+	/*Function to sort array using insertion sort*/
+	void sort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 1; i < n; ++i) {
+			int key = arr[i];
+			int j = i - 1;
 
-  public static void main(String[] args) {
-    callMyself(9);
-  }
-  /* The recursive Java method */
-  public static void callMyself(long i) {
-    if (i < 0) {
-      return;
-    }
-    System.out.print(i);
-    i = i - 1;
-    callMyself(i);
-  }
-}
+			/* Move elements of arr[0..i-1], that are
+			greater than key, to one position ahead
+			of their current position */
+			while (j >= 0 && arr[j] > key) {
+				arr[j + 1] = arr[j];
+				j = j - 1;
+			}
+			arr[j + 1] = key;
+		}
+	}
+
+	/* A utility function to print array of size n*/
+	static void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+			System.out.print(arr[i] + " ");
+
+		System.out.println();
+	}
+
+	// Driver method
+	public static void main(String args[])
+	{
+		int arr[] = { 12, 11, 13, 5, 6 };
+
+		InsertionSort ob = new InsertionSort();
+		ob.sort(arr);
+
+		printArray(arr);
+	}
+};
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' Simple Recursion'),
+        title: Text('Insertion Sort'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -161,7 +188,7 @@ public class VerySimpleRecursionExample {
                 child: Stack(
                   children: [
                     HighlightView(
-                      RecursionsCode,
+                      InsertionSortCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -177,7 +204,7 @@ public class VerySimpleRecursionExample {
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: RecursionsCode));
+                              ClipboardData(text: InsertionSortCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -214,7 +241,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -228,33 +255,113 @@ class LineNumbers extends StatelessWidget {
   }
 }
 
-class Sums extends StatelessWidget {
-  final String SumsCode = '''
-package com.mcnz.recursion;
+class Merge extends StatelessWidget {
+  final String MergeCode = '''
+import java.io.*;
 
-public class RecursiveSumOfAllNumbers {
+class MergeSort {
 
-  public static void main(String[] args) {
-    long sumOfAllNumbers = sumOfAllNumbers(9);
-    System.out.println(sumOfAllNumbers);
-  }
+	// Merges two subarrays of arr[].
+	// First subarray is arr[l..m]
+	// Second subarray is arr[m+1..r]
+	void merge(int arr[], int l, int m, int r)
+	{
+		// Find sizes of two subarrays to be merged
+		int n1 = m - l + 1;
+		int n2 = r - m;
 
-  /* A recursive Java example to sum all natural numbers up to a given long. */
-  public static long sumOfAllNumbers(long number) {
-  /* Stop the recursive Java program at zero */
-    if (number != 0) {
-      return number + sumOfAllNumbers(number - 1);
-    } else {
-      return number;
-    }
-  }
+		// Create temp arrays
+		int L[] = new int[n1];
+		int R[] = new int[n2];
+
+		// Copy data to temp arrays
+		for (int i = 0; i < n1; ++i)
+			L[i] = arr[l + i];
+		for (int j = 0; j < n2; ++j)
+			R[j] = arr[m + 1 + j];
+
+		// Merge the temp arrays
+
+		// Initial indices of first and second subarrays
+		int i = 0, j = 0;
+
+		// Initial index of merged subarray array
+		int k = l;
+		while (i < n1 && j < n2) {
+			if (L[i] <= R[j]) {
+				arr[k] = L[i];
+				i++;
+			}
+			else {
+				arr[k] = R[j];
+				j++;
+			}
+			k++;
+		}
+
+		// Copy remaining elements of L[] if any
+		while (i < n1) {
+			arr[k] = L[i];
+			i++;
+			k++;
+		}
+
+		// Copy remaining elements of R[] if any
+		while (j < n2) {
+			arr[k] = R[j];
+			j++;
+			k++;
+		}
+	}
+
+	// Main function that sorts arr[l..r] using
+	// merge()
+	void sort(int arr[], int l, int r)
+	{
+		if (l < r) {
+
+			// Find the middle point
+			int m = l + (r - l) / 2;
+
+			// Sort first and second halves
+			sort(arr, l, m);
+			sort(arr, m + 1, r);
+
+			// Merge the sorted halves
+			merge(arr, l, m, r);
+		}
+	}
+
+	// A utility function to print array of size n
+	static void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+			System.out.print(arr[i] + " ");
+		System.out.println();
+	}
+
+	// Driver code
+	public static void main(String args[])
+	{
+		int arr[] = { 12, 11, 13, 5, 6, 7 };
+
+		System.out.println("Given array is");
+		printArray(arr);
+
+		MergeSort ob = new MergeSort();
+		ob.sort(arr, 0, arr.length - 1);
+
+		System.out.println("\nSorted array is");
+		printArray(arr);
+	}
 }
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum a series of numbers'),
+        title: Text('Merge Sort'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -268,7 +375,7 @@ public class RecursiveSumOfAllNumbers {
                 child: Stack(
                   children: [
                     HighlightView(
-                      SumsCode,
+                      MergeCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -283,7 +390,7 @@ public class RecursiveSumOfAllNumbers {
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: SumsCode));
+                          Clipboard.setData(ClipboardData(text: MergeCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -320,7 +427,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -334,34 +441,92 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class Fibonacci extends StatelessWidget {
-  final String FibonacciCode = '''
-package com.mcnz.recursion;
+class Quick extends StatelessWidget {
+  final String QuickCode = '''
+import java.io.*;
 
-public class RecursiveFibonnaciJavaProgram {
+class GFG {
 
-  public static void main (String args[]) {
-    for(long i=1; i<=9; i++){ 
-      System.out.print(fibonacci(i) +" "); 
+    // A utility function to swap two elements
+    static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
-    System.out.println();
-  }
 
+    // This function takes last element as pivot,
+    // places the pivot element at its correct position
+    // in sorted array, and places all smaller to left
+    // of pivot and all greater elements to right of pivot
+    static int partition(int[] arr, int low, int high)
+    {
+        // Choosing the pivot
+        int pivot = arr[high];
 
-  /* A recursive Fibonnaci sequence in Java program */
-  public static long fibonacci(long number) {
-    if (number == 1 || number == 2) {
-      return 1;
+        // Index of smaller element and indicates
+        // the right position of pivot found so far
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++) {
+
+            // If current element is smaller than the pivot
+            if (arr[j] < pivot) {
+
+                // Increment index of smaller element
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return (i + 1);
     }
-    return fibonacci(number - 1) + fibonacci(number - 2);
-  }
+
+    // The main function that implements QuickSort
+    // arr[] --> Array to be sorted,
+    // low --> Starting index,
+    // high --> Ending index
+    static void quickSort(int[] arr, int low, int high)
+    {
+        if (low < high) {
+
+            // pi is partitioning index, arr[p]
+            // is now at right place
+            int pi = partition(arr, low, high);
+
+            // Separately sort elements before
+            // partition and after partition
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+    // To print sorted array
+    public static void printArr(int[] arr)
+    {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    // Driver Code
+    public static void main(String[] args)
+    {
+        int[] arr = { 10, 7, 8, 9, 1, 5 };
+        int N = arr.length;
+
+        // Function call
+        quickSort(arr, 0, N - 1);
+        System.out.println("Sorted array:");
+        printArr(arr);
+    }
 }
+
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fibonacci Series'),
+        title: Text('Quick Sort'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -375,7 +540,7 @@ public class RecursiveFibonnaciJavaProgram {
                 child: Stack(
                   children: [
                     HighlightView(
-                      FibonacciCode,
+                      QuickCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -390,7 +555,7 @@ public class RecursiveFibonnaciJavaProgram {
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: FibonacciCode));
+                          Clipboard.setData(ClipboardData(text: QuickCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -427,7 +592,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,

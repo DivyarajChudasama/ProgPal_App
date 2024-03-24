@@ -573,7 +573,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16',
+            '1\n2\n3\n4\n5\n6\n7',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
