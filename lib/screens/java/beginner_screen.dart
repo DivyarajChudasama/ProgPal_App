@@ -4,6 +4,7 @@ import 'package:progpal/screens/java/java_first.dart';
 import 'package:progpal/screens/java/java_fourth.dart';
 import 'package:progpal/screens/java/java_second.dart';
 import 'package:progpal/screens/java/java_third.dart';
+import 'package:progpal/screens/java/programs/DataStructure.dart';
 import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
 import 'package:progpal/screens/java/programs/collection.dart';
@@ -628,7 +629,12 @@ class ProgramsPage extends StatelessWidget {
           'assets/images/java/thread.png',
           Threads(),
         ),
-        // Add more programs as needed
+        buildProgramCard(
+          context,
+          'Data Structure',
+          'assets/images/java/ds.png',
+          DataStructure(),
+        ),
       ],
     );
   }

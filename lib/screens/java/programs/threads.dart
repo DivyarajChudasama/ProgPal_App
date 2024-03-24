@@ -90,11 +90,11 @@ class _ThreadsState extends State<Threads> {
               ),
             ),
             child: ListTile(
-              title: Text('Sum And Average'),
+              title: Text('Join Method'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SumAndAverage()),
+                  MaterialPageRoute(builder: (context) => Join()),
                 );
               },
             ),
@@ -109,11 +109,11 @@ class _ThreadsState extends State<Threads> {
               ),
             ),
             child: ListTile(
-              title: Text('2 Dimensional Array'),
+              title: Text('Priority of threads'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DimensionalArray()),
+                  MaterialPageRoute(builder: (context) => Priority()),
                 );
               },
             ),
@@ -128,11 +128,11 @@ class _ThreadsState extends State<Threads> {
               ),
             ),
             child: ListTile(
-              title: Text('Add Two Matrix'),
+              title: Text('Daemon Thread'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AddTwoMatrix()),
+                  MaterialPageRoute(builder: (context) => Daemonthread()),
                 );
               },
             ),
@@ -445,32 +445,90 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class SumAndAverage extends StatelessWidget {
-  final String SumAndAverageCode = '''
-import java.io.*;
-
-class ArrayAverage
-{
-    public static void main(String[] args)
-    {
-        //define an array
-        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
-        int sum = 0;
-        for (int i = 0; i < numbers.length; i++)
-        {
-            sum = sum + numbers[i];
-        }
-        double average = sum / numbers.length;
-        System.out.println("Sum of array elements is : " + sum);
-        System.out.println("Average value of array elements is : " + average);
-    }
+class Join extends StatelessWidget {
+  final String JoinCode = '''
+import java.io.*;  
+  
+// The ThreadJoin class is the child class of the class Thread  
+class ThreadJoin extends Thread  
+{  
+// overriding the run method  
+public void run()  
+{  
+for (int j = 0; j < 2; j++)  
+{  
+try  
+{  
+// sleeping the thread for 300 milli seconds  
+Thread.sleep(300);  
+System.out.println("The current thread name is: " + Thread.currentThread().getName());  
+}  
+// catch block for catching the raised exception  
+catch(Exception e)  
+{  
+System.out.println("The exception has been caught: " + e);  
+}  
+System.out.println( j );  
+}  
+}  
+}  
+  
+public class ThreadJoinExample  
+{  
+// main method  
+public static void main (String argvs[])  
+{  
+  
+// creating 3 threads  
+ThreadJoin th1 = new ThreadJoin();  
+ThreadJoin th2 = new ThreadJoin();  
+ThreadJoin th3 = new ThreadJoin();  
+  
+// thread th1 starts  
+th1.start();  
+  
+// starting the second thread after when  
+// the first thread th1 has ended or died.  
+try  
+{  
+System.out.println("The current thread name is: "+ Thread.currentThread().getName());  
+  
+// invoking the join() method  
+th1.join();  
+}  
+  
+// catch block for catching the raised exception  
+catch(Exception e)  
+{  
+System.out.println("The exception has been caught " + e);  
+}  
+  
+// thread th2 starts  
+th2.start();  
+  
+// starting the th3 thread after when the thread th2 has ended or died.  
+try  
+{  
+System.out.println("The current thread name is: " + Thread.currentThread().getName());  
+th2.join();  
+}  
+  
+// catch block for catching the raised exception  
+catch(Exception e)  
+{  
+System.out.println("The exception has been caught " + e);  
+}  
+  
+// thread th3 starts  
+th3.start();  
+}  
 }  
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum and Average'),
+        title: Text('Join Method'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -484,7 +542,7 @@ class ArrayAverage
                 child: Stack(
                   children: [
                     HighlightView(
-                      SumAndAverageCode,
+                      JoinCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -499,8 +557,7 @@ class ArrayAverage
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: SumAndAverageCode));
+                          Clipboard.setData(ClipboardData(text: JoinCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -535,7 +592,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -548,41 +605,80 @@ class LineNumbers3 extends StatelessWidget {
   }
 }
 
-class DimensionalArray extends StatelessWidget {
-  final String DimensionalArrayCode = '''
-import java.util.*;
-
-class TwoDArray
-{
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter # of rows: ");
-        int rows = scanner.nextInt();
-        System.out.print("Enter # of cols: ");
-        int cols = scanner.nextInt();
-
-        int[][] a = new int[rows][cols];
-
-        System.out.print("Enter " + rows + "x" + cols + "=" + (rows * cols) + " integers: ");
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                a[i][j] = scanner.nextInt();
-            }
-        }
-
-        System.out.println("Here are those " + (rows * cols) + " integers in a " + rows + "x" + cols + " 2d-array:");
-        System.out.println(Arrays.deepToString(a));
-    }
-}
+class Priority extends StatelessWidget {
+  final String priorityCode = '''
+import java.lang.*;  
+  
+public class ThreadPriorityExample extends Thread   
+{  
+  
+// Method 1  
+// Whenever the start() method is called by a thread  
+// the run() method is invoked  
+public void run()  
+{  
+// the print statement  
+System.out.println("Inside the run() method");  
+}  
+  
+// the main method  
+public static void main(String argvs[])  
+{  
+// Creating threads with the help of ThreadPriorityExample class  
+ThreadPriorityExample th1 = new ThreadPriorityExample();  
+ThreadPriorityExample th2 = new ThreadPriorityExample();  
+ThreadPriorityExample th3 = new ThreadPriorityExample();  
+  
+// We did not mention the priority of the thread.  
+// Therefore, the priorities of the thread is 5, the default value  
+  
+// 1st Thread  
+// Displaying the priority of the thread  
+// using the getPriority() method  
+System.out.println("Priority of the thread th1 is : " + th1.getPriority());  
+  
+// 2nd Thread   
+// Display the priority of the thread  
+System.out.println("Priority of the thread th2 is : " + th2.getPriority());  
+  
+// 3rd Thread   
+// // Display the priority of the thread  
+System.out.println("Priority of the thread th2 is : " + th2.getPriority());  
+  
+// Setting priorities of above threads by  
+// passing integer arguments  
+th1.setPriority(6);  
+th2.setPriority(3);  
+th3.setPriority(9);  
+  
+// 6  
+System.out.println("Priority of the thread th1 is : " + th1.getPriority());  
+  
+// 3  
+System.out.println("Priority of the thread th2 is : " + th2.getPriority());  
+  
+// 9  
+System.out.println("Priority of the thread th3 is : " + th3.getPriority());  
+  
+// Main thread  
+  
+// Displaying name of the currently executing thread   
+System.out.println("Currently Executing The Thread : " + Thread.currentThread().getName());  
+  
+System.out.println("Priority of the main thread is : " + Thread.currentThread().getPriority());  
+  
+// Priority of the main thread is 10 now  
+Thread.currentThread().setPriority(10);  
+  
+System.out.println("Priority of the main thread is : " + Thread.currentThread().getPriority());  
+}  
+}  
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dimensional Array'),
+        title: Text('Priority of threads'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -596,7 +692,7 @@ class TwoDArray
                 child: Stack(
                   children: [
                     HighlightView(
-                      DimensionalArrayCode,
+                      priorityCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -611,8 +707,7 @@ class TwoDArray
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: DimensionalArrayCode));
+                          Clipboard.setData(ClipboardData(text: priorityCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -649,7 +744,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64',
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontSize: 13.0,
@@ -663,99 +758,35 @@ class LineNumbers4 extends StatelessWidget {
   }
 }
 
-class AddTwoMatrix extends StatelessWidget {
-  final String AddTwoMatrixCode = '''
-//In call by reference, the original value is changed if we made changes in the called method.
-
-import java.util.*;
-class AddTwoMatrix
-{
-    int m, n;
-    int first[][] = new int[m][n];
-    int second[][] = new int[m][n];
-    AddTwoMatrix(int[][] first, int[][] second, int m, int n)
-    {
-        this.first = first;
-        this.second = second;
-        this.m = m;
-        this.n = n;
-    }
-    public static void main(String[] args)
-    {
-        int m, n, c, d;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of rows and columns of matrix");
-        m = in.nextInt();
-        n = in.nextInt();
-        int first[][] = new int[m][n];
-        int second[][] = new int[m][n];
-        System.out.println("Enter the elements of first matrix");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
-            {
-                first[c][d] = in.nextInt();
-            }
-        }
-        System.out.println("Enter the elements of second matrix");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
-            {
-                second[c][d] = in.nextInt();
-            }
-        }
-        System.out.println("\nElements of First matrix is : ");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
-            {
-                System.out.print(first[c][d] + "\t");
-            }
-            System.out.println();
-        }
-        System.out.println("\nElements of Second matrix is : ");
-        for (c = 0; c < m; c++)
-        {
-            for (d = 0; d < n; d++)
-            {
-                System.out.print(second[c][d] + "\t");
-            }
-            System.out.println();
-        }
-        AddTwoMatrix a = new AddTwoMatrix(first, second, m, n);
-        //call by reference
-        a.addmatrix(a); //Passing Object
-    }
-    //Function for Adding two matrix and storing in third matrix 
-    public void addmatrix(AddTwoMatrix a)
-    {
-        int c, d;
-        int sum[][] = new int[a.m][a.n];
-        for (c = 0; c < a.m; c++)
-        {
-            for (d = 0; d < a.n; d++)
-            {
-                sum[c][d] = a.first[c][d] + a.second[c][d];
-            }
-        }
-        System.out.println("\nSum of the two matrices is : ");
-        for (c = 0; c < a.m; c++)
-        {
-            for (d = 0; d < a.n; d++)
-            {
-                System.out.print(sum[c][d] + "\t");
-            }
-            System.out.println();
-        }
-    }
-}
+class Daemonthread extends StatelessWidget {
+  final String DaemonthreadCode = '''
+public class TestDaemonThread1 extends Thread{  
+ public void run(){  
+  if(Thread.currentThread().isDaemon()){//checking for daemon thread  
+   System.out.println("daemon thread work");  
+  }  
+  else{  
+  System.out.println("user thread work");  
+ }  
+ }  
+ public static void main(String[] args){  
+  TestDaemonThread1 t1=new TestDaemonThread1();//creating thread  
+  TestDaemonThread1 t2=new TestDaemonThread1();  
+  TestDaemonThread1 t3=new TestDaemonThread1();  
+  
+  t1.setDaemon(true);//now t1 is daemon thread  
+    
+  t1.start();//starting threads  
+  t2.start();  
+  t3.start();  
+ }  
+}  
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Two Matrix'),
+        title: Text('Daemon Thread'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -769,7 +800,7 @@ class AddTwoMatrix
                 child: Stack(
                   children: [
                     HighlightView(
-                      AddTwoMatrixCode,
+                      DaemonthreadCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -785,7 +816,7 @@ class AddTwoMatrix
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: AddTwoMatrixCode));
+                              ClipboardData(text: DaemonthreadCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -822,7 +853,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21',
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontSize: 13.0,
