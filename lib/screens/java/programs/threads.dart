@@ -6,19 +6,19 @@ import 'package:flutter_highlight/themes/googlecode.dart';
 import 'package:flutter_highlight/themes/vs.dart';
 import 'package:flutter_highlight/themes/vs2015.dart';
 
-class OopsPage extends StatefulWidget {
-  const OopsPage({super.key});
+class Threads extends StatefulWidget {
+  const Threads({super.key});
 
   @override
-  State<OopsPage> createState() => _ArrayPageState();
+  State<Threads> createState() => _ThreadsState();
 }
 
-class _ArrayPageState extends State<OopsPage> {
+class _ThreadsState extends State<Threads> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OOPs'),
+        title: Text('Array'),
         backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
@@ -33,11 +33,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Single Inheritance'),
+              title: Text('Starting a thread'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SingleInheritance()),
+                  MaterialPageRoute(builder: (context) => Starting()),
                 );
               },
             ),
@@ -52,12 +52,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Multilevel Inheritance'),
+              title: Text('Sorting'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => MultilevelInheritance()),
+                  MaterialPageRoute(builder: (context) => Sorting()),
                 );
               },
             ),
@@ -72,12 +71,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Hierarchical Inheritance'),
+              title: Text('Operations'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => HierarchicalInheritance()),
+                  MaterialPageRoute(builder: (context) => Operations()),
                 );
               },
             ),
@@ -92,11 +90,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Method Overloading'),
+              title: Text('Sum And Average'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MethodOverloading()),
+                  MaterialPageRoute(builder: (context) => SumAndAverage()),
                 );
               },
             ),
@@ -111,11 +109,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Method Overriding'),
+              title: Text('2 Dimensional Array'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MethodOverriding()),
+                  MaterialPageRoute(builder: (context) => DimensionalArray()),
                 );
               },
             ),
@@ -130,49 +128,11 @@ class _ArrayPageState extends State<OopsPage> {
               ),
             ),
             child: ListTile(
-              title: Text('Abstract Class'),
+              title: Text('Add Two Matrix'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Abstractclass()),
-                );
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey.shade300, // Border color
-                  width: 1.0, // Border width
-                ),
-              ),
-            ),
-            child: ListTile(
-              title: Text('Interface'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Interfaceclass()),
-                );
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.grey.shade300, // Border color
-                  width: 1.0, // Border width
-                ),
-              ),
-            ),
-            child: ListTile(
-              title: Text('Encapsulation'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Encapsulaton()),
+                  MaterialPageRoute(builder: (context) => AddTwoMatrix()),
                 );
               },
             ),
@@ -183,27 +143,24 @@ class _ArrayPageState extends State<OopsPage> {
   }
 }
 
-class SingleInheritance extends StatelessWidget {
-  final String SingleInheritanceCode = '''
-class Animal{  
-void eat(){System.out.println("eating...");}  x
+class Starting extends StatelessWidget {
+  final String StartingCode = '''
+class Multi extends Thread{  
+public void run(){  
+System.out.println("thread is running...");  
 }  
-class Dog extends Animal{  
-void bark(){System.out.println("barking...");}  
-}  
-class TestInheritance{  
 public static void main(String args[]){  
-Dog d=new Dog();  
-d.bark();  
-d.eat();  
-}}  
+Multi t1=new Multi();  
+t1.start();  
+ }  
+}  
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Single Inheritance'),
+        title: Text('Starting a Thread'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -217,7 +174,7 @@ d.eat();
                 child: Stack(
                   children: [
                     HighlightView(
-                      SingleInheritanceCode,
+                      StartingCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -232,8 +189,7 @@ d.eat();
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: SingleInheritanceCode));
+                          Clipboard.setData(ClipboardData(text: StartingCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -270,9 +226,9 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20',
               style: TextStyle(
-                fontFamily: 'Consolas',
+                fontFamily: 'Courier New',
                 fontSize: 14.0,
               ),
               textAlign: TextAlign.right,
@@ -284,30 +240,46 @@ class LineNumbers extends StatelessWidget {
   }
 }
 
-class MultilevelInheritance extends StatelessWidget {
-  final String MultilevelInheritanceCode = '''
-class Animal{  
-void eat(){System.out.println("eating...");}  
-}  
-class Dog extends Animal{  
-void bark(){System.out.println("barking...");}  
-}  
-class BabyDog extends Dog{  
-void weep(){System.out.println("weeping...");}  
-}  
-class TestInheritance2{  
-public static void main(String args[]){  
-BabyDog d=new BabyDog();  
-d.weep();  
-d.bark();  
-d.eat();  
-}}  
+class Sorting extends StatelessWidget {
+  final String SortingCode = '''
+import java.util.*;
+
+class ArraySortingDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter no. of elements to sort : ");
+        int size = in.nextInt();
+        // initializing unsorted int array
+        int iArr[] = new int[size];
+        System.out.println("Enter " + size + " integer(s) :");
+        for (int i = 0; i < size; i++)
+        {
+            iArr[i] = in.nextInt();
+        }
+        // let us print all the elements available in list
+        for (int number : iArr)
+        {
+            System.out.println("Number = " + number);
+        }
+        // sorting array
+        Arrays.sort(iArr);
+
+        // let us print all the elements available in list
+        System.out.println("The sorted int array is:");
+        for (int number : iArr)
+        {
+            System.out.println("Number = " + number);
+        }
+    }
+}
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Multilevel Inheritance'),
+        title: Text('Sorting'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -321,7 +293,7 @@ d.eat();
                 child: Stack(
                   children: [
                     HighlightView(
-                      MultilevelInheritanceCode,
+                      SortingCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -336,8 +308,7 @@ d.eat();
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: MultilevelInheritanceCode));
+                          Clipboard.setData(ClipboardData(text: SortingCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -374,7 +345,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -388,30 +359,44 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class HierarchicalInheritance extends StatelessWidget {
-  final String HierarchicalInheritanceCode = '''
-class Animal{  
-void eat(){System.out.println("eating...");}  
-}  
-class Dog extends Animal{  
-void bark(){System.out.println("barking...");}  
-}  
-class Cat extends Animal{  
-void meow(){System.out.println("meowing...");}  
-}  
-class TestInheritance3{  
-public static void main(String args[]){  
-Cat c=new Cat();  
-c.meow();  
-c.eat();  
-//c.bark();//C.T.Error  
-}}  
+class Operations extends StatelessWidget {
+  final String OperationsCode = '''
+class ArrayOperations
+{
+    public static void main(String[] args)
+    {
+        double[] myList = {1.9, 2.9, 3.4, 3.5};
+
+        // Print all the array elements
+        for (int i = 0; i < myList.length; i++)
+        {
+            System.out.println(myList[i] + " ");
+        }
+        // Summing all elements
+        double total = 0;
+        for (int i = 0; i < myList.length; i++)
+        {
+            total += myList[i];
+        }
+
+        System.out.println("Total is " + total);
+
+        // Finding the largest element
+        double max = myList[0];
+        for (int i = 1; i < myList.length; i++)
+        {
+            if (myList[i] > max)
+                max = myList[i];
+        }
+        System.out.println("Max is " + max);
+    }
+}
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hierarchical Inheritance'),
+        title: Text('Operations'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -425,7 +410,7 @@ c.eat();
                 child: Stack(
                   children: [
                     HighlightView(
-                      HierarchicalInheritanceCode,
+                      OperationsCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -441,7 +426,7 @@ c.eat();
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: HierarchicalInheritanceCode));
+                              ClipboardData(text: OperationsCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -478,7 +463,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -492,23 +477,32 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class MethodOverloading extends StatelessWidget {
-  final String MethodOverloadingCode = '''
-class Adder{  
-static int add(int a, int b){return a+b;}  
-static double add(double a, double b){return a+b;}  
+class SumAndAverage extends StatelessWidget {
+  final String SumAndAverageCode = '''
+import java.io.*;
+
+class ArrayAverage
+{
+    public static void main(String[] args)
+    {
+        //define an array
+        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
+        int sum = 0;
+        for (int i = 0; i < numbers.length; i++)
+        {
+            sum = sum + numbers[i];
+        }
+        double average = sum / numbers.length;
+        System.out.println("Sum of array elements is : " + sum);
+        System.out.println("Average value of array elements is : " + average);
+    }
 }  
-class TestOverloading2{  
-public static void main(String[] args){  
-System.out.println(Adder.add(11,11));  
-System.out.println(Adder.add(12.3,12.6));  
-}}  
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Method Overloading'),
+        title: Text('Sum and Average'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -522,7 +516,7 @@ System.out.println(Adder.add(12.3,12.6));
                 child: Stack(
                   children: [
                     HighlightView(
-                      MethodOverloadingCode,
+                      SumAndAverageCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -538,7 +532,7 @@ System.out.println(Adder.add(12.3,12.6));
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: MethodOverloadingCode));
+                              ClipboardData(text: SumAndAverageCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -586,39 +580,41 @@ class LineNumbers3 extends StatelessWidget {
   }
 }
 
-class MethodOverriding extends StatelessWidget {
-  final String MethodOverridingCode = '''
-class Bank{  
-int getRateOfInterest(){return 0;}  
-}  
-//Creating child classes.  
-class SBI extends Bank{  
-int getRateOfInterest(){return 8;}  
-}  
-  
-class BOB extends Bank{  
-int getRateOfInterest(){return 7;}  
-}  
-class SBI extends Bank{  
-int getRateOfInterest(){return 9;}  
-}  
-//Test class to create objects and call the methods  
-class Test2{  
-public static void main(String args[]){  
-SBI s=new SBI();  
-BOB i=new BOB();  
-AXIS a=new AXIS();  
-System.out.println("SBI Rate of Interest: "+s.getRateOfInterest());  
-System.out.println("BOB Rate of Interest: "+i.getRateOfInterest());  
-System.out.println("AXIS Rate of Interest: "+a.getRateOfInterest());  
-}  
-}  
+class DimensionalArray extends StatelessWidget {
+  final String DimensionalArrayCode = '''
+import java.util.*;
+
+class TwoDArray
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter # of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter # of cols: ");
+        int cols = scanner.nextInt();
+
+        int[][] a = new int[rows][cols];
+
+        System.out.print("Enter " + rows + "x" + cols + "=" + (rows * cols) + " integers: ");
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                a[i][j] = scanner.nextInt();
+            }
+        }
+
+        System.out.println("Here are those " + (rows * cols) + " integers in a " + rows + "x" + cols + " 2d-array:");
+        System.out.println(Arrays.deepToString(a));
+    }
+}
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Method Overriding'),
+        title: Text('Dimensional Array'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -632,7 +628,7 @@ System.out.println("AXIS Rate of Interest: "+a.getRateOfInterest());
                 child: Stack(
                   children: [
                     HighlightView(
-                      MethodOverridingCode,
+                      DimensionalArrayCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -648,7 +644,7 @@ System.out.println("AXIS Rate of Interest: "+a.getRateOfInterest());
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: MethodOverridingCode));
+                              ClipboardData(text: DimensionalArrayCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -699,31 +695,99 @@ class LineNumbers4 extends StatelessWidget {
   }
 }
 
-class Abstractclass extends StatelessWidget {
-  final String AbstractclassCode = '''
-abstract class Shape{  
-abstract void draw();  
-}  
-//In real scenario, implementation is provided by others i.e. unknown by end user  
-class Rectangle extends Shape{  
-void draw(){System.out.println("drawing rectangle");}  
-}  
-class Circle1 extends Shape{  
-void draw(){System.out.println("drawing circle");}  
-}  
-//In real scenario, method is called by programmer or user  
-class TestAbstraction1{  
-public static void main(String args[]){  
-Shape s=new Circle1();//In a real scenario, object is provided through method, e.g., getShape() method  
-s.draw();  
-}  
-}  
+class AddTwoMatrix extends StatelessWidget {
+  final String AddTwoMatrixCode = '''
+//In call by reference, the original value is changed if we made changes in the called method.
+
+import java.util.*;
+class AddTwoMatrix
+{
+    int m, n;
+    int first[][] = new int[m][n];
+    int second[][] = new int[m][n];
+    AddTwoMatrix(int[][] first, int[][] second, int m, int n)
+    {
+        this.first = first;
+        this.second = second;
+        this.m = m;
+        this.n = n;
+    }
+    public static void main(String[] args)
+    {
+        int m, n, c, d;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of rows and columns of matrix");
+        m = in.nextInt();
+        n = in.nextInt();
+        int first[][] = new int[m][n];
+        int second[][] = new int[m][n];
+        System.out.println("Enter the elements of first matrix");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                first[c][d] = in.nextInt();
+            }
+        }
+        System.out.println("Enter the elements of second matrix");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                second[c][d] = in.nextInt();
+            }
+        }
+        System.out.println("\nElements of First matrix is : ");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                System.out.print(first[c][d] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println("\nElements of Second matrix is : ");
+        for (c = 0; c < m; c++)
+        {
+            for (d = 0; d < n; d++)
+            {
+                System.out.print(second[c][d] + "\t");
+            }
+            System.out.println();
+        }
+        AddTwoMatrix a = new AddTwoMatrix(first, second, m, n);
+        //call by reference
+        a.addmatrix(a); //Passing Object
+    }
+    //Function for Adding two matrix and storing in third matrix 
+    public void addmatrix(AddTwoMatrix a)
+    {
+        int c, d;
+        int sum[][] = new int[a.m][a.n];
+        for (c = 0; c < a.m; c++)
+        {
+            for (d = 0; d < a.n; d++)
+            {
+                sum[c][d] = a.first[c][d] + a.second[c][d];
+            }
+        }
+        System.out.println("\nSum of the two matrices is : ");
+        for (c = 0; c < a.m; c++)
+        {
+            for (d = 0; d < a.n; d++)
+            {
+                System.out.print(sum[c][d] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Abstract Class'),
+        title: Text('Add Two Matrix'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -737,7 +801,7 @@ s.draw();
                 child: Stack(
                   children: [
                     HighlightView(
-                      AbstractclassCode,
+                      AddTwoMatrixCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -753,7 +817,7 @@ s.draw();
                         icon: Icon(Icons.copy),
                         onPressed: () {
                           Clipboard.setData(
-                              ClipboardData(text: AbstractclassCode));
+                              ClipboardData(text: AddTwoMatrixCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -790,251 +854,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18',
-              style: TextStyle(
-                fontFamily: 'Consolas',
-                fontSize: 13.0,
-              ),
-              textAlign: TextAlign.right,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Interfaceclass extends StatelessWidget {
-  final String InterfaceclassCode = '''
-interface Drawable{  
-void draw();  
-}  
-//Implementation: by second user  
-class Rectangle implements Drawable{  
-public void draw(){System.out.println("drawing rectangle");}  
-}  
-class Circle implements Drawable{  
-public void draw(){System.out.println("drawing circle");}  
-}  
-//Using interface: by third user  
-class TestInterface1{  
-public static void main(String args[]){  
-Drawable d=new Circle();//In real scenario, object is provided by method e.g. getDrawable()  
-d.draw();  
-}}  
-''';
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Interface'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LineNumbers6(),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: Stack(
-                  children: [
-                    HighlightView(
-                      InterfaceclassCode,
-                      language: 'java',
-                      padding: EdgeInsets.all(12),
-                      textStyle: TextStyle(
-                        fontFamily: 'Consolas',
-                        fontSize: 13.0,
-                      ),
-                      theme: vsTheme,
-                    ),
-                    Positioned(
-                      top: 8.0,
-                      right: 8.0,
-                      child: IconButton(
-                        icon: Icon(Icons.copy),
-                        onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: InterfaceclassCode));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Code copied to clipboard')),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LineNumbers6 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(8.0),
-            bottomLeft: Radius.circular(8.0),
-          ),
-          border: Border.all(color: Colors.grey.shade300),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15',
-              style: TextStyle(
-                fontFamily: 'Consolas',
-                fontSize: 13.0,
-              ),
-              textAlign: TextAlign.right,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Encapsulaton extends StatelessWidget {
-  final String EncapsulatonCode = '''
-//A Account class which is a fully encapsulated class.  
-//It has a private data member and getter and setter methods.  
-
-//File: Account.java
-class Account {  
-//private data members  
-private long acc_no;  
-private String name,email;  
-private float amount;  
-//public getter and setter methods  
-public long getAcc_no() {  
-    return acc_no;  
-}  
-public void setAcc_no(long acc_no) {  
-    this.acc_no = acc_no;  
-}  
-public String getName() {  
-    return name;  
-}  
-public void setName(String name) {  
-    this.name = name;  
-}  
-public String getEmail() {  
-    return email;  
-}  
-public void setEmail(String email) {  
-    this.email = email;  
-}  
-public float getAmount() {  
-    return amount;  
-}  
-public void setAmount(float amount) {  
-    this.amount = amount;  
-}  
-  
-}  
-
-
-//File: TestAccount.java
-public class TestEncapsulation {  
-public static void main(String[] args) {  
-    //creating instance of Account class  
-    Account acc=new Account();  
-    //setting values through setter methods  
-    acc.setAcc_no(7560504000L);  
-    acc.setName("Sonoo Jaiswal");  
-    acc.setEmail("sonoojaiswal@javatpoint.com");  
-    acc.setAmount(500000f);  
-    //getting values through getter methods  
-    System.out.println(acc.getAcc_no()+" "+acc.getName()+" "+acc.getEmail()+" "+acc.getAmount());  
-}  
-}  
-''';
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Encapsulaton'),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LineNumbers7(),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: Stack(
-                  children: [
-                    HighlightView(
-                      EncapsulatonCode,
-                      language: 'java',
-                      padding: EdgeInsets.all(12),
-                      textStyle: TextStyle(
-                        fontFamily: 'Consolas',
-                        fontSize: 13.0,
-                      ),
-                      theme: vsTheme,
-                    ),
-                    Positioned(
-                      top: 8.0,
-                      right: 8.0,
-                      child: IconButton(
-                        icon: Icon(Icons.copy),
-                        onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: EncapsulatonCode));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Code copied to clipboard')),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LineNumbers7 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(8.0),
-            bottomLeft: Radius.circular(8.0),
-          ),
-          border: Border.all(color: Colors.grey.shade300),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75',
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontSize: 13.0,
