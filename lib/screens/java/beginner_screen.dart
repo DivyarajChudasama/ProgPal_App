@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:progpal/screens/java/applet.dart';
 import 'package:progpal/screens/java/java_fifth.dart';
 import 'package:progpal/screens/java/java_first.dart';
 import 'package:progpal/screens/java/java_fourth.dart';
@@ -634,6 +635,12 @@ class ProgramsPage extends StatelessWidget {
           'Data Structure',
           'assets/images/java/ds.png',
           DataStructure(),
+        ),
+        buildProgramCard(
+          context,
+          'Applet',
+          'assets/images/java/applet.png',
+          Applet(),
         ),
       ],
     );
