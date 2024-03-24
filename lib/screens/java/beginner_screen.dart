@@ -10,6 +10,7 @@ import 'package:progpal/screens/java/programs/collection.dart';
 import 'package:progpal/screens/java/programs/exception.dart';
 import 'package:progpal/screens/java/programs/file_handling.dart';
 import 'package:mind_map/mind_map.dart';
+import 'package:progpal/screens/java/programs/oops.dart';
 
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
@@ -738,6 +739,41 @@ class ProgramsPage extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         'Exception Handling',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OopsPage()),
+                );
+              },
+              child: Card(
+                elevation: 4.0,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/oop.png',
+                          width: 180, // Adjust the width as needed
+                          height: 140, // Adjust the height as needed
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        'OOPs',
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
