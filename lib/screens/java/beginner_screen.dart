@@ -518,6 +518,7 @@ class DescriptionPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              
               SizedBox(height: 16.0),
               Text(
                   '• Java is quite popular as a Programming Language in the industry so you can get good opportunities, if that is what you are looking for'),
