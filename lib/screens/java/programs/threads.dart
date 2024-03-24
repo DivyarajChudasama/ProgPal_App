@@ -18,7 +18,7 @@ class _ThreadsState extends State<Threads> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Array'),
+        title: Text('Threads'),
         backgroundColor: Colors.indigo[400],
       ),
       body: ListView(
@@ -52,11 +52,11 @@ class _ThreadsState extends State<Threads> {
               ),
             ),
             child: ListTile(
-              title: Text('Sorting'),
+              title: Text('Sleep method'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Sorting()),
+                  MaterialPageRoute(builder: (context) => Sleep()),
                 );
               },
             ),
@@ -71,11 +71,11 @@ class _ThreadsState extends State<Threads> {
               ),
             ),
             child: ListTile(
-              title: Text('Operations'),
+              title: Text('Run Method '),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Operations()),
+                  MaterialPageRoute(builder: (context) => Run()),
                 );
               },
             ),
@@ -226,7 +226,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20',
+              '1\n2\n3\n4\n5\n6\n7',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -240,46 +240,30 @@ class LineNumbers extends StatelessWidget {
   }
 }
 
-class Sorting extends StatelessWidget {
-  final String SortingCode = '''
-import java.util.*;
-
-class ArraySortingDemo
-{
-    public static void main(String[] args)
-    {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter no. of elements to sort : ");
-        int size = in.nextInt();
-        // initializing unsorted int array
-        int iArr[] = new int[size];
-        System.out.println("Enter " + size + " integer(s) :");
-        for (int i = 0; i < size; i++)
-        {
-            iArr[i] = in.nextInt();
-        }
-        // let us print all the elements available in list
-        for (int number : iArr)
-        {
-            System.out.println("Number = " + number);
-        }
-        // sorting array
-        Arrays.sort(iArr);
-
-        // let us print all the elements available in list
-        System.out.println("The sorted int array is:");
-        for (int number : iArr)
-        {
-            System.out.println("Number = " + number);
-        }
-    }
-}
+class Sleep extends StatelessWidget {
+  final String SleepingCode = '''
+class TestSleepMethod1 extends Thread{    
+ public void run(){    
+  for(int i=1;i<5;i++){   
+  // the thread will sleep for the 500 milli seconds   
+    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}    
+    System.out.println(i);    
+  }    
+ }    
+ public static void main(String args[]){    
+  TestSleepMethod1 t1=new TestSleepMethod1();    
+  TestSleepMethod1 t2=new TestSleepMethod1();    
+     
+  t1.start();    
+  t2.start();    
+ }    
+}    
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sorting'),
+        title: Text('Sleep Method'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -293,7 +277,7 @@ class ArraySortingDemo
                 child: Stack(
                   children: [
                     HighlightView(
-                      SortingCode,
+                      SleepingCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -308,7 +292,7 @@ class ArraySortingDemo
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(ClipboardData(text: SortingCode));
+                          Clipboard.setData(ClipboardData(text: SleepingCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -345,7 +329,7 @@ class LineNumbers1 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -359,44 +343,29 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class Operations extends StatelessWidget {
-  final String OperationsCode = '''
-class ArrayOperations
-{
-    public static void main(String[] args)
-    {
-        double[] myList = {1.9, 2.9, 3.4, 3.5};
-
-        // Print all the array elements
-        for (int i = 0; i < myList.length; i++)
-        {
-            System.out.println(myList[i] + " ");
-        }
-        // Summing all elements
-        double total = 0;
-        for (int i = 0; i < myList.length; i++)
-        {
-            total += myList[i];
-        }
-
-        System.out.println("Total is " + total);
-
-        // Finding the largest element
-        double max = myList[0];
-        for (int i = 1; i < myList.length; i++)
-        {
-            if (myList[i] > max)
-                max = myList[i];
-        }
-        System.out.println("Max is " + max);
-    }
-}
+class Run extends StatelessWidget {
+  final String RunCode = '''
+class TestCallRun2 extends Thread{  
+ public void run(){  
+  for(int i=1;i<5;i++){  
+    try{Thread.sleep(500);}catch(InterruptedException e){System.out.println(e);}  
+    System.out.println(i);  
+  }  
+ }  
+ public static void main(String args[]){  
+  TestCallRun2 t1=new TestCallRun2();  
+  TestCallRun2 t2=new TestCallRun2();  
+   
+  t1.run();  
+  t2.run();  
+ }  
+}  
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Operations'),
+        title: Text('Run Method'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -410,7 +379,7 @@ class ArrayOperations
                 child: Stack(
                   children: [
                     HighlightView(
-                      OperationsCode,
+                      RunCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -425,8 +394,7 @@ class ArrayOperations
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: OperationsCode));
+                          Clipboard.setData(ClipboardData(text: RunCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -463,7 +431,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
