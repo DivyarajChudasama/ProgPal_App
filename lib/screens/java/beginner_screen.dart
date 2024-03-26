@@ -768,8 +768,188 @@ class _InterviewPageState extends State<InterviewPage> {
     questionWidgets.add(_buildQuestion(
       context,
       18,
-      '. What do you mean by data encapsulation?',
-      '○Inheritance provides code reusability. The derived class does not need to redefine the method of base class unless it needs to provide the specific implementation of the method.\n○Runtime polymorphism cannot be achieved without using inheritance.\n○We can simulate the inheritance of classes with the real-time objects which makes OOPs more realistic.\n○Inheritance provides data hiding. The base class can hide some data from the derived class by making it private.\n○Method overriding cannot be achieved without inheritance. By method overriding, we can give a specific implementation of some basic method contained by the base class.',
+      'What do you mean by data encapsulation?',
+      '• Data Encapsulation is an Object-Oriented Programming concept of hiding the data attributes and their behaviours in a single unit.\n• It helps developers to follow modularity while developing software by ensuring that each object is independent of other objects by having its own methods, attributes, and functionalities.\n• It is used for the security of the private properties of an object and hence serves the purpose of data hiding.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      19,
+      'What is polymorphism?',
+      'Polymorphism is defined as the ability to take more than one form It is of two types namely, Compile time polymorphism or method overloading- a function called during compile time. For instance, take a class ‘area’. Based on the number of parameters it may calculate the area of a square, triangle, or circle. Run time polymorphism or method overriding- links during run time.  The method inside a class overrides the method of the parent class.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      20,
+      'What is abstraction?',
+      'Abstraction refers to the act of representing essential features without including background details. The detailed information or the implementation is hidden. The most common example of abstraction is a car, we know how to turn on the engine, accelerate and move, however, the way engine works, and its internal components are complex logic hidden from the general users. This is usually done to handle the complexity.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      21,
+      'What is the Wrapper class in Java?',
+      'Wrapper, in general, is referred to a larger entity that encapsulates a smaller entity. Here in Java, the wrapper class is an object class that encapsulates the primitive data types. \nThe primitive data types are the ones from which further data types could be created. For example, integers can further lead to the construction of long, byte, short, etc. On the other hand, the string cannot, hence it is not primitive. \nGetting back to the wrapper class, Java contains 8 wrapper classes. They are Boolean, Byte, Short, Integer, Character, Long, Float, and Double. Further, custom wrapper classes can also be created in Java which is similar to the concept of Structure in the C programming language. We create our own wrapper class with the required data types.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      22,
+      'What is method overriding?',
+      'Method overriding, also known as run time polymorphism is one where the child class contains the same method as the parent class. For instance, we have a method named ‘progpal()’ in the parent class. A method progpal() is again defined in the sub-class. Thus when progpal() is called in the subclass, the method within the class id executed. Here, progpal() within the class overridden the method outside. ',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      23,
+      'What is method overloading?',
+      'Method overriding is a method to achieve Run-time polymorphism in Java. Method overriding is a feature that allows a child class to provide a specific implementation of a method that is already provided by one of its parent classes. When a method in a child class has the same name, the same parameters or signature, and the same return type(or sub-type) as a method in its parent class, then the method in the subclass is said to override the method in the superclass.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      24,
+      'Why is StringBuffer called mutable?',
+      'StringBuffer class in Java is used to represent a changeable string of characters. It offers an alternative to the immutable String class by enabling you to change a string’s contents without constantly creating new objects. Mutable (modifiable) strings are created with the help of the StringBuffer class. The StringBuffer class in Java is identical to the String class except that it is changeable.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      25,
+      'What is an array in Java?',
+      'An Array in Java is a data structure that is used to store a fixed-size sequence of elements of the same type. Elements of an array can be accessed by their index, which starts from 0 and goes up to a length of minus 1. Array declaration in Java is done with the help of square brackets and size is also specified during the declaration. ',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      26,
+      'On which memory arrays are created in Java?',
+      'Arrays in Java are created in heap memory. When an array is created with the help of a new keyword, memory is allocated in the heap to store the elements of the array. In Java, the heap memory is managed by the Java Virtual Machine(JVM) and it is also shared between all threads of the Java Program. The memory which is no longer in use by the program, JVM uses a garbage collector to reclaim the memory. Arrays in Java are created dynamically which means the size of the array is determined during the runtime of the program. The size of the array is specified during the declaration of the array and it cannot be changed once the array is created.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      27,
+      'What do you understand by the jagged array?',
+      'A jagged Array in Java is just a two-dimensional array in which each row of the array can have a different length. Since all the rows in a 2-d Array have the same length but a jagged array allows more flexibility in the size of each row. This feature is very useful in conditions where the data has varying lengths or when memory usage needs to be optimized.   ',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      28,
+      'What are Classes in Java? ',
+      'In Java, Classes are the collection of objects sharing similar characteristics and attributes. Classes represent the blueprint or template from which objects are created.  Classes are not real-world entities but help us to create objects which are real-world entities.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      29,
+      'What is an Interface?',
+      'An interface in Java is a collection of static final variables and abstract methods that define the contract or agreement for a set of linked classes. Any class that implements an interface is required to implement a specific set of methods. It specifies the behavior that a class must exhibit but not the specifics of how it should be implemented.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      30,
+      'Can we override the private methods?',
+      'It is not possible to override the private methods in Java. Method overriding is where the method in the subclass is implemented instead of the method from the parent class. The private methods are accessible only within the class in which it is declared. Since this method is not visible to other classes and cannot be accessed, it cannot be overridden. ',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      31,
+      'What is the difference between an abstract class and an interface?',
+      'An abstract class can have both abstract and non-abstract methods and can beextended by other classes, while an interface only contains abstract methoddeclarations and can be implemented by classes.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      32,
+      'What is the use of the final keyword?',
+      'The final keyword is used to make functions non-virtual. By default, all the functions are virtual so to make it non-virtual we use the final keyword.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      33,
+      'What is the Stack class in Java and what are the various methods provided by it?',
+      'A Stack class in Java is a LIFO data structure that implements the Last In First Out data structure. It is derived from a Vector class but has functions specific to stacks. The Stack class in java provides the following methods:\n• peek(): returns the top item from the stack without removing it \n• empty(): returns true if the stack is empty and false otherwise\n• push(): pushes an item onto the top of the stack\n• pop(): removes and returns the top item from the stack\n• search(): returns the 1, based position of the object from the top of the stack. If the object is not in the stack, it returns -1',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      34,
+      'What is Set in the Java Collections framework and list down its various implementations?',
+      'Sets are collections that don’t store duplicate elements. They don’t keep any order of the elements. The Java Collections framework provides several implementations of the Set interface, including: \n• HashSet: HashSet in Java, stores the elements in a has table which provides faster lookups and faster insertion. HashSet is not ordered.\n• LinkedHashSet: LinkedHashSet is an implementation of HashSet which maintains the insertion order of the elements.\n• TreeSet: TreeSet stores the elements in a sorted order that is determined by the natural ordering of the elements or by a custom comparator provided at the time of creation.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      35,
+      'What is the HashSet class in Java and how does it store elements?',
+      'The HashSet class implements the Set interface in the Java Collections Framework and is a member of the HashSet class. Unlike duplicate values, it stores a collection of distinct elements. In this implementation, each element is mapped to an index in an array using a hash function, and the index is used to quickly access the element. It produces an index for the element in the array where it is stored based on the input element. Assuming the hash function distributes the elements among the buckets appropriately, the HashSet class provides constant-time performance for basic operations (add, remove, contain, and size).',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      35,
+      'What is the HashSet class in Java and how does it store elements?',
+      'The HashSet class implements the Set interface in the Java Collections Framework and is a member of the HashSet class. Unlike duplicate values, it stores a collection of distinct elements. In this implementation, each element is mapped to an index in an array using a hash function, and the index is used to quickly access the element. It produces an index for the element in the array where it is stored based on the input element. Assuming the hash function distributes the elements among the buckets appropriately, the HashSet class provides constant-time performance for basic operations (add, remove, contain, and size).',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      36,
+      'What is LinkedHashSet in Java Collections Framework?',
+      'The LinkedHashSet is an ordered version of Hashset maintained by a doubly-linked List across all the elements. It is very helpful when iteration order is needed. During Iteration in LinkedHashSet, elements are returned in the same order they are inserted.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      37,
+      'What is an enumeration?',
+      'Enumeration is a user-defined data type. It is mainly used to assign names to integral constants, the names make a program easy to read and maintain. The main objective of the enum is to define user-defined data types.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      38,
+      'How many types of exceptions can occur in a Java program?',
+      'There are generally two types of exceptions in Java:\n•Built-in Exceptions: Built-in exceptions in Java are provided by the Java Libraries. These exceptions can be further divided into two subcategories i.e., checked and unchecked Exceptions. Below are some of the built-in exceptions in Java:\n\n• ArrayIndexOutOfBoundsExceptions\n• FileNotFoundException\n• ClassNotFoundException\n• NullPointerException\n• IOException\n• InterruptedException\n• ArithmeticException\n• InterruptedException\n• RuntimeException \n\n•User-Defined Exceptions: User-defined exceptions are defined by the programmers themselves to handle some specific situations or errors which are not covered by built-in exceptions. To define user-defined exceptions a new class that extends the appropriate exception class must be defined. User-defined Exceptions in Java are used when the built-in exceptions are in Java.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      39,
+      'What do you mean by a Multithreaded program?',
+      'Multithreaded programs in Java contain threads that run concurrently instead of running sequentially. A computer can use its resources more efficiently by combining multiple tasks at once. Any program with multithreading allows more than one user to simultaneously use the program without running multiple copies. A multithreaded program is designed to run multiple processes at the same time which can improve the performance of a program and allows the program to utilize multiple processors and improves the overall throughput.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      40,
+      'What are the two ways in which Thread can be created?',
+      'Multithreading is a Java feature that allows concurrent execution of two or more parts of a program for maximum utilization of the CPU. In general, threads are small, lightweight processes with separate paths of execution. These threads use shared memory, but they act independently, thus if any one thread fails it does not affect the other threads. There are two ways to create a thread:\n •By extending the Thread class \n •By implementing a Runnable interface.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      41,
+      'What is a thread?',
+      'Threads in Java are subprocess with lightweight with the smallest unit of processes and also has separate paths of execution. These threads use shared memory but they act independently hence if there is an exception in threads that do not affect the working of other threads despite them sharing the same memory. A thread has its own program counter, execution stack, and local variables, but it shares the same memory space with other threads in the same process. Java provides built-in support for multithreading through the Runnable interface and the Thread class.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      42,
+      'What is a daemon thread?',
+      'A daemon thread in Java is a low-priority thread that is used to perform background operations or tasks which are used to perform continuously. such as Garbage collection, Signal dispatches, Action listeners, etc. Daemon threads in Java have lower priority than user threads, which means they can only execute when no user threads are running. Daemon threads in Java are useful features that are required for background tasks that do not require explicit shutdown or finalization. It allows more efficient use of system resource and are used to simplify resources and can simplify long-running tasks.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      43,
+      'Describe the life cycle of the thread?',
+      '①New: The thread has been created but has not yet started.\n②Runnable: The thread is running, executing its task, or is ready to run if there are no other higher-priority threads. \n③Blocked: The thread is temporarily suspended, waiting for a resource or an event. \n④Waiting: The thread is waiting for another thread to perform a task or for a specified amount of time to elapse. \n⑤Terminated: The thread has completed its task or been terminated by another thread.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      44,
+      'Why Garbage Collection is necessary in Java?',
+      'For Java, Garbage collection is necessary to avoid memory leaks which can cause the program to crash and become unstable. There is no way to avoid garbage collection in Java. Unlike C++, Garbage collection in Java helps programmers to focus on the development of the application instead of managing memory resources and worrying about memory leakage. Java Virtual Machine (JVM) automatically manages the memory periodically by running a garbage collector which frees up the unused memory in the application. Garbage collection makes Java memory efficient because it removes unreferenced objects from the heap memory.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      45,
+      'What is a memory leak, and how does it affect garbage collection?',
+      'In Java Memory leaks can be caused by a variety of factors, such as not closing resources properly, holding onto object references longer than necessary, or creating too many objects unnecessarily. There are situations in which garbage collector does not collect objects because there is a reference to those objects. In these situations where the application creates lots of objects and does not use them and every object has some valid references, a Garbage collector in Java cannot destroy the objects. These useless objects which do not provide any value to the program are known as Memory leaks. Memory leaks can impact garbage collection negatively by preventing the garbage collector from reclaiming unused memory. This behavior will lead to slow performance or sometimes system failure. In a program, it is important to avoid memory leaks by managing resources and object references properly. ',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      46,
+      'What is JDBC?',
+      'JDBC standard API is used to link Java applications and relational databases. It provides a collection of classes and interfaces that let programmers to use the Java programming language to communicate with the database. The classes and interface of JDBC allow the application to send requests which are made by users to the specified database. There are generally four components of JDBC by which it interacts with the database: \n• JDBC API\n• JDBC Driver manager \n• JDBC Test Suite \n• JDBC-ODBC Bridge Drivers',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      47,
+      'What are the steps to connect to the database in Java?',
+      '\n• Import the Packages\n• Load the drivers using the forName() method \n• Register the drivers using DriverManager \n• Establish a connection using the Connection class object\n• Create a statement\n• Execute the query\n• Close the connections',
     ));
     return questionWidgets;
   }
