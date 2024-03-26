@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/programs/applet.dart';
-import 'package:progpal/screens/java/java_fifth.dart';
-import 'package:progpal/screens/java/java_first.dart';
-import 'package:progpal/screens/java/java_fourth.dart';
-import 'package:progpal/screens/java/java_second.dart';
-import 'package:progpal/screens/java/java_third.dart';
+import 'package:progpal/screens/java/modules/5_oops.dart';
+import 'package:progpal/screens/java/modules/1_introduction.dart';
+import 'package:progpal/screens/java/modules/4_keywordslist.dart';
+import 'package:progpal/screens/java/modules/2_features.dart';
+import 'package:progpal/screens/java/modules/3_comparisions.dart';
 import 'package:progpal/screens/java/programs/DataStructure.dart';
 import 'package:progpal/screens/java/programs/array.dart';
 import 'package:progpal/screens/java/programs/basic.dart';
