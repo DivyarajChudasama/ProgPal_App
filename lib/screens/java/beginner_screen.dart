@@ -34,7 +34,7 @@ class BeginnerPage extends StatelessWidget {
         backgroundColor: Colors.indigo,
       ),
       body: DefaultTabController(
-        length: 4, // Add one more tab for the RoadMap
+        length: 5, // Add one more tab for the RoadMap
         child: Column(
           crossAxisAlignment:
               CrossAxisAlignment.start, // Align tabs to the start
@@ -58,6 +58,7 @@ class BeginnerPage extends StatelessWidget {
                   IndexPage(),
                   ProgramsPage(),
                   RoadMapPage(),
+                  InterviewPage(),
                   DescriptionPage(),
                 ],
               ),
@@ -563,6 +564,21 @@ class DescriptionPage extends StatelessWidget {
               Text('• Consistency is key to success'),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class InterviewPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text("Interviewpage"),
+          ],
         ),
       ),
     );
