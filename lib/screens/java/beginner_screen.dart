@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progpal/screens/java/applet.dart';
+import 'package:progpal/screens/java/programs/applet.dart';
 import 'package:progpal/screens/java/java_fifth.dart';
 import 'package:progpal/screens/java/java_first.dart';
 import 'package:progpal/screens/java/java_fourth.dart';
@@ -16,7 +16,7 @@ import 'package:progpal/screens/java/programs/oops.dart';
 import 'package:progpal/screens/java/programs/pattern.dart';
 import 'package:progpal/screens/java/programs/sorting.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
-import 'package:progpal/screens/java/recursion.dart';
+import 'package:progpal/screens/java/programs/recursion.dart';
 
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
