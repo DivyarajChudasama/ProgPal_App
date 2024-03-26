@@ -627,25 +627,30 @@ class InterviewPage extends StatelessWidget {
           ),
         ],
       ),
-      child: ExpansionTile(
-        title: Text(
-          question,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          dividerColor: Colors.transparent,
         ),
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              answer,
-              style: TextStyle(
-                fontSize: 16,
-              ),
+        child: ExpansionTile(
+          title: Text(
+            question,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                answer,
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
