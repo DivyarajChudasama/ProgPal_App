@@ -575,46 +575,77 @@ class InterviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Interview Questions'),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: Container(
+          alignment: Alignment.center,
+          color: Theme.of(context).primaryColor,
+          child: Text(
+            'Interview Questions',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ExpansionTile(
-              title: Text(
-                'What is Flutter?',
-                style: TextStyle(fontSize: 16),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    'Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ],
+            _buildQuestion(
+              context,
+              'What is Flutter?',
+              'Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.',
             ),
-            ExpansionTile(
-              title: Text(
-                'How does hot reload work in Flutter?',
-                style: TextStyle(fontSize: 16),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    'Hot reload allows you to quickly and easily experiment, build UIs, add features, and fix bugs. Simply save the file, and the framework automatically rebuilds the widget tree, allowing you to see the changes instantly.',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ],
+            _buildQuestion(
+              context,
+              'How does hot reload work in Flutter?',
+              'Hot reload allows you to quickly and easily experiment, build UIs, add features, and fix bugs. Simply save the file, and the framework automatically rebuilds the widget tree, allowing you to see the changes instantly.',
             ),
-            // Add more ExpansionTiles with questions and answers as needed
+            // Add more questions and answers here
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildQuestion(BuildContext context, String question, String answer) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: ExpansionTile(
+        title: Text(
+          question,
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              answer,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
