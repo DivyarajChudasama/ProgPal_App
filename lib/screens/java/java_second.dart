@@ -11,14 +11,10 @@ class JavaSecond extends StatefulWidget {
 class _JavaSecondState extends State<JavaSecond> {
   List<String> contents = [
     'Features of Java',
-    'Simple\n\n Java is very easy to learn, and its syntax is simple, clean and easy to understand. According to Sun Microsystem,Java syntax is based on C++. Java has removed many complicated and rarely-used features, for example, explicit pointers, operator overloading, etc. There is no need to remove unreferenced objects because there is an Automatic Garbage Collection in Java.',
-    'Object-oriented\n\n Java is an object-oriented programming language. Everything in Java is an object. Object-oriented means we organize our software as a combination of different types of objects that incorporate both data and behavior.Play Object-oriented programming is a methodology that simplifies software development and maintenance by providing some rules.',
-    'Basic concepts of OOPs are:\n\n Object\n Class\n Inheritance\n Polymorphism\n Abstraction\n Encapsulation',
-    'Platform Independent\n\n Java is platform independent Java is platform independent because it is different from other languages like C, C++, etc. which are compiled into platform specific machines while Java is a write once, run anywhere language. A platform is the hardware or software environment in which a program runs. Java provides a software-based platform.',
-    'Secured\n\n Java is best known for its security. With Java, we can develop virus-free systems. Java is secured because: \nNo explicit pointer \nJava Programs run inside a virtual machine sandboxhow Java is secured.',
-    '\nClassloader: Classloader in Java is a part of the Java Runtime Environment (JRE) which is used to load Java classes into the Java Virtual Machine dynamically. It adds security by separating the package for the classes of the local file system from those that are imported from network sources. \nSecurity Manager: It determines what resources a class can access such as reading and writing to the local disk.',
-    'Robust \n\n Java is robust because: \n It uses strong memory management. \n There is a lack of pointers that avoids security problems.\nJava provides automatic garbage collection which runs on the Java Virtual Machine to get rid of objects which are not being used by a Java application anymore.\nThere are exception handling and the type checking mechanism in Java.',
-    'Architecture-neutral\n\nJava is architecture neutral because there are no implementation dependent features, for example, the size of primitive types is fixed.\n\nPortable\nJava is portable because it facilitates you to carry the Java bytecode to any platform. It does not require any implementation.',
+    'Simple\n\n Java is very easy to learn, and its syntax is simple, clean and easy to understand. According to Sun Microsystem,Java syntax is based on C++. Java has removed many complicated and rarely-used features, for example, explicit pointers, operator overloading, etc. There is no need to remove unreferenced objects because there is an Automatic Garbage Collection in Java. \n\nObject-oriented\n\n Java is an object-oriented programming language. Everything in Java is an object. Object-oriented means we organize our software as a combination of different types of objects that incorporate both data and behavior.Object-oriented programming is a methodology that simplifies software development and maintenance by providing some rules.',
+    'Basic concepts of OOPs are:\n\n Object\n Class\n Inheritance\n Polymorphism\n Abstraction\n Encapsulation \n\nPlatform Independent\n\n Java is platform independent Java is platform independent because it is different from other languages like C, C++, etc. which are compiled into platform specific machines while Java is a write once, run anywhere language. A platform is the hardware or software environment in which a program runs. Java provides a software-based platform.',
+    'Secured\n\n Java is best known for its security. With Java, we can develop virus-free systems. Java is secured because: \nNo explicit pointer \nJava Programs run inside a virtual machine sandboxhow Java is secured. \nClassloader: Classloader in Java is a part of the Java Runtime Environment (JRE) which is used to load Java classes into the Java Virtual Machine dynamically. It adds security by separating the package for the classes of the local file system from those that are imported from network sources. \nSecurity Manager: It determines what resources a class can access such as reading and writing to the local disk.',
+    'Robust \n\n Java is robust because: \n It uses strong memory management. \n There is a lack of pointers that avoids security problems.\nJava provides automatic garbage collection which runs on the Java Virtual Machine to get rid of objects which are not being used by a Java application anymore.\nThere are exception handling and the type checking mechanism in Java. \n\nArchitecture-neutral\n\nJava is architecture neutral because there are no implementation dependent features, for example, the size of primitive types is fixed.\n\nPortable\nJava is portable because it facilitates you to carry the Java bytecode to any platform. It does not require any implementation.',
   ];
   int currentIndex = 0;
   bool showSummary = false;
@@ -74,37 +70,39 @@ class _JavaSecondState extends State<JavaSecond> {
             ),
             SizedBox(height: 30),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                width: 500,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        contents[currentIndex],
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  width: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
                       ),
-                      if (currentIndex == 0)
-                        Text(
-                          'Tap the screen to continue',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
                     ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          contents[currentIndex],
+                          style: TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
+                        ),
+                        if (currentIndex == 0)
+                          Text(
+                            'Tap the screen to continue',
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),

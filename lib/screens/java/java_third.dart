@@ -11,12 +11,9 @@ class JavaThird extends StatefulWidget {
 class _JavaThirdState extends State<JavaThird> {
   List<String> contents = [
     'JDK, JRE, and JVM',
-    'JVM \n\nJVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it does not physically exist. It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also run those programs which are written in other languages and compiled to Java bytecode.',
-    'JVMs are available for many hardware and software platforms. JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However, Java is platform independent. There are three notions of the JVM: specification, implementation, and instance.',
-    'The JVM performs the following main tasks: \nLoads code \nVerifies code \nExecutes code \nProvides runtime environment',
-    'JRE\n\nJRE is an acronym for Java Runtime Environment. Also called Java RTE. The Java Runtime Environment is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It is the implementation of JVM. It physically exists. It contains a set of libraries + other files that JVM uses at runtime.',
-    'JDK\n\nJDK is an acronym for Java Development Kit. The Java Development Kit (JDK) is a software development environment which is used to develop Java applications and applets. It physically exists. It contains JRE + development tools. JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation',
-    'Standard Edition Java Platform\nEnterprise Edition Java Platform\nMicro Edition Java Platform\n\nThe JDK contains a private JVM and a few other resources such as an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) to complete the development of a Java Application.',
+    'JVM \n\nJVM (Java Virtual Machine) is an abstract machine. It is called a virtual machine because it does not physically exist. It is a specification that provides a runtime environment in which Java bytecode can be executed. It can also run those programs which are written in other languages and compiled to Java bytecode.\n\nJVMs are available for many hardware and software platforms. JVM, JRE, and JDK are platform dependent because the configuration of each OS is different from each other. However, Java is platform independent. There are three notions of the JVM: specification, implementation, and instance.',
+    'The JVM performs the following main tasks: \nLoads code \nVerifies code \nExecutes code \nProvides runtime environment \n\nJRE\n\nJRE is an acronym for Java Runtime Environment. Also called Java RTE. The Java Runtime Environment is a set of software tools which are used for developing Java applications. It is used to provide the runtime environment. It is the implementation of JVM. It physically exists. It contains a set of libraries + other files that JVM uses at runtime.',
+    'JDK\n\nJDK is an acronym for Java Development Kit. The Java Development Kit (JDK) is a software development environment which is used to develop Java applications and applets. It physically exists. It contains JRE + development tools. JDK is an implementation of any one of the below given Java Platforms released by Oracle Corporation \n\nStandard Edition Java Platform\nEnterprise Edition Java Platform\nMicro Edition Java Platform\n\nThe JDK contains a private JVM and a few other resources such as an interpreter/loader (java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc) to complete the development of a Java Application.',
   ];
   int currentIndex = 0;
   bool showSummary = false;
@@ -72,37 +69,39 @@ class _JavaThirdState extends State<JavaThird> {
             ),
             SizedBox(height: 30),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                width: 500,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        contents[currentIndex],
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  width: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
                       ),
-                      if (currentIndex == 0)
-                        Text(
-                          'Tap the screen to continue',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
                     ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          contents[currentIndex],
+                          style: TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
+                        ),
+                        if (currentIndex == 0)
+                          Text(
+                            'Tap the screen to continue',
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -78,37 +78,39 @@ class _JavaFifthState extends State<JavaFifth> {
             ),
             SizedBox(height: 30),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                width: 500,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        contents[currentIndex],
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
+              child: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  width: 500,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
                       ),
-                      if (currentIndex == 0)
-                        Text(
-                          'Tap the screen to continue',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
                     ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          contents[currentIndex],
+                          style: TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
+                        ),
+                        if (currentIndex == 0)
+                          Text(
+                            'Tap the screen to continue',
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),
