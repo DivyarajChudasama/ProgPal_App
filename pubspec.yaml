@@ -45,7 +45,7 @@ dependencies:
   mind_map: ^1.0.1
   firebase_messaging: ^14.7.19
   flutter_highlight: ^0.7.0
-  text_to_speech: ^0.2.3
+  # text_to_speech: ^0.2.3
   
 
 dev_dependencies:
