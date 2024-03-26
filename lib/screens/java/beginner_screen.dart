@@ -582,49 +582,37 @@ class InterviewPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Question 1:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                ' Is Java Platform Independent if then how?',
+            ExpansionTile(
+              title: Text(
+                'What is Flutter?',
                 style: TextStyle(fontSize: 16),
               ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    'Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                'Answer: Yes, Java is a Platform Independent language. Unlike many programming languages javac compiler compiles the program to form a bytecode or .class file. This file is independent of the software or hardware running but needs a JVM(Java Virtual Machine) file preinstalled in the operating system for further execution of the bytecode.Although JVM is platform dependent, the bytecode can be created on any System and can be executed in any other system despite hardware or software being used which makes Java platform independent..',
+            ExpansionTile(
+              title: Text(
+                'How does hot reload work in Flutter?',
                 style: TextStyle(fontSize: 16),
               ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    'Hot reload allows you to quickly and easily experiment, build UIs, add features, and fix bugs. Simply save the file, and the framework automatically rebuilds the widget tree, allowing you to see the changes instantly.',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Question 2:',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                'What do you understand by JVM?',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                'Answer: Java Virtual Machine is a virtual machine that enables the computer to run the Java program. JVM acts like a run-time engine which calls the main method present in the Java code. JVM is the specification which must be implemented in the computer system. The Java code is compiled by JVM to be a Bytecode which is machine independent and close to the native code..',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
-            // Add more questions and answers as needed
+            // Add more ExpansionTiles with questions and answers as needed
           ],
         ),
       ),
