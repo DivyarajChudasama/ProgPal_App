@@ -48,6 +48,7 @@ class BeginnerPage extends StatelessWidget {
                 Tab(text: 'Index'),
                 Tab(text: 'Programs'),
                 Tab(text: 'RoadMap'),
+                Tab(text: 'Interview'),
                 Tab(text: 'Description'),
               ],
             ),
@@ -710,5 +711,3 @@ class ProgramsPage extends StatelessWidget {
     );
   }
 }
-
-
