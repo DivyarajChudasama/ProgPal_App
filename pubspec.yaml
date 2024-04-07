@@ -46,6 +46,7 @@ dependencies:
   firebase_messaging: ^14.7.19
   flutter_highlight: ^0.7.0
   flutter_local_notifications: ^17.0.0
+  http: ^1.2.0
   # text_to_speech: ^0.2.3
   
 
