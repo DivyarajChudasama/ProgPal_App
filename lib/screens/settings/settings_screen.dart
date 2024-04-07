@@ -48,18 +48,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               });
             },
           ),
-          ListTile(
-            title: Text('Theme'),
-            trailing: Switch(
-              value: _themeManager.themeMode == ThemeMode.dark,
-              onChanged: (value) {
-                setState(() {
-                  isDarkTheme = value;
-                  _themeManager.toggleTheme(isDarkTheme);
-                });
-              },
-            ),
-          ),
         ],
       ),
     );
