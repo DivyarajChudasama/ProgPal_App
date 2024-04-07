@@ -90,11 +90,11 @@ class _SortingState extends State<Sorts> {
               ),
             ),
             child: ListTile(
-              title: Text('Palindrome'),
+              title: Text('Selection Sort'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => palindrome()),
+                  MaterialPageRoute(builder: (context) => selection()),
                 );
               },
             ),
@@ -109,11 +109,11 @@ class _SortingState extends State<Sorts> {
               ),
             ),
             child: ListTile(
-              title: Text('Tower Of Hanoi'),
+              title: Text('Shell Sort'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TowerOfHanoi()),
+                  MaterialPageRoute(builder: (context) => shell()),
                 );
               },
             ),
@@ -445,7 +445,7 @@ class Quick extends StatelessWidget {
   final String QuickCode = '''
 import java.io.*;
 
-class GFG {
+class QuickStart {
 
     // A utility function to swap two elements
     static void swap(int[] arr, int i, int j)
@@ -606,38 +606,58 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class palindrome extends StatelessWidget {
-  final String palindromeCode = '''
-package com.mcnz.recursion;
+class selection extends StatelessWidget {
+  final String selectionCode = '''
+import java.io.*; 
+public class SelectionSort 
+{ 
+	void sort(int arr[]) 
+	{ 
+		int n = arr.length; 
 
-public class JavaPalindromeCheckProgram {
+		// One by one move boundary of unsorted subarray 
+		for (int i = 0; i < n-1; i++) 
+		{ 
+			// Find the minimum element in unsorted array 
+			int min_idx = i; 
+			for (int j = i+1; j < n; j++) 
+				if (arr[j] < arr[min_idx]) 
+					min_idx = j; 
 
-  public static void main(String[] args) {
-    boolean flag = palindromeCheck("sitonapanotis");
-    System.out.println(flag);
-    flag = palindromeCheck("nine");
-    System.out.println(flag);
-    flag = palindromeCheck("amanaplanacanalpanama");
-    System.out.println(flag);
+			// Swap the found minimum element with the first 
+			// element 
+			int temp = arr[min_idx]; 
+			arr[min_idx] = arr[i]; 
+			arr[i] = temp; 
+		} 
+	} 
 
-  }
-  /* Recursive Java example to check for palindromes */
-  public static boolean palindromeCheck(String s){
-    if(s.length() == 0 || s.length() == 1) {
-      return true;
-    }
-    if(s.charAt(0) == s.charAt(s.length()-1)) {
-      return palindromeCheck(s.substring(1, s.length()-1));
-    }
-    return false;
-  }
-}
+	// Prints the array 
+	void printArray(int arr[]) 
+	{ 
+		int n = arr.length; 
+		for (int i=0; i<n; ++i) 
+			System.out.print(arr[i]+" "); 
+		System.out.println(); 
+	} 
+
+	// Driver code to test above 
+	public static void main(String args[]) 
+	{ 
+		SelectionSort ob = new SelectionSort(); 
+		int arr[] = {64,25,12,22,11}; 
+		ob.sort(arr); 
+		System.out.println("Sorted array"); 
+		ob.printArray(arr); 
+	} 
+} 
+
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Palindrome'),
+        title: Text('Selection Sort'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -651,7 +671,7 @@ public class JavaPalindromeCheckProgram {
                 child: Stack(
                   children: [
                     HighlightView(
-                      palindromeCode,
+                      selectionCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -666,8 +686,7 @@ public class JavaPalindromeCheckProgram {
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: palindromeCode));
+                          Clipboard.setData(ClipboardData(text: selectionCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -702,7 +721,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -715,8 +734,8 @@ class LineNumbers3 extends StatelessWidget {
   }
 }
 
-class TowerOfHanoi extends StatelessWidget {
-  final String TowerOfHanoiCode = '''
+class shell extends StatelessWidget {
+  final String shellcode = '''
 // Java recursive program to solve tower of hanoi puzzle
 
 class TowerOfHanoi
@@ -747,7 +766,7 @@ class TowerOfHanoi
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tower Of Hanoi'),
+        title: Text('Shell Sort'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -761,7 +780,7 @@ class TowerOfHanoi
                 child: Stack(
                   children: [
                     HighlightView(
-                      TowerOfHanoiCode,
+                      shellcode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -776,8 +795,7 @@ class TowerOfHanoi
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: TowerOfHanoiCode));
+                          Clipboard.setData(ClipboardData(text: shellcode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
