@@ -118,6 +118,25 @@ class _SortingState extends State<Sorts> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('Bubble Sort'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => bubble()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -651,7 +670,6 @@ public class SelectionSort
 		ob.printArray(arr); 
 	} 
 } 
-
 ''';
 
   Widget build(BuildContext context) {
@@ -721,7 +739,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36',
+            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -736,31 +754,64 @@ class LineNumbers3 extends StatelessWidget {
 
 class shell extends StatelessWidget {
   final String shellcode = '''
-// Java recursive program to solve tower of hanoi puzzle
-
-class TowerOfHanoi
+class ShellSort
 {
-	// Java recursive function to solve tower of hanoi puzzle
-	static void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod)
-	{
-		if (n == 1)
-		{
-			System.out.println("Move disk 1 from rod " + from_rod + " to rod " + to_rod);
-			return;
-		}
-		towerOfHanoi(n-1, from_rod, aux_rod, to_rod);
-		System.out.println("Move disk " + n + " from rod " + from_rod + " to rod " + to_rod);
-		towerOfHanoi(n-1, aux_rod, to_rod, from_rod);
-	}
-	
-	// Driver method
-	public static void main(String args[])
-	{
-		int n = 4; // Number of disks
-		towerOfHanoi(n, \'A\', \'C\', \'B\'); // A, B and C are names of rods
-	}
-}
-
+    /* An utility function to print array of size n*/
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+ 
+    /* function to sort arr using shellSort */
+    int sort(int arr[])
+    {
+        int n = arr.length;
+ 
+        // Start with a big gap, then reduce the gap
+        for (int gap = n/2; gap > 0; gap /= 2)
+        {
+            // Do a gapped insertion sort for this gap size.
+            // The first gap elements a[0..gap-1] are already
+            // in gapped order keep adding one more element
+            // until the entire array is gap sorted
+            for (int i = gap; i < n; i += 1)
+            {
+                // add a[i] to the elements that have been gap
+                // sorted save a[i] in temp and make a hole at
+                // position i
+                int temp = arr[i];
+ 
+                // shift earlier gap-sorted elements up until
+                // the correct location for a[i] is found
+                int j;
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                    arr[j] = arr[j - gap];
+ 
+                // put temp (the original a[i]) in its correct
+                // location
+                arr[j] = temp;
+            }
+        }
+        return 0;
+    }
+ 
+    // Driver method
+    public static void main(String args[])
+    {
+        int arr[] = {12, 34, 54, 2, 3};
+        System.out.println("Array before sorting");
+        printArray(arr);
+ 
+        ShellSort ob = new ShellSort();
+        ob.sort(arr);
+ 
+        System.out.println("Array after sorting");
+        printArray(arr);
+    }
+} 
 ''';
 
   Widget build(BuildContext context) {
@@ -814,6 +865,126 @@ class TowerOfHanoi
 }
 
 class LineNumbers4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+          ),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class bubble extends StatelessWidget {
+  final String bubblecode = '''
+class BubbleSort { 
+    void bubbleSort(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 0; i < n - 1; i++) 
+            for (int j = 0; j < n - i - 1; j++) 
+                if (arr[j] > arr[j + 1]) { 
+                    // swap temp and arr[i] 
+                    int temp = arr[j]; 
+                    arr[j] = arr[j + 1]; 
+                    arr[j + 1] = temp; 
+                } 
+    } 
+  
+    // Prints the array 
+    void printArray(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 0; i < n; ++i) 
+            System.out.print(arr[i] + " "); 
+        System.out.println(); 
+    } 
+  
+    // Driver method to test above 
+    public static void main(String args[]) 
+    { 
+        BubbleSort ob = new BubbleSort(); 
+        int arr[] = { 64, 34, 25, 12, 22, 11, 90 }; 
+        ob.bubbleSort(arr); 
+        System.out.println("Sorted array"); 
+        ob.printArray(arr); 
+    } 
+}
+''';
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bubble Sort'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers5(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      bubblecode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
+                    ),
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: bubblecode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
