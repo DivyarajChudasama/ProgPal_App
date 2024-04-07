@@ -210,87 +210,24 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ListView.separated(
-              padding: EdgeInsets.all(30.0),
+            GridView.count(
               shrinkWrap: true,
-              itemCount: 7,
-              separatorBuilder: (BuildContext context, int index) {
-                return Divider(
-                  color: Colors.grey[300],
-                  thickness: 1.0,
-                  height: 20.0,
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                String language = '';
-                Color itemColor = Colors.transparent;
-
-                switch (index) {
-                  case 0:
-                    language = 'Java';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 1:
-                    language = 'C++';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 2:
-                    language = 'React';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 3:
-                    language = 'GoLang';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 4:
-                    language = 'Python';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 5:
-                    language = 'JavaScript';
-                    itemColor = Colors.indigo;
-                    break;
-                  case 6:
-                    language = 'Node';
-                    itemColor = Colors.indigo;
-                    break;
-                }
-
-                return InkWell(
-                  onTap: () {
-                    // Navigate to JavaPage
-                    Get.to(BeginnerPage()); // Use Get.to for navigation
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: itemColor,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        language,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      leading: Icon(
-                        Icons.code,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                );
-              },
+              crossAxisCount: 2,
+              padding: EdgeInsets.all(16.0),
+              crossAxisSpacing: 16.0,
+              mainAxisSpacing: 16.0,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                buildProgramCard(context, 'Java', Colors.white,
+                    'assets/images/java.png', BeginnerPage()),
+                buildProgramCard(context, 'Flutter', Colors.indigo,
+                    'assets/images/cpp.png', BeginnerPage()),
+                buildProgramCard(context, 'C++', Colors.indigo,
+                    'assets/images/python.png', BeginnerPage()),
+                buildProgramCard(context, 'JavaScript', Colors.indigo,
+                    'assets/images/javascript.png', BeginnerPage()),
+                // Add more programming languages as needed
+              ],
             ),
           ],
         ),
@@ -305,5 +242,50 @@ class HomeScreen extends StatelessWidget {
   void _signOut() async {
     await FirebaseAuth.instance.signOut();
     Get.offAll(() => LoginScreen());
+  }
+
+  Widget buildProgramCard(BuildContext context, String title, Color color,
+      String imagePath, Widget page) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      child: Card(
+        color: color,
+        elevation: 4.0,
+        child: buildCardContent(title, imagePath),
+      ),
+    );
+  }
+
+  Widget buildCardContent(String title, String imagePath) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Center(
+            child: Image.asset(
+              imagePath,
+              width: 120, // Adjust the width as needed
+              height: 120, // Adjust the height as needed
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 8.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
