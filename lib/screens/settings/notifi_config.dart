@@ -62,9 +62,22 @@ class _NotificationConfigScreenState extends State<NotificationConfigScreen> {
               ),
             ),
             ScheduleBtn(selectedTime: selectedTime, quote: quote),
+            ElevatedButton(
+              onPressed: () {
+                _showNotification(context);
+              },
+              child: Text('Show Notification'),
+            ),
           ],
         ),
       ),
+    );
+  }
+
+  void _showNotification(BuildContext context) {
+    NotificationService().showSimpleNotification(
+      title: 'Test Notification',
+      body: 'This is a test notification.',
     );
   }
 

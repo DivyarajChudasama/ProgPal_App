@@ -74,6 +74,16 @@ class NotificationService {
   //     payload: 'Notification Payload',
   //   );
   // }
+  Future<void> showSimpleNotification({
+    required String title,
+    required String body,
+  }) async {
+    await showNotification(
+      title: title,
+      body: body,
+    );
+  }
+
   Future<void> scheduleNotification({
     required String title,
     required String body,
