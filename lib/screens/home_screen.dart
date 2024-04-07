@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
+import 'package:progpal/screens/settings/notifi_config.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -71,6 +72,17 @@ class HomeScreen extends StatelessWidget {
               title: Text('Profile'),
               onTap: () {
                 // Navigate to profile screen
+              },
+            ),
+            ListTile(
+              title: Text('Notifications'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          NotificationConfigScreen()), // Navigate to NotificationConfigScreen
+                );
               },
             ),
             ListTile(
