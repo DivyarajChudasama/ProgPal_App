@@ -37,7 +37,7 @@ class _NotificationConfigScreenState extends State<NotificationConfigScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification Configuration'),
+        title: Text('Notification Config'),
       ),
       body: Center(
         child: Column(
@@ -62,22 +62,9 @@ class _NotificationConfigScreenState extends State<NotificationConfigScreen> {
               ),
             ),
             ScheduleBtn(selectedTime: selectedTime, quote: quote),
-            ElevatedButton(
-              onPressed: () {
-                _showNotification(context);
-              },
-              child: Text('Show Notification'),
-            ),
           ],
         ),
       ),
-    );
-  }
-
-  void _showNotification(BuildContext context) {
-    NotificationService().showSimpleNotification(
-      title: 'Test Notification',
-      body: 'This is a test notification.',
     );
   }
 

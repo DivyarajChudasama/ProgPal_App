@@ -192,28 +192,109 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   List<Map<String, dynamic>> _quizData = [
     {
-      'question': 'What is Java?',
-      'options': ['A programming language', 'A fruit', 'A country'],
-      'correctAnswerIndex': 0,
-      'selectedAnswerIndex': -1,
-    },
-    {
-      'question': 'What does JVM stand for?',
+      'question': 'What is a Java package?',
       'options': [
-        'Java Virtual Machine',
-        'Just Very Mad',
-        'Jumbo Vision Module'
+        'A collection of classes and interfaces',
+        'A single class or interface',
+        'A data type in Java'
       ],
       'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
     {
-      'question': 'Which one of these is not a data type in Java?',
-      'options': ['String', 'Boolean', 'Number'],
-      'correctAnswerIndex': 2,
+      'question': 'What is the difference between JDK and JRE?',
+      'options': [
+        'JDK includes JRE along with development tools',
+        'JRE includes JDK along with runtime environment',
+        'There is no difference between JDK and JRE'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is a Java Virtual Machine (JVM)?',
+      'options': [
+        'An abstract computing machine that enables a computer to run a Java program',
+        'A physical machine used for Java programming',
+        'A tool used to compile Java code'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the purpose of the keyword "final" in Java?',
+      'options': [
+        'To declare constants, make variables unmodifiable, and prevent inheritance',
+        'To indicate the end of a method or class',
+        'To initialize a variable'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the concept of "polymorphism" in Java?',
+      'options': [
+        'The ability of an object to take on many forms',
+        'The ability to create multiple objects of the same class',
+        'The ability to call methods of the superclass'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is an abstract class in Java?',
+      'options': [
+        'A class that cannot be instantiated and may contain abstract methods',
+        'A class that can be instantiated but cannot contain abstract methods',
+        'A class with no constructors'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the purpose of the "super" keyword in Java?',
+      'options': [
+        'To call methods of the superclass',
+        'To initialize an object of the superclass',
+        'To access static variables of the superclass'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'What is the difference between "==" and ".equals()" in Java?',
+      'options': [
+        '"==" compares object references, while ".equals()" compares object values',
+        '"==" compares object values, while ".equals()" compares object references',
+        'There is no difference between "==" and ".equals()"'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the purpose of the "this" keyword in Java?',
+      'options': [
+        'To refer to the current object instance',
+        'To refer to the superclass object',
+        'To initialize static variables'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'What is the purpose of the "try", "catch", and "finally" blocks in Java?',
+      'options': [
+        'To handle exceptions in code and ensure cleanup operations',
+        'To define variable scopes',
+        'To control the flow of execution'
+      ],
+      'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
   ];
+
   bool _showIncorrectMessage = false;
 
   void _answerQuestion(int selectedIndex) {

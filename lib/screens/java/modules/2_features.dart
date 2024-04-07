@@ -192,28 +192,104 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   List<Map<String, dynamic>> _quizData = [
     {
-      'question': 'What is Java?',
-      'options': ['A programming language', 'A fruit', 'A country'],
+      'question':
+          'What is one of the main features of Java that makes it easy to learn?',
+      'options': ['Simple syntax', 'Complex syntax', 'Dynamic typing'],
       'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
     {
-      'question': 'What does JVM stand for?',
+      'question':
+          'What does it mean when we say Java is an object-oriented programming language?',
       'options': [
-        'Java Virtual Machine',
-        'Just Very Mad',
-        'Jumbo Vision Module'
+        'Everything in Java is an object',
+        'Java has no classes',
+        'Java does not support inheritance'
       ],
       'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
     {
-      'question': 'Which one of these is not a data type in Java?',
-      'options': ['String', 'Boolean', 'Number'],
+      'question':
+          'Which of the following is NOT a basic concept of Object-Oriented Programming (OOPs) in Java?',
+      'options': ['Object', 'Class', 'Sequence'],
       'correctAnswerIndex': 2,
       'selectedAnswerIndex': -1,
     },
+    {
+      'question': 'What makes Java platform independent?',
+      'options': [
+        'Write once, run anywhere',
+        'Dependent on specific hardware',
+        'Limited to certain operating systems'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'What contributes to Java being considered a secured language?',
+      'options': [
+        'No explicit pointers',
+        'Automatic garbage collection',
+        'Classloader'
+      ],
+      'correctAnswerIndex': 2,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'Which feature of Java contributes to its robustness?',
+      'options': [
+        'Strong memory management',
+        'Dynamic typing',
+        'Lack of exception handling'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What does it mean when we say Java is architecture-neutral?',
+      'options': [
+        'No implementation-dependent features',
+        'Dependent on specific hardware architecture',
+        'Limited to certain operating systems'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'How does Java achieve portability?',
+      'options': [
+        'By carrying Java bytecode to any platform',
+        'By compiling directly to machine code',
+        'By requiring specific platform adaptations'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the primary role of a Classloader in Java?',
+      'options': [
+        'To load Java classes into the Java Virtual Machine dynamically',
+        'To manage garbage collection',
+        'To handle runtime exceptions'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'What is the significance of the Java Virtual Machine (JVM) in ensuring platform independence?',
+      'options': [
+        'It abstracts hardware differences',
+        'It enforces strict typing rules',
+        'It limits the use of external libraries'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
   ];
+
   bool _showIncorrectMessage = false;
 
   void _answerQuestion(int selectedIndex) {
