@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // Import Get package
+import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:progpal/firebase_options.dart';
 import 'package:progpal/screens/home_screen.dart';
@@ -13,6 +13,7 @@ import 'package:progpal/screens/settings/theme.dart';
 import 'package:progpal/screens/settings/theme_manager.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart';
 import 'package:progpal/screens/splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,26 +26,28 @@ void main() async {
 ThemeManager _themeManager = ThemeManager();
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void dispose() {
-    _themeManager.removeListener(themeListner);
+    _themeManager.removeListener(themeListener);
     super.dispose();
   }
 
   @override
   void initState() {
-    _themeManager.addListener(themeListner);
+    _themeManager.addListener(themeListener);
     super.initState();
   }
 
-  themeListner() {
+  themeListener() {
     if (mounted) {
       setState(() {});
     }
@@ -58,7 +61,24 @@ class _MyAppState extends State<MyApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
-      home: HomeScreen(),
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (context) => SplashScreen(),
+        '/intro': (context) => IntroductionScreen(),
+        '/login': (context) => LoginScreen(),
+        '/home': (context) => HomeScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/splash') {
+          if (_auth.currentUser != null) {
+            return MaterialPageRoute(builder: (_) => HomeScreen());
+          } else {
+            return MaterialPageRoute(builder: (_) => SplashScreen());
+          }
+        } else {
+          return MaterialPageRoute(builder: (_) => SplashScreen());
+        }
+      },
     );
   }
 }

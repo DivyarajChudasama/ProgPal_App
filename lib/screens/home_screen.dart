@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:get/get.dart'; // Import Get package
 import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/notifi_config.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
+import 'package:progpal/screens/sign-in-up/login_screen.dart'; // Import LoginScreen
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -77,27 +79,37 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               title: Text('Notifications'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          NotificationConfigScreen()), // Navigate to NotificationConfigScreen
-                );
+                Get.to(NotificationConfigScreen()); // Use Get.to for navigation
               },
             ),
             ListTile(
               title: Text('Settings'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsScreen()),
-                );
+                Get.to(SettingsScreen()); // Use Get.to for navigation
               },
             ),
             ListTile(
               title: Text('Sign Out'),
               onTap: () {
-                // Perform sign out action
+                Get.defaultDialog(
+                  title: "Sign Out",
+                  middleText: "Are you sure you want to sign out?",
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Get.back(); // Close the dialog
+                      },
+                      child: Text("No"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        // Perform sign out action
+                        _signOut();
+                      },
+                      child: Text("Yes"),
+                    ),
+                  ],
+                );
               },
             ),
           ],
@@ -110,7 +122,27 @@ class HomeScreen extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.defaultDialog(
+                title: "Sign Out",
+                middleText: "Are you sure you want to sign out?",
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back(); // Close the dialog
+                    },
+                    child: Text("No"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Perform sign out action
+                      _signOut();
+                    },
+                    child: Text("Yes"),
+                  ),
+                ],
+              );
+            },
             icon: Icon(Icons.logout),
             color: Colors.white,
           )
@@ -227,10 +259,7 @@ class HomeScreen extends StatelessWidget {
                 return InkWell(
                   onTap: () {
                     // Navigate to JavaPage
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => BeginnerPage()),
-                    );
+                    Get.to(BeginnerPage()); // Use Get.to for navigation
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -271,5 +300,10 @@ class HomeScreen extends StatelessWidget {
 
   Future<User?> _getCurrentUser() async {
     return _auth.currentUser;
+  }
+
+  void _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    Get.offAll(() => LoginScreen());
   }
 }

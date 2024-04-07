@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:progpal/screens/intro_screens.dart';
+import 'package:progpal/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _fadeController;
   late Animation<double> _fadeAnimation;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -29,11 +32,15 @@ class _SplashScreenState extends State<SplashScreen>
     _fadeController.forward();
 
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) {
-          return IntroductionScreen(); // Navigate to IntroScreen
-        }),
-      );
+      if (_auth.currentUser != null) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
+      } else {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => IntroductionScreen()),
+        );
+      }
     });
   }
 
