@@ -1,5 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart'; // Import Get package
+import 'package:firebase_core/firebase_core.dart';
 import 'package:progpal/firebase_options.dart';
 import 'package:progpal/screens/home_screen.dart';
 import 'package:progpal/screens/intro_questions/intro_one.dart';
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'ProgPal',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,

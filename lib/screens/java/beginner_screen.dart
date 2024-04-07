@@ -17,6 +17,7 @@ import 'package:progpal/screens/java/programs/pattern.dart';
 import 'package:progpal/screens/java/programs/sorting.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/programs/recursion.dart';
+import 'package:get/get.dart';
 // import 'package:flutter_tts/flutter_tts.dart';
 
 Color bgColor = Colors.yellow;
@@ -355,58 +356,82 @@ class RoadMapPage extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: bgColor,
-                            borderRadius: BorderRadius.circular(10),
+                        GestureDetector(
+                          onTap: () {
+                            // Navigate to BasicPage on tap
+                            Get.to(JavaFirst());
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: bgColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                            margin: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10)
+                                .copyWith(right: 0),
+                            child: const Text('Basic'),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                          margin: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10)
-                              .copyWith(right: 0),
-                          child: const Text('Basic'),
                         ),
                         MindMap(
                           dotRadius: 4,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: bgColor,
-                                borderRadius: BorderRadius.circular(10),
+                            GestureDetector(
+                              onTap: () {
+                                // Navigate to ConditionalPage on tap
+                                // Get.to(ConditionalPage());
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: bgColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                margin: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                child: const Text('Conditional'),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              child: const Text('Conditional'),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: bgColor,
-                                borderRadius: BorderRadius.circular(10),
+                            GestureDetector(
+                              onTap: () {
+                                // Navigate to VariablesPage on tap
+                                // Get.to(VariablesPage());
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: bgColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                margin: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                child: const Text('Variables'),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              child: const Text('Variables'),
                             ),
                             Row(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: bgColor,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 10),
-                                  margin: const EdgeInsets.symmetric(
-                                          vertical: 10, horizontal: 10)
-                                      .copyWith(right: 0),
-                                  child: const Text(
-                                    'Functions',
-                                    style: TextStyle(color: Colors.black),
+                                GestureDetector(
+                                  onTap: () {
+                                    // Navigate to FunctionsPage on tap
+                                    // Get.to(FunctionsPage());
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: bgColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 10),
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 10)
+                                        .copyWith(right: 0),
+                                    child: const Text(
+                                      'Functions',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -417,7 +442,8 @@ class RoadMapPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        debugPrint('12313');
+                        // Navigate to ExceptionHandlingPage on tap
+                        // Get.to(ExceptionHandlingPage());
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -430,41 +456,59 @@ class RoadMapPage extends StatelessWidget {
                         child: const Text('Exception Handling'),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: bgColor,
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to DataStructurePage on tap
+                        // Get.to(DataStructurePage());
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: bgColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        child: const Text('Data Structure'),
                       ),
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      child: const Text('Data Structure'),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: bgColor,
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to OOPPage on tap
+                        // Get.to(OOPPage());
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: bgColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        child: const Text('OOP'),
                       ),
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 10),
-                      child: const Text('OOP'),
                     ),
                     Row(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: bgColor,
-                            borderRadius: BorderRadius.circular(10),
+                        GestureDetector(
+                          onTap: () {
+                            // Navigate to FileHandlingPage on tap
+                            // Get.to(FileHandlingPage());
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: bgColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            margin: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10)
+                                .copyWith(right: 0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                            child: const Text('File Handling'),
                           ),
-                          margin: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10)
-                              .copyWith(right: 0),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
-                          child: const Text('File Handling'),
                         ),
                       ],
                     )
@@ -478,6 +522,7 @@ class RoadMapPage extends StatelessWidget {
     );
   }
 }
+
 
 // Description
 class DescriptionPage extends StatelessWidget {
