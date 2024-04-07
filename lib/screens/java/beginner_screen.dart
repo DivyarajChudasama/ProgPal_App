@@ -19,6 +19,7 @@ import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/programs/recursion.dart';
 import 'package:get/get.dart';
 
+import 'programs/Miscellaneous.dart';
 import 'programs/swing.dart';
 // import 'package:flutter_tts/flutter_tts.dart';
 
@@ -1126,6 +1127,12 @@ class ProgramsPage extends StatelessWidget {
           'File Handling',
           'assets/images/java/filehandling.png',
           FileHandling(),
+        ),
+        buildProgramCard(
+          context,
+          'Miscellaneous',
+          'assets/images/java/misc.png',
+          Miscellaneous(),
         ),
         buildProgramCard(
           context,
