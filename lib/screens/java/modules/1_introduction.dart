@@ -336,48 +336,63 @@ class _QuizScreenState extends State<QuizScreen> {
           children: [
             Text(
               _quizData[_currentQuestionIndex]['question'],
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
-            Column(
-              children: List.generate(
-                  _quizData[_currentQuestionIndex]['options'].length, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    _answerQuestion(index);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: _quizData[_currentQuestionIndex]
-                                  ['selectedAnswerIndex'] ==
-                              index
-                          ? Colors.blue.withOpacity(0.5)
-                          : Colors.transparent,
-                      border: Border.all(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(8),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _quizData[_currentQuestionIndex]['options'].length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      _answerQuestion(index);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      padding: EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                        color: _quizData[_currentQuestionIndex]
+                                    ['selectedAnswerIndex'] ==
+                                index
+                            ? Colors.blue.withOpacity(0.8)
+                            : Colors.transparent,
+                        border: Border.all(color: Colors.blue, width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          _quizData[_currentQuestionIndex]['options'][index],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
                     ),
-                    child: Text(
-                      _quizData[_currentQuestionIndex]['options'][index],
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                );
-              }),
+                  );
+                },
+              ),
             ),
             SizedBox(height: 20),
             if (_showIncorrectMessage)
               Text(
                 'Incorrect answer selected!',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: Colors.red, fontSize: 16),
               ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _nextQuestion,
-              child: Text(_currentQuestionIndex == _quizData.length - 1
-                  ? 'Finish'
-                  : 'Next'),
+              style: ElevatedButton.styleFrom(
+                // primary: Colors.blue,
+                backgroundColor: Colors.blue.shade100,
+                padding: EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Text(
+                _currentQuestionIndex == _quizData.length - 1
+                    ? 'Finish'
+                    : 'Next',
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
             ),
           ],
         ),
