@@ -210,24 +210,50 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 2,
-              padding: EdgeInsets.all(16.0),
-              crossAxisSpacing: 16.0,
-              mainAxisSpacing: 16.0,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                buildProgramCard(context, 'Java', Colors.white,
-                    'assets/images/java.png', BeginnerPage()),
-                buildProgramCard(context, 'Flutter', Colors.indigo,
-                    'assets/images/cpp.png', BeginnerPage()),
-                buildProgramCard(context, 'C++', Colors.indigo,
-                    'assets/images/python.png', BeginnerPage()),
-                buildProgramCard(context, 'JavaScript', Colors.indigo,
-                    'assets/images/javascript.png', BeginnerPage()),
-                // Add more programming languages as needed
-              ],
+            SingleChildScrollView(
+              physics: ScrollPhysics(),
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                padding: EdgeInsets.all(16.0),
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 16.0,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  buildProgramCard(
+                    context,
+                    'Java',
+                    Colors.indigo,
+                    Colors.white,
+                    'assets/images/Java.png',
+                    BeginnerPage(),
+                  ),
+                  buildProgramCard(
+                    context,
+                    'Flutter',
+                    Colors.indigo,
+                    Colors.white,
+                    'assets/images/flutter.png',
+                    BeginnerPage(),
+                  ),
+                  buildProgramCard(
+                    context,
+                    'C++',
+                    Colors.indigo,
+                    Colors.white,
+                    'assets/images/cplus.png',
+                    BeginnerPage(),
+                  ),
+                  buildProgramCard(
+                    context,
+                    'JavaScript',
+                    Colors.indigo,
+                    Colors.white,
+                    'assets/images/js.png',
+                    BeginnerPage(),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -244,8 +270,14 @@ class HomeScreen extends StatelessWidget {
     Get.offAll(() => LoginScreen());
   }
 
-  Widget buildProgramCard(BuildContext context, String title, Color color,
-      String imagePath, Widget page) {
+  Widget buildProgramCard(
+    BuildContext context,
+    String title,
+    Color textColor,
+    Color backgroundColor,
+    String imagePath,
+    Widget page,
+  ) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -254,38 +286,35 @@ class HomeScreen extends StatelessWidget {
         );
       },
       child: Card(
-        color: color,
+        color: backgroundColor,
         elevation: 4.0,
-        child: buildCardContent(title, imagePath),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        margin: EdgeInsets.all(8.0),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                imagePath,
+                width: 100, // Adjust the width as needed
+                height: 100, // Adjust the height as needed
+              ),
+              SizedBox(height: 12.0),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: textColor, // Set text color
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-    );
-  }
-
-  Widget buildCardContent(String title, String imagePath) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Center(
-            child: Image.asset(
-              imagePath,
-              width: 120, // Adjust the width as needed
-              height: 120, // Adjust the height as needed
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
