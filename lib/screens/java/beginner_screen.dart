@@ -350,7 +350,7 @@ class RoadMapPage extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 10)
                           .copyWith(right: 0),
                   margin: const EdgeInsets.only(left: 10),
-                  child: const Text('Java'),
+                  child: const Text('Java  '),
                 ),
                 MindMap(
                   padding: const EdgeInsets.only(left: 50),
