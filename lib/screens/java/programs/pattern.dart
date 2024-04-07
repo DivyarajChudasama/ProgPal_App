@@ -157,6 +157,25 @@ class _PatternPageState extends State<PatternPage> {
               },
             ),
           ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey.shade300, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+            ),
+            child: ListTile(
+              title: Text('Hollow Diamond'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HollowDiamond()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -1008,6 +1027,143 @@ class LineNumbers6 extends StatelessWidget {
           children: [
             Text(
               '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33',
+              style: TextStyle(
+                fontFamily: 'Courier New',
+                fontSize: 14.0,
+              ),
+              textAlign: TextAlign.right,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HollowDiamond extends StatelessWidget {
+  final String HollowDiamondcode = '''
+import java.util.*;
+ 
+public class HollowDiamond {
+ 
+    // Function to demonstrate pattern
+    public static void printPattern(int n)
+    {
+        int i, j;
+        int num = 1;
+        // outer loop to handle upper part
+        for (i = 1; i <= n; i++) {
+            // inner loop to print spaces
+            for (j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // inner loop to print stars
+            for (j = 1; j <= 2 * i - 1; j++) {
+                if (j == 1 || j == 2*i-1)
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+            }
+            System.out.println();
+        }
+ 
+        // outer loop to handle lower part
+        for (i = n-1; i >= 1; i--) {
+            // inner loop to print spaces
+            for (j = 1; j <= n - i; j++) {
+                System.out.print(" ");
+            }
+            // inner loop to print stars
+            for (j = 1; j <= 2 * i - 1; j++) {
+                if (j == 1 || j == 2*i-1)
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+   
+    // Driver Function
+    public static void main(String args[])
+    {
+        int n = 6;
+        printPattern(n);
+    }
+}
+''';
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hollow Daimond'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LineNumbers7(),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Stack(
+                  children: [
+                    HighlightView(
+                      HollowDiamondcode,
+                      language: 'java',
+                      padding: EdgeInsets.all(12),
+                      textStyle: TextStyle(
+                        fontFamily: 'Consolas',
+                        fontSize: 13.0,
+                      ),
+                      theme: vsTheme,
+                    ),
+                    Positioned(
+                      top: 8.0,
+                      right: 8.0,
+                      child: IconButton(
+                        icon: Icon(Icons.copy),
+                        onPressed: () {
+                          Clipboard.setData(
+                              ClipboardData(text: HollowDiamondcode));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Code copied to clipboard')),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LineNumbers7 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+          ),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,

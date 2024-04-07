@@ -18,6 +18,8 @@ import 'package:progpal/screens/java/programs/sorting.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/programs/recursion.dart';
 import 'package:get/get.dart';
+
+import 'programs/swing.dart';
 // import 'package:flutter_tts/flutter_tts.dart';
 
 Color bgColor = Colors.yellow;
@@ -426,7 +428,7 @@ class RoadMapPage extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 10, horizontal: 10),
                                     margin: const EdgeInsets.symmetric(
-                                        vertical: 10, horizontal: 10)
+                                            vertical: 10, horizontal: 10)
                                         .copyWith(right: 0),
                                     child: const Text(
                                       'Functions',
@@ -522,7 +524,6 @@ class RoadMapPage extends StatelessWidget {
     );
   }
 }
-
 
 // Description
 class DescriptionPage extends StatelessWidget {
@@ -1068,7 +1069,6 @@ class ProgramsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-          
             buildProgramsGridView(context),
           ],
         ),
@@ -1087,15 +1087,21 @@ class ProgramsPage extends StatelessWidget {
       children: [
         buildProgramCard(
           context,
-          'Basic',
+          'Array',
           'assets/images/java/helloworld.png',
-          BasicPage(),
+          ArrayPage(),
         ),
         buildProgramCard(
           context,
-          'Array',
+          'Applet',
+          'assets/images/java/applet.png',
+          Applet(),
+        ),
+        buildProgramCard(
+          context,
+          'Basic',
           'assets/images/java/array.png',
-          ArrayPage(),
+          BasicPage(),
         ),
         buildProgramCard(
           context,
@@ -1105,9 +1111,9 @@ class ProgramsPage extends StatelessWidget {
         ),
         buildProgramCard(
           context,
-          'File Handling',
-          'assets/images/java/filehandling.png',
-          FileHandling(),
+          'Data Structure',
+          'assets/images/java/ds.png',
+          DataStructure(),
         ),
         buildProgramCard(
           context,
@@ -1117,27 +1123,21 @@ class ProgramsPage extends StatelessWidget {
         ),
         buildProgramCard(
           context,
+          'File Handling',
+          'assets/images/java/filehandling.png',
+          FileHandling(),
+        ),
+        buildProgramCard(
+          context,
           'OOPs',
           'assets/images/java/oop.png',
           OopsPage(),
         ),
         buildProgramCard(
           context,
-          'Threads',
-          'assets/images/java/thread.png',
-          Threads(),
-        ),
-        buildProgramCard(
-          context,
-          'Data Structure',
-          'assets/images/java/ds.png',
-          DataStructure(),
-        ),
-        buildProgramCard(
-          context,
-          'Applet',
-          'assets/images/java/applet.png',
-          Applet(),
+          'Pattern',
+          'assets/images/java/pattern.png',
+          PatternPage(),
         ),
         buildProgramCard(
           context,
@@ -1153,9 +1153,15 @@ class ProgramsPage extends StatelessWidget {
         ),
         buildProgramCard(
           context,
-          'Pattern',
-          'assets/images/java/pattern.png',
-          PatternPage(),
+          'Swing',
+          'assets/images/java/swing.png',
+          SwingPage(),
+        ),
+        buildProgramCard(
+          context,
+          'Threads',
+          'assets/images/java/thread.png',
+          Threads(),
         ),
       ],
     );
