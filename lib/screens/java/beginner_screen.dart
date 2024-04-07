@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/modules/6_filehandle.dart';
+import 'package:progpal/screens/java/modules/7_exceptionhandle.dart';
 import 'package:progpal/screens/java/programs/applet.dart';
 import 'package:progpal/screens/java/modules/5_oops.dart';
 import 'package:progpal/screens/java/modules/1_introduction.dart';
@@ -308,6 +309,45 @@ class _IndexPageState extends State<IndexPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => JavaSixth()),
+                ).then((value) {
+                  // Update the state when the user completes the content
+                  setState(() {
+                    _contentCompleted = true;
+                  });
+                });
+              },
+              child: Text(
+                'Start',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.indigo),
+              ),
+            ),
+          ],
+        ),
+        ExpansionTile(
+          title: Row(
+            children: [
+              Text('Java Exception Handling'),
+              Spacer(),
+              if (_contentCompleted)
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                ),
+            ],
+          ),
+          children: [
+            _buildDropdownMenuItem('If-else Statements'),
+            _buildDropdownMenuItem('Switch Statements'),
+            _buildDropdownMenuItem('Ternary Operator'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => JavaSeventh()),
                 ).then((value) {
                   // Update the state when the user completes the content
                   setState(() {
