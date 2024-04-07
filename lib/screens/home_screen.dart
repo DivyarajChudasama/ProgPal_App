@@ -11,17 +11,9 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class HomeScreen extends StatelessWidget {
   List<String> imagePaths = [
-    'assets/images/splashscreen.png',
-    'assets/images/splashscreen.png',
-    'assets/images/splashscreen.png',
-    'assets/images/splashscreen.png',
-  ];
-
-  List<String> customTexts = [
-    'Quizzes',
-    'Practice',
-    'Practice',
-    'Practice',
+    'assets/images/caro1.png',
+    'assets/images/caro2.png',
+    'assets/images/caro3.png',
   ];
 
   @override
@@ -166,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(30),
                           color: index % 2 == 0
                               ? Colors.indigo.withOpacity(0.9)
                               : Colors.indigo.withOpacity(0.9),
@@ -174,24 +166,12 @@ class HomeScreen extends StatelessWidget {
                         height: 200,
                         width: 300,
                         child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                imagePaths[index],
-                                width: 70,
-                                height: 70,
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                customTexts[index],
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                          child: Image.asset(
+                            imagePaths[index],
+                            width: 300,
+                            height:
+                                200, // Adjust the height to match the container
+                            fit: BoxFit.cover, // Ensure the image fits exactly
                           ),
                         ),
                       ),
@@ -203,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                   enableInfiniteScroll: true,
                   autoPlay: true,
                   autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayAnimationDuration: Duration(milliseconds: 1200),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
@@ -299,14 +279,14 @@ class HomeScreen extends StatelessWidget {
             children: [
               Image.asset(
                 imagePath,
-                width: 100, // Adjust the width as needed
-                height: 100, // Adjust the height as needed
+                width: 90, // Adjust the width as needed
+                height: 90, // Adjust the height as needed
               ),
               SizedBox(height: 12.0),
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 18.0,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: textColor, // Set text color
                 ),
