@@ -998,6 +998,24 @@ class _InterviewPageState extends State<InterviewPage> {
       'What are the steps to connect to the database in Java?',
       '\n• Import the Packages\n• Load the drivers using the forName() method \n• Register the drivers using DriverManager \n• Establish a connection using the Connection class object\n• Create a statement\n• Execute the query\n• Close the connections',
     ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      48,
+      'What is the best way to inject dependency? Also, state the reason.',
+      'There is no boundation for using a particular dependency injection. But the recommended approach is - \nSetters are mostly recommended for optional dependencies injection, and constructor arguments are recommended for mandatory ones.This is because constructor injection enables the injection of values into immutable fields and enables reading them more easily.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      49,
+      'Is it possible to import the same class or package twice in Java and what happens to it during runtime?',
+      'It is possible to import a class or package more than once, however, it is redundant because the JVM internally loads the package or class only once.',
+    ));
+    questionWidgets.add(_buildQuestion(
+      context,
+      50,
+      'What could be the tradeoff between the usage of an unordered array versus the usage of an ordered array?',
+      '• The main advantage of having an ordered array is the reduced search time complexity of O(log n) whereas the time complexity in an unordered array is O(n).\n• The main drawback of the ordered array is its increased insertion time which is O(n) due to the fact that its element has to reordered to maintain the order of array during every insertion whereas the time complexity in the unordered array is only O(1). \n• Considering the above 2 key points and depending on what kind of scenario a developer requires, the appropriate data structure can be used for implementation',
+    ));
     return questionWidgets;
   }
 
