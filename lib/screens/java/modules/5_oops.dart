@@ -200,28 +200,101 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   List<Map<String, dynamic>> _quizData = [
     {
-      'question': 'What is Java?',
-      'options': ['A programming language', 'A fruit', 'A country'],
-      'correctAnswerIndex': 0,
-      'selectedAnswerIndex': -1,
-    },
-    {
-      'question': 'What does JVM stand for?',
+      'question': 'What is an object in Java?',
       'options': [
-        'Java Virtual Machine',
-        'Just Very Mad',
-        'Jumbo Vision Module'
+        'A real-world entity with state and behavior',
+        'A method for data manipulation',
+        'A data type used to store values'
       ],
       'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
     {
-      'question': 'Which one of these is not a data type in Java?',
-      'options': ['String', 'Boolean', 'Number'],
-      'correctAnswerIndex': 2,
+      'question': 'What is a class in Java?',
+      'options': [
+        'A blueprint for creating objects',
+        'A collection of methods',
+        'An instance of an object'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is inheritance in Java?',
+      'options': [
+        'Acquiring properties and behaviors of a parent object',
+        'Overriding a method',
+        'Creating multiple objects'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is polymorphism?',
+      'options': [
+        'Performing a task in different ways',
+        'Encapsulating code and data together',
+        'Hiding internal details and showing functionality'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'How is abstraction defined in Java?',
+      'options': [
+        'Hiding internal details and showing functionality',
+        'Binding code and data together into a single unit',
+        'Acquiring all properties and behaviors of a parent object'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is encapsulation in Java?',
+      'options': [
+        'Binding code and data together into a single unit',
+        'Performing a task in different ways',
+        'Defining a blueprint for creating objects'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the main purpose of inheritance in Java?',
+      'options': [
+        'Code reusability',
+        'Method overloading',
+        'Data encapsulation'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'Which concept allows the same method to perform different tasks based on parameters?',
+      'options': ['Polymorphism', 'Abstraction', 'Encapsulation'],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'How is encapsulation related to data hiding in Java?',
+      'options': [
+        'Encapsulation hides the implementation details of a class',
+        'Encapsulation exposes the internal state of an object',
+        'Encapsulation is unrelated to data hiding'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'Which Java concept focuses on bundling code and data into a single unit?',
+      'options': ['Encapsulation', 'Inheritance', 'Polymorphism'],
+      'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
   ];
+
   bool _showIncorrectMessage = false;
 
   void _answerQuestion(int selectedIndex) {

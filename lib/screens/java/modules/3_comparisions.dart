@@ -191,28 +191,104 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   List<Map<String, dynamic>> _quizData = [
     {
-      'question': 'What is Java?',
-      'options': ['A programming language', 'A fruit', 'A country'],
-      'correctAnswerIndex': 0,
-      'selectedAnswerIndex': -1,
-    },
-    {
       'question': 'What does JVM stand for?',
       'options': [
         'Java Virtual Machine',
-        'Just Very Mad',
-        'Jumbo Vision Module'
+        'Java Virtual Memory',
+        'Java Version Manager'
       ],
       'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
     {
-      'question': 'Which one of these is not a data type in Java?',
-      'options': ['String', 'Boolean', 'Number'],
-      'correctAnswerIndex': 2,
+      'question': 'What is the main purpose of the JVM?',
+      'options': [
+        'To provide a runtime environment for executing Java bytecode',
+        'To compile Java source code to machine code',
+        'To manage memory allocation for Java applications'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What are the three notions of the JVM?',
+      'options': [
+        'Specification, implementation, and instance',
+        'Runtime, development, and debugging',
+        'Virtual, physical, and logical'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'Which of the following is NOT a task performed by the JVM?',
+      'options': ['Compile code', 'Verify code', 'Execute code'],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What does JRE stand for?',
+      'options': [
+        'Java Runtime Environment',
+        'Java Runtime Executor',
+        'Java Runtime Extension'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the purpose of the JRE?',
+      'options': [
+        'To provide the runtime environment for Java applications',
+        'To compile Java source code',
+        'To develop Java applications'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What does JDK stand for?',
+      'options': [
+        'Java Development Kit',
+        'Java Development Kernel',
+        'Java Deployment Kit'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is included in the JDK?',
+      'options': [
+        'JRE + development tools',
+        'JVM + libraries',
+        'Compiler + runtime environment'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question':
+          'Which Java platform is used for developing desktop applications?',
+      'options': [
+        'Standard Edition Java Platform',
+        'Enterprise Edition Java Platform',
+        'Micro Edition Java Platform'
+      ],
+      'correctAnswerIndex': 0,
+      'selectedAnswerIndex': -1,
+    },
+    {
+      'question': 'What is the role of the JDK in Java development?',
+      'options': [
+        'To provide development tools and a private JVM',
+        'To provide a runtime environment for Java applications',
+        'To manage memory allocation for Java applications'
+      ],
+      'correctAnswerIndex': 0,
       'selectedAnswerIndex': -1,
     },
   ];
+
   bool _showIncorrectMessage = false;
 
   void _answerQuestion(int selectedIndex) {
