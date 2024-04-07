@@ -13,10 +13,14 @@ import 'package:progpal/screens/settings/theme.dart';
 import 'package:progpal/screens/settings/theme_manager.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart';
 import 'package:progpal/screens/splash_screen.dart';
+import 'package:progpal/services/notifi_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
+  tz.initializeTimeZones();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
