@@ -6,7 +6,9 @@ import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/notifi_config.dart';
 import 'package:progpal/screens/settings/premium.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
-import 'package:progpal/screens/sign-in-up/login_screen.dart'; // Import LoginScreen
+import 'package:progpal/screens/sign-in-up/login_screen.dart';
+
+import 'python/pyHomescreen.dart'; // Import LoginScreen
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -217,11 +219,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                   buildProgramCard(
                     context,
-                    'Flutter',
+                    'Python',
                     Colors.indigo,
                     Colors.white,
-                    'assets/images/flutter.png',
-                    BeginnerPage(),
+                    'assets/images/python.png',
+                    PyHomeScreen(),
                   ),
                   buildProgramCard(
                     context,
