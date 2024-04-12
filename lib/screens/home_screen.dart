@@ -8,6 +8,8 @@ import 'package:progpal/screens/settings/premium.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart';
 
+import 'c++/C++CommingSoon.dart';
+import 'javascript/jsCommingSoon.dart';
 import 'python/pyHomescreen.dart'; // Import LoginScreen
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -231,7 +233,7 @@ class HomeScreen extends StatelessWidget {
                     Colors.indigo,
                     Colors.white,
                     'assets/images/cplus.png',
-                    BeginnerPage(),
+                    CppComingSoonScreen(),
                   ),
                   buildProgramCard(
                     context,
@@ -239,7 +241,7 @@ class HomeScreen extends StatelessWidget {
                     Colors.indigo,
                     Colors.white,
                     'assets/images/js.png',
-                    BeginnerPage(),
+                    JsComingSoonScreen(),
                   ),
                 ],
               ),
