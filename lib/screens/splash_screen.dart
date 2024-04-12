@@ -20,18 +20,18 @@ class _SplashScreenState extends State<SplashScreen>
 
     _fadeController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: 1),
     );
 
     _fadeAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.0,
+      begin: 0.0,
+      end: 1.0,
     ).animate(_fadeController);
 
     // Start the fade-in animation
     _fadeController.forward();
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       if (_auth.currentUser != null) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -55,9 +55,8 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Colors.indigo,
       body: Center(
-        child: AnimatedOpacity(
-          opacity: _fadeAnimation.value,
-          duration: Duration(seconds: 6),
+        child: FadeTransition(
+          opacity: _fadeAnimation,
           child: Image.asset(
             'assets/images/splashscreen.png',
             height: 200,

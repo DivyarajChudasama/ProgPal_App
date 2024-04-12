@@ -4,8 +4,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart'; // Import Get package
 import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/notifi_config.dart';
+import 'package:progpal/screens/settings/premium.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
-import 'package:progpal/screens/sign-in-up/login_screen.dart'; // Import LoginScreen
+import 'package:progpal/screens/sign-in-up/login_screen.dart';
+
+import 'python/pyHomescreen.dart'; // Import LoginScreen
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -72,6 +75,12 @@ class HomeScreen extends StatelessWidget {
               title: Text('Notifications'),
               onTap: () {
                 Get.to(NotificationConfigScreen()); // Use Get.to for navigation
+              },
+            ),
+            ListTile(
+              title: Text('Try Premium'),
+              onTap: () {
+                Get.to(UPI()); // Use Get.to for navigation
               },
             ),
             ListTile(
@@ -210,11 +219,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                   buildProgramCard(
                     context,
-                    'Flutter',
+                    'Python',
                     Colors.indigo,
                     Colors.white,
-                    'assets/images/flutter.png',
-                    BeginnerPage(),
+                    'assets/images/python.png',
+                    PyHomeScreen(),
                   ),
                   buildProgramCard(
                     context,
