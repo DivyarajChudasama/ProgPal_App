@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart'; // Import Get package
 import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/notifi_config.dart';
+import 'package:progpal/screens/settings/premium.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart'; // Import LoginScreen
 
@@ -72,6 +73,12 @@ class HomeScreen extends StatelessWidget {
               title: Text('Notifications'),
               onTap: () {
                 Get.to(NotificationConfigScreen()); // Use Get.to for navigation
+              },
+            ),
+            ListTile(
+              title: Text('Try Premium'),
+              onTap: () {
+                Get.to(UPI()); // Use Get.to for navigation
               },
             ),
             ListTile(
