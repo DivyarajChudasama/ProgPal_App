@@ -83,309 +83,122 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
-  bool _contentCompleted = false;
+  int _completedCount = 0;
+  final int _totalSections = 7;
+  Map<String, bool> _moduleCompletionStatus = {
+    'JavaFirst': false,
+    'JavaSecond': false,
+    'JavaThird': false,
+    'JavaFourth': false,
+    'JavaFifth': false,
+    'JavaSixth': false,
+    'JavaSeventh': false,
+  };
+
+  void _updateProgress(String routeName) {
+    if (!_moduleCompletionStatus[routeName]!) {
+      setState(() {
+        _completedCount++;
+        _moduleCompletionStatus[routeName] = true;
+      });
+    }
+  }
+
+  Widget _buildIconButton(String title, bool isCompleted, String routeName) {
+    return IconButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => routeName == 'JavaFirst'
+                ? JavaFirst()
+                : routeName == 'JavaSecond'
+                    ? JavaSecond()
+                    : routeName == 'JavaThird'
+                        ? JavaThird()
+                        : routeName == 'JavaFourth'
+                            ? JavaFourth()
+                            : routeName == 'JavaFifth'
+                                ? JavaFifth()
+                                : routeName == 'JavaSixth'
+                                    ? JavaSixth()
+                                    : JavaSeventh(),
+          ),
+        ).then((value) {
+          _updateProgress(routeName);
+        });
+      },
+      icon: Icon(isCompleted ? Icons.play_arrow : Icons.play_circle_fill),
+      color: Colors.indigo,
+    );
+  }
+
+  Widget _buildModuleTile(String title, bool isCompleted, String routeName) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.0),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          LinearProgressIndicator(
+            value: _moduleCompletionStatus[routeName]! ? 1.0 : 0.0,
+            backgroundColor: Colors.grey[300],
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.indigo),
+          ),
+          SizedBox(height: 10),
+          Row(
+            children: [
+              Text(
+                title,
+                style: TextStyle(fontSize: 16),
+              ),
+              Spacer(),
+              _buildIconButton(title, isCompleted, routeName),
+              if (_moduleCompletionStatus[routeName]!)
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('Introduction to Java'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [],
-            ),
-            _buildDropdownMenuItem('What is Java?'),
-            _buildDropdownMenuItem('Where is Java used?'),
-            _buildDropdownMenuItem('How does Java work?'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaFirst()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('Features of Java'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('Variables'),
-            _buildDropdownMenuItem('Data Types'),
-            _buildDropdownMenuItem('Arithmetic Operations'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaSecond()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('JDK, JRE, and JVM'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('If-else Statements'),
-            _buildDropdownMenuItem('Switch Statements'),
-            _buildDropdownMenuItem('Ternary Operator'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaThird()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('List of Java Keywords'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('If-else Statements'),
-            _buildDropdownMenuItem('Switch Statements'),
-            _buildDropdownMenuItem('Ternary Operator'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaFourth()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('Java OOPs Concepts'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('If-else Statements'),
-            _buildDropdownMenuItem('Switch Statements'),
-            _buildDropdownMenuItem('Ternary Operator'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaFifth()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('Java File Handling'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('If-else Statements'),
-            _buildDropdownMenuItem('Switch Statements'),
-            _buildDropdownMenuItem('Ternary Operator'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaSixth()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
-        ExpansionTile(
-          title: Row(
-            children: [
-              Text('Java Exception Handling'),
-              Spacer(),
-              if (_contentCompleted)
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                ),
-            ],
-          ),
-          children: [
-            _buildDropdownMenuItem('If-else Statements'),
-            _buildDropdownMenuItem('Switch Statements'),
-            _buildDropdownMenuItem('Ternary Operator'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => JavaSeventh()),
-                ).then((value) {
-                  // Update the state when the user completes the content
-                  setState(() {
-                    _contentCompleted = true;
-                  });
-                });
-              },
-              child: Text(
-                'Start',
-                style: TextStyle(color: Colors.white),
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.indigo),
-              ),
-            ),
-          ],
-        ),
+        _buildModuleTile('Introduction to Java',
+            _moduleCompletionStatus['JavaFirst']!, 'JavaFirst'),
+        _buildModuleTile('Features of Java',
+            _moduleCompletionStatus['JavaSecond']!, 'JavaSecond'),
+        _buildModuleTile('JDK, JRE, and JVM',
+            _moduleCompletionStatus['JavaThird']!, 'JavaThird'),
+        _buildModuleTile('List of Java Keywords',
+            _moduleCompletionStatus['JavaFourth']!, 'JavaFourth'),
+        _buildModuleTile('Java OOPs Concepts',
+            _moduleCompletionStatus['JavaFifth']!, 'JavaFifth'),
+        _buildModuleTile('Java File Handling',
+            _moduleCompletionStatus['JavaSixth']!, 'JavaSixth'),
+        _buildModuleTile('Java Exception Handling',
+            _moduleCompletionStatus['JavaSeventh']!, 'JavaSeventh'),
       ],
-    );
-  }
-
-  Widget _buildDropdownMenuItem(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-          color: Colors.indigo,
-        ),
-        child: DropdownMenuItem(
-          child: Text(
-            title,
-            style: TextStyle(color: txtColor),
-          ),
-        ),
-      ),
     );
   }
 }
