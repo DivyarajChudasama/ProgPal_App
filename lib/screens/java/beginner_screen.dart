@@ -998,7 +998,7 @@ class ProgramsPage extends StatelessWidget {
         buildProgramCard(
           context,
           'Array',
-          'assets/images/java/helloworld.png',
+          'assets/images/java/array.png',
           ArrayPage(),
         ),
         buildProgramCard(
@@ -1010,7 +1010,7 @@ class ProgramsPage extends StatelessWidget {
         buildProgramCard(
           context,
           'Basic',
-          'assets/images/java/array.png',
+          'assets/images/java/helloworld.png',
           BasicPage(),
         ),
         buildProgramCard(

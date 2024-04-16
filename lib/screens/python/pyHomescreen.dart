@@ -964,12 +964,6 @@ class ProgramsPage extends StatelessWidget {
         ),
         buildProgramCard(
           context,
-          'Applet',
-          'assets/images/java/applet.png',
-          Applet(),
-        ),
-        buildProgramCard(
-          context,
           'Basic',
           'assets/images/java/helloworld.png',
           Parray(),

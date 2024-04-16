@@ -33,11 +33,11 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('Basic Array'),
+              title: Text('Append()'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BasicArray()),
+                  MaterialPageRoute(builder: (context) => Append()),
                 );
               },
             ),
@@ -52,7 +52,7 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('Sorting'),
+              title: Text('Sort()'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -71,11 +71,11 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('Operations'),
+              title: Text('Count()'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Operations()),
+                  MaterialPageRoute(builder: (context) => Count()),
                 );
               },
             ),
@@ -90,11 +90,11 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('Sum And Average'),
+              title: Text('Index()'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SumAndAverage()),
+                  MaterialPageRoute(builder: (context) => index()),
                 );
               },
             ),
@@ -109,11 +109,11 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('2 Dimensional Array'),
+              title: Text('Pop()'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DimensionalArray()),
+                  MaterialPageRoute(builder: (context) => pop()),
                 );
               },
             ),
@@ -128,11 +128,11 @@ class _ParrayState extends State<Parray> {
               ),
             ),
             child: ListTile(
-              title: Text('Add Two Matrix'),
+              title: Text('Reverse()'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AddTwoMatrix()),
+                  MaterialPageRoute(builder: (context) => reverse()),
                 );
               },
             ),
@@ -143,28 +143,22 @@ class _ParrayState extends State<Parray> {
   }
 }
 
-class BasicArray extends StatelessWidget {
-  final String basicArrayCode = '''
-import array as arr
+class Append extends StatelessWidget {
+  final String AppendCode = '''
+//Eg.1
+fruits = ['apple', 'banana', 'cherry']
+fruits.append("orange")
 
-# creating an array with integer type
-a = arr.array('i', [1, 2, 3])
-print (type(a), a)
-
-# creating an array with char type
-a = arr.array('u', 'BAT')
-print (type(a), a)
-
-# creating an array with float type
-a = arr.array('d', [1.1, 2.2, 3.3])
-print (type(a), a)
+// Eg.2
+fruits = ['apple', 'banana', 'cherry']
+fruits.append("orange")
 ''';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Basic Array'),
+        title: Text('Append()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -178,7 +172,7 @@ print (type(a), a)
                 child: Stack(
                   children: [
                     HighlightView(
-                      basicArrayCode,
+                      AppendCode,
                       language: 'java',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
@@ -193,8 +187,7 @@ print (type(a), a)
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: basicArrayCode));
+                          Clipboard.setData(ClipboardData(text: AppendCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -231,7 +224,7 @@ class LineNumbers extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9',
+              '1\n2\n3\n4\n5',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -258,7 +251,7 @@ cars.sort(key=myFunc)
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sorting'),
+        title: Text('Sort()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -338,44 +331,17 @@ class LineNumbers1 extends StatelessWidget {
   }
 }
 
-class Operations extends StatelessWidget {
-  final String OperationsCode = '''
-class ArrayOperations
-{
-    public static void main(String[] args)
-    {
-        double[] myList = {1.9, 2.9, 3.4, 3.5};
+class Count extends StatelessWidget {
+  final String CountCode = '''
+fruits = ['apple', 'banana', 'cherry']
 
-        // Print all the array elements
-        for (int i = 0; i < myList.length; i++)
-        {
-            System.out.println(myList[i] + " ");
-        }
-        // Summing all elements
-        double total = 0;
-        for (int i = 0; i < myList.length; i++)
-        {
-            total += myList[i];
-        }
-
-        System.out.println("Total is " + total);
-
-        // Finding the largest element
-        double max = myList[0];
-        for (int i = 1; i < myList.length; i++)
-        {
-            if (myList[i] > max)
-                max = myList[i];
-        }
-        System.out.println("Max is " + max);
-    }
-}
+x = fruits.count("cherry")
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Operations'),
+        title: Text('count()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -389,8 +355,8 @@ class ArrayOperations
                 child: Stack(
                   children: [
                     HighlightView(
-                      OperationsCode,
-                      language: 'java',
+                      CountCode,
+                      language: 'Python',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
@@ -404,8 +370,7 @@ class ArrayOperations
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: OperationsCode));
+                          Clipboard.setData(ClipboardData(text: CountCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -442,7 +407,7 @@ class LineNumbers2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
+              '1\n2\n3',
               style: TextStyle(
                 fontFamily: 'Courier New',
                 fontSize: 14.0,
@@ -456,32 +421,18 @@ class LineNumbers2 extends StatelessWidget {
   }
 }
 
-class SumAndAverage extends StatelessWidget {
-  final String SumAndAverageCode = '''
-import java.io.*;
+class index extends StatelessWidget {
+  final String indexCode = '''
 
-class ArrayAverage
-{
-    public static void main(String[] args)
-    {
-        //define an array
-        int[] numbers = new int[]{10, 20, 15, 25, 16, 60, 100};
-        int sum = 0;
-        for (int i = 0; i < numbers.length; i++)
-        {
-            sum = sum + numbers[i];
-        }
-        double average = sum / numbers.length;
-        System.out.println("Sum of array elements is : " + sum);
-        System.out.println("Average value of array elements is : " + average);
-    }
-}  
+fruits = ['apple', 'banana', 'cherry']
+
+x = fruits.index("cherry")
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sum and Average'),
+        title: Text('index()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -495,8 +446,8 @@ class ArrayAverage
                 child: Stack(
                   children: [
                     HighlightView(
-                      SumAndAverageCode,
-                      language: 'java',
+                      indexCode,
+                      language: 'python',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
@@ -510,8 +461,7 @@ class ArrayAverage
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: SumAndAverageCode));
+                          Clipboard.setData(ClipboardData(text: indexCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -546,7 +496,7 @@ class LineNumbers3 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
-            '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16',
+            '1\n2\n3',
             style: TextStyle(
               fontFamily: 'Courier New',
               fontSize: 14.0,
@@ -559,41 +509,17 @@ class LineNumbers3 extends StatelessWidget {
   }
 }
 
-class DimensionalArray extends StatelessWidget {
-  final String DimensionalArrayCode = '''
-import java.util.*;
+class pop extends StatelessWidget {
+  final String popCode = '''
+fruits = ['apple', 'banana', 'cherry']
 
-class TwoDArray
-{
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter # of rows: ");
-        int rows = scanner.nextInt();
-        System.out.print("Enter # of cols: ");
-        int cols = scanner.nextInt();
-
-        int[][] a = new int[rows][cols];
-
-        System.out.print("Enter " + rows + "x" + cols + "=" + (rows * cols) + " integers: ");
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                a[i][j] = scanner.nextInt();
-            }
-        }
-
-        System.out.println("Here are those " + (rows * cols) + " integers in a " + rows + "x" + cols + " 2d-array:");
-        System.out.println(Arrays.deepToString(a));
-    }
-}
+fruits.pop(1)
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dimensional Array'),
+        title: Text('pop()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -607,8 +533,8 @@ class TwoDArray
                 child: Stack(
                   children: [
                     HighlightView(
-                      DimensionalArrayCode,
-                      language: 'java',
+                      popCode,
+                      language: 'python',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
@@ -622,8 +548,7 @@ class TwoDArray
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: DimensionalArrayCode));
+                          Clipboard.setData(ClipboardData(text: popCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -660,7 +585,7 @@ class LineNumbers4 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23',
+              '1\n2\n3',
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontSize: 13.0,
@@ -674,32 +599,17 @@ class LineNumbers4 extends StatelessWidget {
   }
 }
 
-class AddTwoMatrix extends StatelessWidget {
-  final String AddTwoMatrixCode = '''
-X = [[1,2,3],  
-       [4,5,6],  
-       [7,8,9]]  
-  
-Y = [[10,11,12],  
-       [13,14,15],  
-       [16,17,18]]  
-  
-Result = [[0,0,0],  
-                [0,0,0],  
-                [0,0,0]]  
-# iterate through rows  
-for i in range(len(X)):  
-   # iterate through columns  
-   for j in range(len(X[0])):  
-       result[i][j] = X[i][j] + Y[i][j]  
-for r in result:  
-   print(r) 3
+class reverse extends StatelessWidget {
+  final String reverseCode = '''
+fruits = ['apple', 'banana', 'cherry']
+
+fruits.reverse()
 ''';
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Two Matrix'),
+        title: Text('reverse()'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -713,8 +623,8 @@ for r in result:
                 child: Stack(
                   children: [
                     HighlightView(
-                      AddTwoMatrixCode,
-                      language: 'java',
+                      reverseCode,
+                      language: 'python',
                       padding: EdgeInsets.all(12),
                       textStyle: TextStyle(
                         fontFamily: 'Consolas',
@@ -728,8 +638,7 @@ for r in result:
                       child: IconButton(
                         icon: Icon(Icons.copy),
                         onPressed: () {
-                          Clipboard.setData(
-                              ClipboardData(text: AddTwoMatrixCode));
+                          Clipboard.setData(ClipboardData(text: reverseCode));
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Code copied to clipboard')),
                           );
@@ -766,7 +675,7 @@ class LineNumbers5 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15',
+              '1\n2\n3',
               style: TextStyle(
                 fontFamily: 'Consolas',
                 fontSize: 13.0,
