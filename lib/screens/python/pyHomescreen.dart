@@ -22,6 +22,7 @@ import 'package:progpal/screens/java/programs/recursion.dart';
 import 'package:get/get.dart';
 
 import 'programs/array.dart';
+import 'programs/pybasic.dart';
 
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
@@ -966,7 +967,7 @@ class ProgramsPage extends StatelessWidget {
           context,
           'Basic',
           'assets/images/java/helloworld.png',
-          Parray(),
+          PBasic(),
         ),
         buildProgramCard(
           context,
