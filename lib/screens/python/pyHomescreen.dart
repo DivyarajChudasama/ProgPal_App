@@ -21,6 +21,9 @@ import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/programs/recursion.dart';
 import 'package:get/get.dart';
 
+import 'programs/array.dart';
+import 'programs/pybasic.dart';
+
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
 
@@ -621,13 +624,9 @@ class DescriptionPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.0),
-              Text('• Core concepts in java(whilst having fun,too)'),
+              Text('• Understand and implement basic Python Code'),
               Text(
-                  '• How to easily write programs for all computing platforms at once'),
-              Text(
-                  '• Knowledge of java code(+advance tips and tricks used by pros)'),
-              Text(
-                  '• The core skills needed to program for big clients, as a travelling freelaner or from home'),
+                  '• Solid understanding of python programming fundamentals such as data types and structure, variables,loops and functions'),
               SizedBox(height: 16.0),
               Text(
                 'Who is the target audience?',
@@ -640,7 +639,7 @@ class DescriptionPage extends StatelessWidget {
               Text(
                   '• This course is perfect for absolute beginners with no previous coding experience, to intermediate looking to sharpen their skills to the expert level.'),
               Text(
-                  '• Those looking to build creative and advanced java app for either personal use or for high-paying clients as a self employed contrator'),
+                  '• People Who want to learn Python Fundamentals and later transition into DataScience, Web Development or Big Data'),
               Text(
                   '• Those who love letting their own creative genius shine whilst getting paid to do so'),
               SizedBox(height: 16.0),
@@ -653,13 +652,12 @@ class DescriptionPage extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Text(
-                  '• Java is quite popular as a Programming Language in the industry so you can get good opportunities, if that is what you are looking for'),
+                  '• Python is one of the most important programming languages and must be part of any programming toolset.'),
               SizedBox(height: 16.0),
               Text(
-                  '• Java is secure platform, thanks to its virtual Machine.This is one of the primary reasons Companies worldwide are using this language.'),
+                  '• Once you learn Python, you will never have a shortage of ways to utilize the skill.'),
               SizedBox(height: 16.0),
-              Text(
-                  '• Android app development is gaining momentum and if you are familar with java then learning Andriod will be easier for you'),
+              Text('• Python is popular and widely used'),
               SizedBox(height: 16.0),
               Text(
                 'Salary',
@@ -669,7 +667,7 @@ class DescriptionPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.0),
-              Text('• The median salary is 102,000 USD per year'),
+              Text('• The median salary is 1,24,787 USD per year'),
               SizedBox(height: 16.0),
               Text(
                 'Requirements',
@@ -962,20 +960,14 @@ class ProgramsPage extends StatelessWidget {
         buildProgramCard(
           context,
           'Array',
-          'assets/images/java/helloworld.png',
-          ArrayPage(),
-        ),
-        buildProgramCard(
-          context,
-          'Applet',
-          'assets/images/java/applet.png',
-          Applet(),
+          'assets/images/java/array.png',
+          Parray(),
         ),
         buildProgramCard(
           context,
           'Basic',
-          'assets/images/java/array.png',
-          BasicPage(),
+          'assets/images/java/helloworld.png',
+          PBasic(),
         ),
         buildProgramCard(
           context,

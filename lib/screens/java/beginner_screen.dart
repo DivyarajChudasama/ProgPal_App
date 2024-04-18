@@ -339,7 +339,7 @@ class RoadMapPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         // Navigate to ExceptionHandlingPage on tap
-                        // Get.to(ExceptionHandlingPage());
+                        Get.to(JavaSeventh());
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -371,8 +371,7 @@ class RoadMapPage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navigate to OOPPage on tap
-                        // Get.to(OOPPage());
+                        Get.to(JavaFifth());
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -390,8 +389,7 @@ class RoadMapPage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            // Navigate to FileHandlingPage on tap
-                            // Get.to(FileHandlingPage());
+                            Get.to(JavaSixth());
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -1000,7 +998,7 @@ class ProgramsPage extends StatelessWidget {
         buildProgramCard(
           context,
           'Array',
-          'assets/images/java/helloworld.png',
+          'assets/images/java/array.png',
           ArrayPage(),
         ),
         buildProgramCard(
@@ -1012,7 +1010,7 @@ class ProgramsPage extends StatelessWidget {
         buildProgramCard(
           context,
           'Basic',
-          'assets/images/java/array.png',
+          'assets/images/java/helloworld.png',
           BasicPage(),
         ),
         buildProgramCard(
