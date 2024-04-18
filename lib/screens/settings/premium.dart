@@ -37,7 +37,7 @@ class _UPIState extends State<UPI> {
     try {
       final response = await _upiIndia.startTransaction(
         app: app,
-        receiverUpiId: "divyarajc073@okaxis",
+        receiverUpiId: "kevalbehera@okhdfcbank",
         receiverName: 'ProgPal',
         transactionRefId: 'Progpal premium',
         transactionNote: 'Not actual. Just an example.',
