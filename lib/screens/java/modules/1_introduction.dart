@@ -46,7 +46,7 @@ class _JavaFirstState extends State<JavaFirst> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java First',
+          'Introduction',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,

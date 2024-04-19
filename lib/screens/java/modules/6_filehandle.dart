@@ -45,7 +45,7 @@ class _JavaSixthState extends State<JavaSixth> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java Fifth',
+          'File Handle',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,

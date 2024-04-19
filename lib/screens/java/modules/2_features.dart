@@ -45,7 +45,7 @@ class _JavaSecondState extends State<JavaSecond> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java Second',
+          'Features',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,

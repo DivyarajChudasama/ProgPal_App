@@ -50,7 +50,7 @@ class _JavaFifthState extends State<JavaFifth> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java Fifth',
+          'OOPs',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,

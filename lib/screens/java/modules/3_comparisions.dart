@@ -41,7 +41,7 @@ class _JavaThirdState extends State<JavaThird> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java Third',
+          'Comparisions',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,

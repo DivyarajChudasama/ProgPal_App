@@ -45,7 +45,7 @@ class _JavaSeventhState extends State<JavaSeventh> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Java Fifth',
+          'Exception Handle',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo,
