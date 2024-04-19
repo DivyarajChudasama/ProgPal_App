@@ -318,7 +318,7 @@ class _QuizScreenState extends State<QuizScreen> {
         if (_currentQuestionIndex < _quizData.length - 1) {
           _currentQuestionIndex++;
         } else {
-          Get.to(Completed(nextScreen: JavaFifth()));
+          Get.to(Completed(nextScreen: JavaSecond()));
         }
       }
     });

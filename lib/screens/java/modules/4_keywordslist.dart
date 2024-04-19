@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
+import 'package:progpal/screens/java/modules/5_oops.dart';
 
 class JavaFourth extends StatefulWidget {
   const JavaFourth({Key? key}) : super(key: key);
@@ -328,7 +329,7 @@ class _QuizScreenState extends State<QuizScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => BeginnerPage()),
+            MaterialPageRoute(builder: (context) => JavaFifth()),
           );
         }
       }
