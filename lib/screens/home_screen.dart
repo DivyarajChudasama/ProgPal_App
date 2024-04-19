@@ -5,6 +5,7 @@ import 'package:get/get.dart'; // Import Get package
 import 'package:progpal/screens/java/beginner_screen.dart';
 import 'package:progpal/screens/settings/notifi_config.dart';
 import 'package:progpal/screens/settings/premium.dart';
+import 'package:progpal/screens/settings/premium_features.dart';
 import 'package:progpal/screens/settings/settings_screen.dart';
 import 'package:progpal/screens/sign-in-up/login_screen.dart';
 
@@ -68,12 +69,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Profile'),
-              onTap: () {
-                // Navigate to profile screen
-              },
-            ),
-            ListTile(
               title: Text('Notifications'),
               onTap: () {
                 Get.to(NotificationConfigScreen()); // Use Get.to for navigation
@@ -82,7 +77,7 @@ class HomeScreen extends StatelessWidget {
             ListTile(
               title: Text('Try Premium'),
               onTap: () {
-                Get.to(UPI()); // Use Get.to for navigation
+                Get.to(PremiumFeaturesScreen()); // Use Get.to for navigation
               },
             ),
             ListTile(
