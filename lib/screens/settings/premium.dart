@@ -40,8 +40,8 @@ class _UPIState extends State<UPI> {
         receiverUpiId: "divyarajc073@okaxis",
         receiverName: 'ProgPal',
         transactionRefId: 'Progpal premium',
-        transactionNote: 'Not actual. Just an example.',
-        amount: 200.00,
+        transactionNote: 'ProgPal Premium.',
+        amount: 100,
       );
       _showSnackbar("Transaction Successful. ID: ${response.transactionId}");
     } catch (e) {
