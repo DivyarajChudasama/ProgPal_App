@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:progpal/screens/intro_screens.dart';
 import 'package:progpal/screens/home_screen.dart';
@@ -33,13 +34,9 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(Duration(seconds: 2), () {
       if (_auth.currentUser != null) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
+        Get.offAll(() => HomeScreen()); // Use GetX navigation
       } else {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => IntroductionScreen()),
-        );
+        Get.offAll(() => IntroductionScreen()); // Use GetX navigation
       }
     });
   }

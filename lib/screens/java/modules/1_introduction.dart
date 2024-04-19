@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:progpal/screens/complete.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
+import 'package:progpal/screens/java/modules/2_features.dart';
+import 'package:progpal/screens/java/modules/5_oops.dart';
 
 class JavaFirst extends StatefulWidget {
   const JavaFirst({Key? key}) : super(key: key);
@@ -314,10 +318,7 @@ class _QuizScreenState extends State<QuizScreen> {
         if (_currentQuestionIndex < _quizData.length - 1) {
           _currentQuestionIndex++;
         } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => BeginnerPage()),
-          );
+          Get.to(Completed(nextScreen: JavaFifth()));
         }
       }
     });

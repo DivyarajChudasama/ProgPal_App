@@ -93,12 +93,12 @@ class _PremiumFeaturesScreenState extends State<PremiumFeaturesScreen> {
             ),
             SizedBox(height: 10),
             FeatureItem(
-              title:
-                  'Shortlisted interview questions from Google, Amazon, etc.',
+              title: 'Interview questions of MAANG companies',
               icon: Icons.question_answer,
             ),
             FeatureItem(
-              title: 'Private video playlist to learn topics thoroughly.',
+              title:
+                  'Learn Core Computer Science Topics which are necessary for Interview.',
               icon: Icons.video_library,
             ),
             Spacer(),
