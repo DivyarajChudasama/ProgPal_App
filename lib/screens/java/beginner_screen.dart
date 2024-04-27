@@ -29,8 +29,15 @@ Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
 
 class BeginnerPage extends StatelessWidget {
+  // Assuming total number of modules is 5
+  final int totalModules = 5;
+  // Assuming completed number of modules is 2
+  final int completedModules = 2;
+
   @override
   Widget build(BuildContext context) {
+    double progress = completedModules / totalModules;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -39,6 +46,29 @@ class BeginnerPage extends StatelessWidget {
         ),
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.indigo,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    strokeWidth: 3,
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                ),
+                Text(
+                  '${(progress * 100).toStringAsFixed(0)}%',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       body: DefaultTabController(
         length: 5, // Add one more tab for the RoadMap

@@ -37,7 +37,12 @@ class _NotificationConfigScreenState extends State<NotificationConfigScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification Config'),
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Notification Config',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        backgroundColor: Colors.indigo,
       ),
       body: Center(
         child: Column(
