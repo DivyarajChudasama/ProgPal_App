@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/modules/6_filehandle.dart';
 import 'package:progpal/screens/java/modules/7_exceptionhandle.dart';
@@ -20,19 +21,85 @@ import 'package:progpal/screens/java/programs/sorting.dart';
 import 'package:progpal/screens/java/programs/threads.dart';
 import 'package:progpal/screens/java/programs/recursion.dart';
 import 'package:get/get.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'programs/Miscellaneous.dart';
 import 'programs/swing.dart';
-// import 'package:flutter_tts/flutter_tts.dart';
 
+// import 'package:flutter_tts/flutter_tts.dart';
+final FirebaseAuth _auth = FirebaseAuth.instance;
 Color bgColor = Colors.yellow;
 Color txtColor = Colors.white;
 
-class BeginnerPage extends StatelessWidget {
-  // Assuming total number of modules is 5
+class BeginnerPage extends StatefulWidget {
+  final String userEmail; // Pass user email from login/registration
+
+  BeginnerPage({required this.userEmail});
+
+  @override
+  _BeginnerPageState createState() => _BeginnerPageState();
+}
+
+class _BeginnerPageState extends State<BeginnerPage> {
   final int totalModules = 5;
-  // Assuming completed number of modules is 2
-  final int completedModules = 2;
+  int completedModules = 0; // Initialize with retrieved completion data
+
+  // FirebaseFirestore instance (assuming Firebase is set up)
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // Module completion status map (retrieved from Firebase)
+  Map<String, bool> _moduleCompletionStatus = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _getModuleCompletionStatus(); // Fetch completion data on initialization
+  }
+
+  Future<void> _getModuleCompletionStatus() async {
+    try {
+      final docRef = _firestore.collection('users').doc(widget.userEmail);
+      final docSnapshot = await docRef.get();
+      if (docSnapshot.exists) {
+        final data = docSnapshot.data();
+        if (data != null && data.containsKey('moduleCompletionStatus')) {
+          setState(() {
+            _moduleCompletionStatus =
+                Map<String, bool>.from(data['moduleCompletionStatus']);
+            completedModules = _moduleCompletionStatus.values
+                .where((completed) => completed)
+                .length;
+          });
+        }
+      }
+    } catch (error) {
+      print('Error fetching module completion status: $error');
+    }
+  }
+
+  Future<User?> _getCurrentUser() async {
+    return _auth.currentUser;
+  }
+
+  void _updateProgress(String routeName) {
+    if (!_moduleCompletionStatus[routeName]!) {
+      setState(() {
+        completedModules++;
+        _moduleCompletionStatus[routeName] = true;
+        _updateModuleCompletionInFirebase(); // Update Firebase on completion
+      });
+    }
+  }
+
+  Future<void> _updateModuleCompletionInFirebase() async {
+    try {
+      final docRef = _firestore.collection('users').doc(widget.userEmail);
+      await docRef.set({
+        'moduleCompletionStatus': _moduleCompletionStatus,
+      }, SetOptions(merge: true)); // Merge to avoid overwriting user data
+    } catch (error) {
+      print('Error updating module completion in Firebase: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

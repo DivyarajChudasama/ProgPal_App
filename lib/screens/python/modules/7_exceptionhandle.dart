@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progpal/screens/java/beginner_screen.dart';
+import 'package:progpal/screens/python/pyHomescreen.dart';
 
 class PythonSeventh extends StatefulWidget {
   const PythonSeventh({Key? key}) : super(key: key);
@@ -304,7 +305,7 @@ class _QuizScreenState extends State<QuizScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => BeginnerPage()),
+            MaterialPageRoute(builder: (context) => PyHomeScreen()),
           );
         }
       }

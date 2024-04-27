@@ -304,7 +304,10 @@ class _QuizScreenState extends State<QuizScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => BeginnerPage()),
+            MaterialPageRoute(
+                builder: (context) => BeginnerPage(
+                      userEmail: '',
+                    )),
           );
         }
       }

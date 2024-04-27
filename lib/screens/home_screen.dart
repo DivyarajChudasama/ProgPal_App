@@ -212,7 +212,9 @@ class HomeScreen extends StatelessWidget {
                     Colors.indigo,
                     Colors.white,
                     'assets/images/Java.png',
-                    BeginnerPage(),
+                    BeginnerPage(
+                      userEmail: '',
+                    ),
                   ),
                   buildProgramCard(
                     context,
