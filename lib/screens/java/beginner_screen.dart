@@ -58,6 +58,13 @@ class _BeginnerPageState extends State<BeginnerPage> {
   Future<void> _getModuleCompletionStatus() async {
     try {
       final docRef = _firestore.collection('users').doc(widget.userEmail);
+      final data = {
+        'email': widget.userEmail,
+        'completedModules': 0, // Assuming completed modules start at 0
+      };
+
+// Assuming docRef is already created using your user email
+      docRef.set(data);
       final docSnapshot = await docRef.get();
       if (docSnapshot.exists) {
         final data = docSnapshot.data();
@@ -85,19 +92,47 @@ class _BeginnerPageState extends State<BeginnerPage> {
       setState(() {
         completedModules++;
         _moduleCompletionStatus[routeName] = true;
-        _updateModuleCompletionInFirebase(); // Update Firebase on completion
+        // Get the currently authenticated user
+        User? user = _auth.currentUser;
+
+        if (user != null) {
+          String email = user.email ?? ''; // Get the user's email
+          (email, routeName); // Update Firebase on completion
+        }
       });
     }
   }
 
-  Future<void> _updateModuleCompletionInFirebase() async {
+  Future<void> fetchAndStoreUserData(routeName) async {
     try {
-      final docRef = _firestore.collection('users').doc(widget.userEmail);
-      await docRef.set({
-        'moduleCompletionStatus': _moduleCompletionStatus,
-      }, SetOptions(merge: true)); // Merge to avoid overwriting user data
+      // Query the collection that contains user data (replace 'users' with your actual collection name)
+      QuerySnapshot usersSnapshot = await _firestore.collection('users').get();
+
+      // Iterate through the query results to get each user's email
+      for (QueryDocumentSnapshot userDoc in usersSnapshot.docs) {
+        User? user = _auth.currentUser;
+
+        if (user != null) {
+          String email = user.email ?? ''; // Get the user's email
+
+          // Create or update a document for each user to store module data
+          await _updateModuleCompletionStatus(email, routeName);
+        }
+      }
     } catch (error) {
-      print('Error updating module completion in Firebase: $error');
+      print('Error fetching and storing user data: $error');
+    }
+  }
+
+  Future<void> _updateModuleCompletionStatus(
+      String userEmail, String routeName) async {
+    try {
+      // Update the progress in Firestore under the user's email as document ID
+      await _firestore.collection('progress').doc(userEmail).set({
+        routeName: true,
+      }, SetOptions(merge: true)); // Merge options to retain existing data
+    } catch (error) {
+      print('Error updating module completion status: $error');
     }
   }
 
@@ -159,7 +194,9 @@ class _BeginnerPageState extends State<BeginnerPage> {
             Expanded(
               child: TabBarView(
                 children: [
-                  IndexPage(),
+                  IndexPage(
+                    userEmail: '',
+                  ),
                   ProgramsPage(),
                   RoadMapPage(),
                   InterviewPage(),
@@ -175,6 +212,9 @@ class _BeginnerPageState extends State<BeginnerPage> {
 }
 
 class IndexPage extends StatefulWidget {
+  final String userEmail; // Pass user email from login/registration
+
+  IndexPage({required this.userEmail});
   @override
   _IndexPageState createState() => _IndexPageState();
 }
@@ -191,13 +231,38 @@ class _IndexPageState extends State<IndexPage> {
     'JavaSixth': false,
     'JavaSeventh': false,
   };
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Future<void> _updateModuleCompletionStatus(
+      String userEmail, String routeName) async {
+    try {
+      // Update the progress in Firestore under the user's email as document ID
+      await _firestore.collection('progress').doc(userEmail).set({
+        routeName: true,
+      }, SetOptions(merge: true)); // Merge options to retain existing data
+    } catch (error) {
+      print('Error updating module completion status: $error');
+    }
+  }
 
-  void _updateProgress(String routeName) {
-    if (!_moduleCompletionStatus[routeName]!) {
-      setState(() {
-        _completedCount++;
-        _moduleCompletionStatus[routeName] = true;
-      });
+  void _updateProgress(String routeName) async {
+    try {
+      // Get the currently authenticated user
+      User? user = _auth.currentUser;
+
+      if (user != null) {
+        String email = user.email ?? ''; // Get the user's email
+
+        if (!_moduleCompletionStatus[routeName]!) {
+          setState(() {
+            // completedModules++;
+            _moduleCompletionStatus[routeName] = true;
+          });
+
+          await _updateModuleCompletionStatus(email, routeName);
+        }
+      }
+    } catch (error) {
+      print('Error updating progress: $error');
     }
   }
 
